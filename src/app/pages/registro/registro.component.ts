@@ -20,17 +20,21 @@ import { FormControl } from '@angular/forms';
 })
 //.disponiblee { border:0.5px solid rgba(187, 255, 0, 0.685); }
 export class RegistroComponent implements OnInit {
-
-username = new FormControl('')
+nombre:String
+username:any = new FormControl('')
+user:String
 contrasena:String
 contrasena2 = new FormControl('')
+contra:String
 email:String
-disponible:boolean = true
+telefono:String
 
 captchaPassed: boolean = false;
 captchaResponse: string;
 Img:String = "../../../assets/iconos/user_add_21977.ico"
-coinciden:boolean = true
+coinciden:boolean = false
+disponible:boolean = false
+
   constructor(
     private zone: NgZone,
     private router: Router,
@@ -42,9 +46,11 @@ coinciden:boolean = true
   ngOnInit() {
     this.username.valueChanges.pipe(
       debounceTime(1000)
-    ).subscribe((data)=>{
-      this.usuarioService.obtener(data).then((data)=>{
+    ).subscribe((palabra)=>{
+      this.usuarioService.obtener(palabra).then((data)=>{
         this.disponible = data['disponible']
+        this.user = palabra
+        
       })
     })
 
@@ -55,6 +61,7 @@ coinciden:boolean = true
         this.coinciden = false
       }else{
         this.coinciden =true
+        this.contra = data
       }
       })
 
@@ -94,13 +101,13 @@ imgSelect(){
   });
 }
 
-  registrar(username:String,email:String,contrasena:String,contrasena2:String){
+  registrar(nombre:String,username:String,email:String,contrasena:String,contrasena2:String,telefono:String){
 
-    if (username == null || email == null || contrasena == null || contrasena2 == null) {
+    if (nombre == null || username == null || email == null || contrasena == null || contrasena2 == null || telefono == null) {
       this.presentAlert("Faltan campos","Alerta")
     }else{
-    if (contrasena == contrasena2) {
-      this.usuarioService.registrar(username,email,contrasena,this.Img).then((data)=>{
+    if (contrasena == this.contra) {
+      this.usuarioService.registrar(nombre, this.user,email,contrasena,this.Img,telefono).then((data)=>{
         this.presentAlert("Se envio un correo de confirmacion","Exitoso")
         this.router.navigate([`/home`]);
 
