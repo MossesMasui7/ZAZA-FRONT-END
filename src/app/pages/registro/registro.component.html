@@ -1,0 +1,25 @@
+<ion-content [fullscreen]="true">
+  <h1 class="ion-text-center">REGISTRO DE <br> USUARIO</h1>
+  <div class="img-div">
+    <ion-label class="img-label">Seleccionar Foto</ion-label>
+  <img (click)="imgSelect()" class="img-add" src="{{Img}}" alt="">
+  
+</div>
+  <div class="ion-text-center div-form">
+    <ion-input [(ngModel)]="nombre" type="email" placeholder="Nombre completo"></ion-input>
+  <ion-input [ngClass]="{disponiblee: this.disponible == true, ocupado: this.disponible == false}" [formControl]="username" type="text" placeholder="Username"></ion-input>
+  <ion-input [(ngModel)]="contrasena" type="password" placeholder="Contraseña"></ion-input>
+  <ion-input [formControl]="contrasena2" [ngClass]="{disponiblee: this.coinciden == true, ocupado: this.coinciden == false}" type="password" placeholder="Confirme Contraseña"></ion-input>
+  <ion-input [(ngModel)]="email" type="email" placeholder="Correo Electronico"></ion-input>
+  <ion-input [(ngModel)]="telefono" type="number" placeholder="Numero Telefonico ej: +523161091349"></ion-input>
+  <br>
+  <re-captcha (resolved)="captchaResolved($event)" siteKey="6LfpbPQUAAAAAAQEZnGMvGPyV4w1WGEq5npjV4wx"></re-captcha>
+
+  <ion-button expand="block" [disabled]="!captchaPassed || !coinciden || !disponible" (click)="registrar(nombre,username,email,contrasena,contrasena2,telefono)" class="btn-Registro" shape="round">
+    Registrar
+  </ion-button>
+  <ion-label class="ion-text-center">Ya tienes cuenta click <a href="home">aqui</a></ion-label>
+ 
+</div>
+
+  </ion-content>
