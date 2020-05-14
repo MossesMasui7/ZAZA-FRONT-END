@@ -1,0 +1,20 @@
+<ion-content class="background">
+  
+    <div class="borde">
+    
+        <ion-icon name="person-circle-sharp" class="icono"></ion-icon>
+        <br>
+        <legend class="titulo">LocMark</legend><br>
+        <ion-item>
+            <ion-input type="text" [(ngModel)]="nombre" placeholder="Usuario"></ion-input>
+        </ion-item><br>
+        <ion-item>
+            <ion-input type="password" [(ngModel)]="password" placeholder="Contraseña"></ion-input>
+        </ion-item><br>
+        <ion-button class="boton" expand="block" (click)="login()" fill="clear">
+            ingresar
+        </ion-button>
+        <p>¿No tienes una cuenta? <a class="link" href="/usuario">Registrate </a></p>
+    </div> 
+   
+</ion-content>     
