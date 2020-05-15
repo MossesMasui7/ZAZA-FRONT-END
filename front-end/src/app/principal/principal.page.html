@@ -1,0 +1,73 @@
+<ion-app>
+  <ion-menu side="start" content-id="main-content">
+      <ion-header>
+          <ion-toolbar translucent color="dark">
+           
+          </ion-toolbar>
+      </ion-header>
+      <ion-content>
+          <ion-list>
+              <ion-item (click)="principal()" color="medium">
+                  <ion-icon name="home-sharp" slot="start"></ion-icon>
+                  <ion-label>Principal</ion-label>
+              </ion-item>
+              <ion-item-sliding>
+                  <ion-item-options side="start">
+                      <ion-item-option (click)="alta()">
+                          <ion-icon name="add-circle-outline" color="green"></ion-icon>
+                      </ion-item-option>
+                  </ion-item-options>
+
+                  <ion-item>
+                    <ion-icon name="home-sharp" slot="start"></ion-icon>
+                      <ion-label>Principal</ion-label>
+                  </ion-item>
+                  <ion-item-options side="end">
+                      <ion-item-option (click)="buscar()">
+                          <ion-icon name="search-sharp"></ion-icon>
+                      </ion-item-option>
+                  </ion-item-options>
+              </ion-item-sliding>
+
+              <ion-item>
+                <ion-icon name="home-sharp" slot="start"></ion-icon>
+                  <ion-label>Principal</ion-label>
+              </ion-item>
+
+              <ion-item-sliding>
+                  <ion-item-options side="start">
+                      <ion-item-option color="danger" (click)="login()">
+                          <ion-icon slot="bottom" name="log-out-outline"></ion-icon>
+                          
+                      </ion-item-option>
+                  </ion-item-options>
+
+                  <ion-item>
+                    <ion-icon name="home-sharp" slot="start"></ion-icon>
+                      <ion-label>principal</ion-label>
+                  </ion-item>
+              </ion-item-sliding>
+          </ion-list>
+      </ion-content>
+  </ion-menu>
+
+  <div class="ion-page" id="main-content">
+      <ion-header>
+          <ion-toolbar class="ion-hijo" color="dark">
+              
+              <ion-buttons slot="start">
+                  <ion-menu-button></ion-menu-button>
+              </ion-buttons>
+              <ion-title>lista de compras 
+    </ion-title>
+              
+          </ion-toolbar>
+          
+      </ion-header>
+      <ion-content class="background">
+          <img src="../../assets/292ddcf1fdbcff99169b93d6507b59bf.png" style="opacity: 0.8;">
+      </ion-content>
+  </div>
+  
+
+</ion-app>
