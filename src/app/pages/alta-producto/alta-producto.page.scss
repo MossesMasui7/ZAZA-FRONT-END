@@ -1,0 +1,31 @@
+
+.titulo {
+    color: black;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.boton {
+    background-color: #333FFF;
+    color: black;
+    border-radius: 25px;
+}
+
+ .borde {
+    background-color:whitesmoke;
+       border: 10px solid ;
+       border-radius: 25px;
+      position: relative;
+      top: 50%; /* Buscamos el centro horizontal (relativo) del navegador */
+      left: 50%; /* Buscamos el centro vertical (relativo) del navegador */
+      transform: translate(-50%,-50%);
+      width: 75%; /* Definimos el ancho del objeto a centrar */
+      height: auto; /* Definimos el alto del objeto a centrar */
+      
+  
+      
+  }
+  ion-content.background {
+    --background: url('../../../assets/alta-producto.jpg') 0 0/100% 100% no-repeat;
+}
