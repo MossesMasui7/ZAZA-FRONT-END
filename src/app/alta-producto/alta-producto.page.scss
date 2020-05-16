@@ -1,0 +1,26 @@
+.titulo {
+    color: black;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+ion-input{
+    background: rgb(255, 255, 255);
+    
+}
+
+ion-content.background {
+    --background: url('../../assets/playa-de-isuntza-lekeitio.jpg') 0 0/100% 100% no-repeat;
+}
+.boton {
+    background-color: #333FFF;
+    color: black;
+    border-radius: 25px;
+}
+ion-grid{
+    background-color:whitesmoke;
+       border: 10px solid ;
+       border-radius: 25px;
+       margin: 20px;
+       position: center;
+}
