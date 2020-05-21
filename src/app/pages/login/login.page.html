@@ -1,0 +1,26 @@
+<ion-content class="background">
+
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <ion-icon name="person-circle-sharp" class="icono"></ion-icon>
+                <br>
+                <legend class="titulo">LocMark</legend><br>
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="username" placeholder="Usuario"></ion-input>
+                </ion-item><br>
+                <ion-item>
+                    <ion-input type="password" [(ngModel)]="contrasena" placeholder="Contraseña"></ion-input>
+                </ion-item><br>
+                <ion-button class="boton" expand="block" (click)="login()" fill="clear">
+                    Ingresar
+                </ion-button>
+                <p>¿No tienes una cuenta? <a class="link" href="/registro">Registrate </a></p>
+                <div class="ion-text-center ion-margin-top">
+                    <a routerLink="/restablecer"><small>¿Olvidaste tu contraseña?</small></a>
+                </div>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+</ion-content>

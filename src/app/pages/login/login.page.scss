@@ -1,0 +1,56 @@
+.titulo {
+    color: rgb(252, 246, 246);
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.boton {
+    background-color: #333FFF;
+    color: black;
+    border-radius: 25px;
+}
+
+.borde {
+    background-color: whitesmoke;
+    border: 10px solid;
+    border-radius: 25px;
+    margin: 20px;
+    position: center;
+    width: 50%;
+    height: 100%;
+    bottom: 1;
+    position: relative;
+    top: 50%;
+    /* Buscamos el centro horizontal (relativo) del navegador */
+    left: 45%;
+    /* Buscamos el centro vertical (relativo) del navegador */
+    width: 600 px;
+    /* Definimos el ancho del objeto a centrar */
+    height: 400px;
+    /* Definimos el alto del objeto a centrar */
+    margin-top: -200px;
+    /* Restamos la mitad de la altura del objeto con un margin-top */
+    margin-left: -300px;
+    /* Restamos la mitad de la anchura del objeto con un margin-left */
+}
+
+.icono {
+    width: 100px;
+    height: 100px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+ion-content.background {
+    --background: url('../../../assets/playa-de-isuntza-lekeitio.jpg') 0 0/100% 100% no-repeat;
+}
+
+ion-grid {
+    background-color: rgba(0, 0, 0, 0.932);
+    border: 10px solid;
+    border-radius: 25px;
+    margin: 20px;
+    position: center;
+}

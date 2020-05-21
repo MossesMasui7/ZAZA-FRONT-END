@@ -2,20 +2,16 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import {RegistroComponent} from './pages/registro/registro.component'
 import { BusquedaComponent } from './pages/busqueda/busqueda.component';
-import { PrecioPromedioComponent } from './componentes/precio-promedio/precio-promedio.component';
-import { TiendasCercanasComponent } from './componentes/tiendas-cercanas/tiendas-cercanas.component';
+import {LoginPage} from './pages/login/login.page'
+import {AltaProductoPage} from './pages/alta-producto/alta-producto.page'
 const routes: Routes = [
   {
-    path: '',
-    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
-  },
-  {
-    path: 'login',
-    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+path:"login",
+component:LoginPage
   },
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    loadChildren: () => import('./pages/princpal/principal.module').then( m => m.PrincipalPageModule)
   },
   {
     path: '',
@@ -30,21 +26,18 @@ const routes: Routes = [
     path:"buscar",
     component:BusquedaComponent
   },
-  
   {
-    path: 'alta-producto',
-    loadChildren: () => import('./alta-producto/alta-producto.module').then( m => m.AltaProductoPageModule)
+    path:'alta-producto',
+    component:AltaProductoPage
   },
   {
-    path:"precio-promedio",
-    component:PrecioPromedioComponent
+    path: 'perfil',
+    loadChildren: () => import('./pages/perfil/perfil.module').then( m => m.PerfilPageModule)
   },
   {
-    path:"tiendas-cercanas",
-    component:TiendasCercanasComponent
-  }
- 
- 
+    path: 'restablecer',
+    loadChildren: () => import('./pages/restablecer/restablecer.module').then( m => m.RestablecerPageModule)
+  },
 ];
 
 @NgModule({

@@ -1,0 +1,70 @@
+<ion-content class="background" [fullscreen]="true">
+
+    <ion-grid>
+        <legend class="titulo">Agregar Producto</legend><br>
+
+        <ion-row class="img-div">
+
+            <ion-label class="img-label">Seleccionar Foto</ion-label>
+            <img (click)="imgSelect()" class="img-add" src="{{Img}}" alt="">
+
+        </ion-row>
+        <ion-row>
+            <ion-col col-12>
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="marca" placeholder="Marca"></ion-input>
+                </ion-item><br>
+            </ion-col>
+
+        </ion-row>
+        <ion-row>
+            <ion-col col-12>
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="modelo" placeholder="Modelo"></ion-input>
+                </ion-item><br>
+            </ion-col>
+            <ion-col col-12>
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="nombre" placeholder="Nombre"></ion-input>
+                </ion-item><br>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col col-12>
+                <ion-item>
+                    <ion-input [ngClass]="{disponiblee: this.disponible == true, ocupado: this.disponible == false}" [formControl]="cdb" type="text" placeholder="Codigo de barra"></ion-input>
+                </ion-item><br>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col col-12>
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="precio" placeholder="Precio">$</ion-input>
+                </ion-item><br>
+            </ion-col>
+            <ion-col col-12>
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="ubicacion" placeholder="Ubicacion"></ion-input>
+                </ion-item><br>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col col-12>
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="descripcion" placeholder="Descripcion"></ion-input>
+                </ion-item><br>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col col-12>
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="alias" placeholder="Alias"></ion-input>
+                </ion-item><br>
+            </ion-col>
+        </ion-row>
+        <ion-button class="boton" (click)="subir()" expand="block" fill="clear">
+            agregar
+        </ion-button>
+    </ion-grid>
+
+</ion-content>
