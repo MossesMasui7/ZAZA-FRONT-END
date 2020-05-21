@@ -49,7 +49,11 @@ disponible:boolean = false
     ).subscribe((palabra)=>{
       this.usuarioService.obtener(palabra).then((data)=>{
         this.disponible = data['disponible']
+        console.log(data)
         this.user = palabra
+        
+      }).catch((err)=>{
+        console.error(err);
         
       })
     })
@@ -75,7 +79,7 @@ disponible:boolean = false
         this.captchaResponse = response;
     });
 
-}
+  }
 
 /*leerCodigo(){
   this.barcodeScanner.scan().then(barcodeData => {
@@ -109,7 +113,7 @@ imgSelect(){
     if (contrasena == this.contra) {
       this.usuarioService.registrar(nombre, this.user,email,contrasena,this.Img,telefono).then((data)=>{
         this.presentAlert("Se envio un correo de confirmacion","Exitoso")
-        this.router.navigate([`/home`]);
+        this.router.navigate([`/login`]);
 
       }).catch((err)=>{
         this.presentAlert(err.error.err.message,"Alerta")

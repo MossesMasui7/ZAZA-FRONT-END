@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
-import { MyserviceService } from '../services/myservice.service';
+import { MyserviceService } from '../../services/myservice.service';
 import { Router } from '@angular/router';
 
 @Component({

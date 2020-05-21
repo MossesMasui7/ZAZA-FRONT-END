@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { AltaProductoPage } from './alta-producto.page';
+import { RestablecerPage } from './restablecer.page';
 
-describe('AltaProductoPage', () => {
-  let component: AltaProductoPage;
-  let fixture: ComponentFixture<AltaProductoPage>;
+describe('RestablecerPage', () => {
+  let component: RestablecerPage;
+  let fixture: ComponentFixture<RestablecerPage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AltaProductoPage ],
+      declarations: [ RestablecerPage ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(AltaProductoPage);
+    fixture = TestBed.createComponent(RestablecerPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
