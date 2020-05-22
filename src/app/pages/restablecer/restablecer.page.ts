@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
+import {RegistroService} from '../services/usuario.service'
+  import { from } from 'rxjs';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-restablecer',
   templateUrl: './restablecer.page.html',
@@ -7,12 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RestablecerPage implements OnInit {
   public email:string = "";
-  constructor() { }
+  constructor(public usuario:RegistroService,public router:Router) { }
 
   ngOnInit() {
   }
 
-  sendLinkReset(){
-    alert('Enviando')
+  sendLinkReset(email:any){
+    this.usuario.reset(email).then((resp)=>{
+      console.log(resp)
+      alert('Enviando')
+      this.router.navigate(['/login'])
+    }).catch((err)=>{
+      console.error(err);
+      
+    })
   }
+
+ 
+
 }
