@@ -6,7 +6,8 @@ import {HttpClient} from '@angular/common/http';
 })
 export class MyserviceService {
   URL_API = 'http://localhost:3000/api/login';
-  
+  public la:any = 0
+  public lo:any = 0
   constructor(private http: HttpClient) { 
     
   }

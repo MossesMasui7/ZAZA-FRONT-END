@@ -39,7 +39,7 @@ export class AltaProductoPage implements OnInit {
     this.cdb.valueChanges.pipe(
       debounceTime(1000)
     ).subscribe((palabra)=>{
-      this.productoService.obtener(palabra).then((data)=>{
+      this.productoService.obtenerCDB(palabra).then((data)=>{
         this.disponible = data['disponible']
         console.log(data)
         this.cdbs = palabra;

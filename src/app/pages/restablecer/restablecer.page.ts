@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {RegistroService} from '../services/usuario.service'
-  import { from } from 'rxjs';
+import {RegistroService} from '../../services/usuario.service'
+import { from } from 'rxjs';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-restablecer',
