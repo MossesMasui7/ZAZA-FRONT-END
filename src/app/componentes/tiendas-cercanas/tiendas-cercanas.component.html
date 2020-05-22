@@ -1,23 +1,22 @@
 <div class="div">
+  <div class="sort">
+  <ion-item class="select">
+    <ion-label>Ordenar por:</ion-label>
+    <ion-select (ionChange)="onChange($event)" value="Distancia">
+      <ion-select-option value="1">Distancia</ion-select-option>
+      <ion-select-option value="2">Precio</ion-select-option>
+    </ion-select>
+  </ion-item>
+</div>
   <table class="egt">
-
-    <tr class="tienda">
-      <td class="der">Don CUCO</td>
-      <td class="izq">$100.00</td>
+    <div   *ngFor="let tienda of this.producto.tiendas.tiendas" >
+    <tr *ngIf="this.tienda['alcance']!= false" class="tienda">
+      <td class="der">{{tienda.Nombre}}</td>
+      <td class="izq">${{tienda.Precio}}.00</td>
     </tr>
     <br>
-    <tr class="tienda">
-      <td class="der">Don CUCO</td>
-      <td class="izq">$100.00</td>
-    </tr>
-    <br>
-    <tr class="tienda">
-      <td class="der">Don CUCO</td>
-      <td class="izq">$100.00</td>
-    </tr>
-    <br>
-  
-   
+    </div>
+    
     
   </table>
 </div>

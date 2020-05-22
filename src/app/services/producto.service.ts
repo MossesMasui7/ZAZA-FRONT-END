@@ -5,8 +5,15 @@ import {HttpClient} from '@angular/common/http';
 })
 export class ProductoService {
   URL_API = 'http://localhost:3000/api/producto';
-
+  public precio = []
+  public tiendas = {
+    "nombre" : [],
+  "tiendas" : [{"Nombre" : "","Precio" : 0,"ubicacion" : {"longitude" :0 ,"latitude" : 0}}]}
   constructor(private http: HttpClient) { }
+
+  
+
+
   // aqui es donde manda a llamar al back 
  postproducto(pro): Promise<any> {
   return new Promise((resolve, reject) => {
@@ -19,4 +26,9 @@ export class ProductoService {
     });
   });
  }
+
+obtenerCDB(cdb:any){
+  return this.http.get(`${this.URL_API}/obtener/${cdb}`).toPromise()
+}
+
 }

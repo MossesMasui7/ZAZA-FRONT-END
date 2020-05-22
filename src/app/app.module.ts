@@ -21,14 +21,13 @@ import {Geolocation} from '@ionic-native/geolocation/ngx'
 //Paginas y componenetes
 import {RegistroComponent} from './pages/registro/registro.component'
 import {BusquedaComponent} from './pages/busqueda/busqueda.component'
-import {BuscadorComponent} from './componentes/buscador/buscador.component'
 import {PrecioPromedioComponent} from './componentes/precio-promedio/precio-promedio.component'
 import {TiendasCercanasComponent} from './componentes/tiendas-cercanas/tiendas-cercanas.component'
 import {LoginPage} from './pages/login/login.page'
 import {AltaProductoPage} from './pages/alta-producto/alta-producto.page'
 import {MapaComponent} from './componentes/mapa/mapa.component'
 @NgModule({
-  declarations: [AppComponent, RegistroComponent,LoginPage,AltaProductoPage,MapaComponent,BuscadorComponent,BusquedaComponent,PrecioPromedioComponent,TiendasCercanasComponent],
+  declarations: [AppComponent, RegistroComponent,LoginPage,AltaProductoPage,MapaComponent,BusquedaComponent,PrecioPromedioComponent,TiendasCercanasComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,HttpClientModule,FormsModule,ReactiveFormsModule,RecaptchaModule.forRoot()],
   providers: [
