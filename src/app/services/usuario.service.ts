@@ -15,4 +15,8 @@ URL = "http://localhost:3000/api/usuario/"
     return this.http.get(`${this.URL}verificar/username/${username}`).toPromise(); 
   }
 
+  actualizar(nombre:String,contraseña:String,telefono:String){
+    return this.http.post(`${this.URL}actualizar/5ebc3daf8c9a721a906c92c4`,{nombre,contraseña,telefono}).toPromise();
+  }
+
 }

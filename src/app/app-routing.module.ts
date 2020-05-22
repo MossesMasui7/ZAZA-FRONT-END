@@ -4,6 +4,7 @@ import {RegistroComponent} from './pages/registro/registro.component'
 import { BusquedaComponent } from './pages/busqueda/busqueda.component';
 import {LoginPage} from './pages/login/login.page'
 import {AltaProductoPage} from './pages/alta-producto/alta-producto.page'
+import {ActualizarUsuarioPage} from './pages/actualizar-usuario/actualizar-usuario.page'
 const routes: Routes = [
   {
 path:"login",
@@ -37,6 +38,10 @@ component:LoginPage
   {
     path: 'restablecer',
     loadChildren: () => import('./pages/restablecer/restablecer.module').then( m => m.RestablecerPageModule)
+  },
+  {
+    path: 'actualizar-usuario',
+    loadChildren: () => import('./pages/actualizar-usuario/actualizar-usuario.module').then( m => m.ActualizarUsuarioPageModule)
   },
 ];
 

@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>actualizarUsuario</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <ion-input placeholder="Nombre" type="text" [(ngModel)]="nombre">
+    </ion-input>
+
+    <ion-input placeholder="telefono" type="text" [(ngModel)]="telefono">
+    </ion-input>
+
+    <ion-input placeholder="contrasena" type="text" [(ngModel)]="contrasena">
+    </ion-input>
+
+    <ion-input placeholder="confirmarContrasena" type="text" [(ngModel)]="confirmarContrasena">
+    </ion-input>
+    
+    <ion-button (click)="actualizacion()" expand=block>Guardar cambios</ion-button>
+  </div>
+
+</ion-content>

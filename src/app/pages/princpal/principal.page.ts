@@ -13,8 +13,8 @@ export class PrincipalPage implements OnInit {
   ngOnInit() {
   }
 
-  buscar(){
-    this.router.navigate(['./buscar']); 
+  actualizarUsuario(){
+    this.router.navigate(['./actualizar-usuario']); 
   }
   alta(){
     this.router.navigate(['./alta-producto']); 
