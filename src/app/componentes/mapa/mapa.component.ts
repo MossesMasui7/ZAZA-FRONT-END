@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import * as L from 'leaflet';
 import {Geolocation,Geoposition} from '@ionic-native/geolocation/ngx'
+import {ProductoService} from '../../services/producto.service'
+import {MyserviceService} from '../../services/myservice.service'
 @Component({
   selector: 'app-mapa',
   templateUrl: './mapa.component.html',
@@ -8,44 +10,49 @@ import {Geolocation,Geoposition} from '@ionic-native/geolocation/ngx'
 })
 export class MapaComponent implements OnInit {
   private map;
-  public la:any = 0
-  public lo:any = 0
-
-  
-
   tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 100,
+    maxZoom: 19,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
   });
-  constructor(public geolocation:Geolocation) { }
+ iconoBase = L.Icon.extend({
+		options: {
+			iconSize:     [25, 25],
+			iconAnchor:   [10, 10],
+			popupAnchor:  [5, 5]
+		}
+	});
+	tienda = new this.iconoBase({iconUrl: '../../../assets/iconos/pinStore.png'})
+	tu = new this.iconoBase({iconUrl: '../../../assets/iconos/pin.ico'})
+
+  constructor(public geolocation:Geolocation,public producto :ProductoService,public usuario:MyserviceService) { }
 
   ngOnInit() {
-    this.geolocation.getCurrentPosition().then((data: Geoposition)=>{
-      this.la = data.coords.latitude
-      this.lo = data.coords.longitude
-         this.map = L.map('map', {
-      center: [ this.la,this.lo ],
-      zoom: 16
-    });
-    this.tiles.addTo(this.map);
-    L.marker([this.la, this.lo]).addTo(this.map)
-    .bindPopup('Tu estas Aqui')
-    .openPopup();
-    L.marker([21.4299454,-102.5702213]).addTo(this.map)
-    .bindPopup('Tienda La Naranja')
-    .openPopup();
-
-    L.polyline([[this.la, this.lo], [21.4299454,-102.5702213]], {
-      color: 'red'
-    }).addTo(this.map);
-  
-    }).catch((err)=>{
-      console.error(err);
-    })
- 
-
+      this.marcar() 
   }
 
-
+  marcar(){
+    this.map = L.map('map', {
+      center: [ this.usuario.la,this.usuario.lo ],
+      zoom: 16
+    });
+    L.marker([this.usuario.la, this.usuario.lo],{icon:this.tu}).addTo(this.map)
+    .bindPopup('Tu estas Aqui')
+    .openPopup();
+    this.tiles.addTo(this.map);
+    this.producto.tiendas.tiendas.forEach(element => {
+      if (element['alcance'] != false) {
+        L.marker([element.ubicacion.longitude,element.ubicacion.latitude],{icon:this.tienda}).addTo(this.map)
+        .bindPopup(`${element.Nombre} </br> $${element.Precio}.00 </br> ${element['distancia']}Kms`)
+        .openPopup();
+        L.polyline([[this.usuario.la, this.usuario.lo], [element.ubicacion.longitude,element.ubicacion.latitude]], {
+          color: 'red'
+        }).addTo(this.map);
+      }
+     
+    });
   
+    
+  }
+  
+
 }
