@@ -23,6 +23,11 @@ export class PrincipalPage implements OnInit {
  
   }
 
+
+  actualizarUsuario(){
+    this.router.navigate(['./actualizar-usuario']); 
+  }
+
   alta(){
     this.router.navigate(['./alta-producto']); 
 
