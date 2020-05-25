@@ -1,0 +1,103 @@
+.car {
+    position: absolute;
+    border: 1px solid white;
+    left: 50%;
+    top: 35%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 25%;
+}
+
+.titulo {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    font-family: sans-serif;
+    font-size: 40px;
+    left: 50%;
+    top: 2%;
+}
+
+.carrito {
+    position: absolute;
+    right: 3%;
+    top: 2%;
+}
+
+.search {
+    position: absolute;
+    top: 12%;
+    left: 10%;
+}
+
+.barras {
+    position: absolute;
+    top: 12%;
+    left: 25%;
+}
+
+.busqueda {
+    position: absolute;
+    top: 12%;
+    left: 40%;
+    border: 1px solid black;
+    border-radius: 5%;
+}
+
+.slide {
+    width: 100%;
+    height: 100%;
+}
+
+.imagen1 {
+    position: absolute;
+    width: 48%;
+    height: 20%;
+    top: 49%;
+    left: 1%;
+    border: 1px solid black;
+}
+
+.imagen2 {
+    position: absolute;
+    width: 48%;
+    height: 20%;
+    top: 49%;
+    right: 1%;
+    border: 1px solid black;
+}
+
+.imagen3 {
+    position: absolute;
+    width: 48%;
+    height: 20%;
+    top: 70%;
+    left: 1%;
+    border: 1px solid black;
+}
+
+.imagen4 {
+    position: absolute;
+    width: 48%;
+    height: 20%;
+    top: 70%;
+    right: 1%;
+    border: 1px solid black;
+}
+
+.btn1 {
+    width: 24%;
+}
+
+.btn2 {
+    width: 24%;
+    font-size: 8px;
+}
+
+.btn3 {
+    width: 24%;
+}
+
+.btn4 {
+    width: 24%;
+    font-size: 8px;
+}

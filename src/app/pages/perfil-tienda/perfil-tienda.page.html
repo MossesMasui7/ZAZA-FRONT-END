@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Perfil del Negocio</ion-title>
+    <ion-buttons slot="end">
+      <ion-menu-button autoHide="false" (click)="presentPopover()"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card *ngFor="let negocio of tiendas">
+    <ion-card-header>
+      <ion-img style="width: 30%; height: 20%;"  src="../../assets/abarrotes.jpg"></ion-img>
+      <ion-card-title>{{negocio.nombre}}</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <ion-icon name="location-outline"></ion-icon> <ion-label>{{negocio.direccion}}</ion-label> <br>
+      <ion-icon name="pricetag-outline"></ion-icon><ion-label>{{negocio.categorias}}</ion-label> <br>
+      <ion-icon name="call-outline"></ion-icon><ion-label>{{negocio.calificacion}}</ion-label> <br>
+    </ion-card-content>
+  </ion-card>
+  <ion-button expand="block" (click)="goUpdate()">Actualizar Informacion</ion-button>
+  
+</ion-content>

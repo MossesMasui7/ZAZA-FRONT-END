@@ -1,12 +1,12 @@
 .titulo {
-    color: black;
+    color: rgb(0, 0, 0);
     text-align: center;
     font-weight: bold;
     font-size: 20px;
 }
 
 ion-input {
-    background: rgb(255, 255, 255);
+    background: rgb(3, 3, 3);
 }
 
 ion-content.background {
@@ -15,12 +15,12 @@ ion-content.background {
 
 .boton {
     background-color: #333FFF;
-    color: black;
+    color: rgb(255, 255, 255);
     border-radius: 25px;
 }
 
 ion-grid {
-    background-color: whitesmoke;
+    background-color: rgba(0, 248, 124, 0.24);
     border: 10px solid;
     border-radius: 25px;
     margin: 20px;
@@ -37,7 +37,7 @@ ion-grid {
     transform: translate(-50%, 0%);
     width: 150px;
     height: 150px;
-    border: 1px solid black;
+    border: 1px solid rgb(0, 0, 0);
     border-radius: 50%;
     ;
 }

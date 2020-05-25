@@ -23,7 +23,7 @@ productos:any[] = []
       debounceTime(500)
     ).subscribe((texto)=>{
       if (texto) {
-        this.producto.obtenerCDB(texto).then((prod)=>{
+        this.producto.obtener(texto).then((prod)=>{
           this.producto.tiendas = prod['resp']['0']
           //this.SortDis()
           this.SortPre()
@@ -81,7 +81,7 @@ GetSortOrder(prop) {
 }    
 SortPre() {
   for (let i=0; i<this.producto.tiendas.tiendas.length; i++){
-    if(parseFloat(this.getKilometros(this.producto.tiendas.tiendas[i].ubicacion.longitude,this.producto.tiendas.tiendas[i].ubicacion.latitude))<= 5){     
+    if(parseFloat(this.getKilometros(this.producto.tiendas.tiendas[i].ubicacion.longitude,this.producto.tiendas.tiendas[i].ubicacion.latitude))<= 15){     
       this.productos.push(this.producto.tiendas.tiendas[i])
       this.productos[i]['distancia'] = this.getKilometros(this.producto.tiendas.tiendas[i].ubicacion.longitude,this.producto.tiendas.tiendas[i].ubicacion.latitude)
       this.productos.sort(this.GetSortOrder("Precio"))
@@ -96,7 +96,7 @@ SortPre() {
 
 SortDis() {
   for (let i=0; i<this.producto.tiendas.tiendas.length; i++){
-    if(parseFloat(this.getKilometros(this.producto.tiendas.tiendas[i].ubicacion.longitude,this.producto.tiendas.tiendas[i].ubicacion.latitude))<= 50){
+    if(parseFloat(this.getKilometros(this.producto.tiendas.tiendas[i].ubicacion.longitude,this.producto.tiendas.tiendas[i].ubicacion.latitude))<= 15){
        this.productos.push(this.producto.tiendas.tiendas[i])
        this.productos[i]['distancia'] = this.getKilometros(this.producto.tiendas.tiendas[i].ubicacion.longitude,this.producto.tiendas.tiendas[i].ubicacion.latitude)
        this.productos.sort(this.GetSortOrder("distancia"))

@@ -43,6 +43,18 @@ component:LoginPage
     path: 'actualizar-usuario',
     loadChildren: () => import('./pages/actualizar-usuario/actualizar-usuario.module').then( m => m.ActualizarUsuarioPageModule)
   },
+  {
+    path: 'compras',
+    loadChildren: () => import('./pages/compras/compras.module').then( m => m.ComprasPageModule)
+  },
+  {
+    path: 'registrar-negocio',
+    loadChildren: () => import('./pages/registrar-negocio/registrar-negocio.module').then( m => m.RegistrarNegocioPageModule)
+  },
+  {
+    path: 'perfil-tienda',
+    loadChildren: () => import('./pages/perfil-tienda/perfil-tienda.module').then( m => m.PerfilTiendaPageModule)
+  },
 ];
 
 @NgModule({

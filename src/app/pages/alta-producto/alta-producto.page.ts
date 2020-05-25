@@ -32,13 +32,11 @@ export class AltaProductoPage implements OnInit {
 
 
   constructor(private productoService:ProductoService,
-     private camera:Camera,private alertController :AlertController,
+     private camera:Camera,private alertController :AlertController, 
      private zone: NgZone ) { } 
 
   ngOnInit() {
-    this.cdb.valueChanges.pipe(
-      debounceTime(1000)
-    ).subscribe((palabra)=>{
+    this.cdb.valueChanges.subscribe((palabra)=>{
       this.productoService.obtenerCDB(palabra).then((data)=>{
         this.disponible = data['disponible']
         console.log(data)
@@ -78,8 +76,7 @@ export class AltaProductoPage implements OnInit {
       marca:this.marca,
       modelo:this.modelo,
       nombre:this.nombre,
-      cdbs:this.cdbs,
-      cbd:this.cdb,
+      cdb:this.cdbs,
       precio:this.precio,
       ubicacion:this.ubicacion,
       descripcion:this.descripcion,
@@ -112,3 +109,5 @@ export class AltaProductoPage implements OnInit {
 
 
 }
+
+

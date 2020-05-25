@@ -8,7 +8,7 @@ export class ProductoService {
   public precio = []
   public tiendas = {
     "nombre" : [],
-  "tiendas" : [{"Nombre" : "","Precio" : 0,"ubicacion" : {"longitude" :0 ,"latitude" : 0}}]}
+  "tiendas" : [{"Nombre" : "","Precio" : 0,"ubicacion" : {"longitude" :0 ,"latitude" : 0}}]} 
   constructor(private http: HttpClient) { }
 
   
@@ -28,7 +28,12 @@ export class ProductoService {
  }
 
 obtenerCDB(cdb:any){
-  return this.http.get(`${this.URL_API}/obtener/${cdb}`).toPromise()
+  return this.http.get(`${this.URL_API}/verificar/cdb/${cdb}`).toPromise()
 }
 
+
+obtener(cdb:any){
+  return this.http.get(`${this.URL_API}/obtener/${cdb}`).toPromise()
 }
+}
+
