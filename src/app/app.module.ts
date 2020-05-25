@@ -26,11 +26,11 @@ import {TiendasCercanasComponent} from './componentes/tiendas-cercanas/tiendas-c
 import {LoginPage} from './pages/login/login.page'
 import {AltaProductoPage} from './pages/alta-producto/alta-producto.page'
 import {MapaComponent} from './componentes/mapa/mapa.component'
-import {ActualizarUsuarioPage} from './pages/actualizar-usuario/actualizar-usuario.page'
+
 
 import {NegocioService} from './services/negocio.service';
 @NgModule({
-  declarations: [AppComponent, RegistroComponent,LoginPage,AltaProductoPage,MapaComponent,BusquedaComponent,PrecioPromedioComponent,TiendasCercanasComponent, ActualizarUsuarioPage],
+  declarations: [AppComponent, RegistroComponent,LoginPage,AltaProductoPage,MapaComponent,BusquedaComponent,PrecioPromedioComponent,TiendasCercanasComponent,],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,HttpClientModule,FormsModule,ReactiveFormsModule,RecaptchaModule.forRoot()],
   providers: [
