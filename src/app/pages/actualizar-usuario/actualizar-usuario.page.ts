@@ -15,11 +15,27 @@ public confirmarContrasena:String;
   ngOnInit() {
   }
   actualizacion(){
-    this.actualizar.actualizar(this.nombre, this.contrasena, this.telefono).then((respuesta)=>{
-      console.log(respuesta);
-    }).catch((err)=>{
-      console.log(err);
-    })
+    if (this.contrasena != "") {
+      if (this.contrasena==this.confirmarContrasena) {
+        this.actualizar.actualizar(this.nombre, this.contrasena, this.telefono).then((respuesta)=>{
+          console.log(respuesta);
+        }).catch((err)=>{
+          console.log(err);
+        })
+      }else{
+        alert("Contraseñas no coinciden")
+      }
+    }else{
+      
+        this.actualizar.actualizar(this.nombre, this.contrasena, this.telefono).then((respuesta)=>{
+          console.log(respuesta);
+          console.log("no entra al if")
+        }).catch((err)=>{
+          console.log(err);
+        })
+      
+   
+  
   }
-
+  }
 }
