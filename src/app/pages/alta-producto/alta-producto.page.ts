@@ -14,7 +14,7 @@ import { FormControl } from '@angular/forms';
 })
 export class AltaProductoPage implements OnInit {
 
-  marca :string ;
+  marca :string;
   modelo :string;
   nombre: string;
   cdb:any = new FormControl('')
@@ -78,13 +78,12 @@ export class AltaProductoPage implements OnInit {
       nombre:this.nombre,
       cdb:this.cdbs,
       precio:this.precio,
-      ubicacion:this.ubicacion,
       descripcion:this.descripcion,
       alias:this.alias,
       img:this.img
     }
     if(this.marca == null || this.modelo == null || this.nombre == null|| this.cdb == null ||this.precio == null||
-      this.ubicacion == null || this.descripcion == null ||this.alias == null) {
+        this.descripcion == null ||this.alias == null) {
         this.presentAlert("Faltan campos","Alerta");
       }
       else {
