@@ -5,7 +5,9 @@ import {HttpClient} from '@angular/common/http';
   providedIn: 'root'
 })
 export class MyserviceService {
+
   URL_API = 'http://localhost:3000/api/';
+
   public la:any = 0
   public lo:any = 0
   constructor(private http: HttpClient) { 
