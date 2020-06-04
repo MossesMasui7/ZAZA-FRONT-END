@@ -15,6 +15,8 @@ import { Router } from '@angular/router';
 })
 export class BuscadorComponent implements OnInit {
 codigo:any = ""
+vacio:boolean = false
+resultado:boolean = false
 productos:any[] = []
   constructor(public usuario:MyserviceService,private barcodeScanner: BarcodeScanner,public producto:ProductoService,public router:Router) { }
 
@@ -23,17 +25,35 @@ productos:any[] = []
       debounceTime(500)
     ).subscribe((texto)=>{
       if (texto) {
+        this.vacio = true
         this.producto.obtener(texto).then((prod)=>{
+          if (prod['resp'].length > 1) {
+            this.producto.productos = prod['resp']
+            this.resultado = false
+           // console.log(this.producto.productos);
+            
+          }else{
           this.producto.tiendas = prod['resp']['0']
-          //this.SortDis()
           this.SortPre()
           this.producto.precio = []
+         // console.log(this.producto.tiendas);
+          
           this.router.navigate(['./buscar']); 
+          }
+      
+          
+          
         }).catch((err)=>{
-          console.error(err); 
+         
+          this.resultado = true
+          this.producto.productos = []
+
         })
       }else{
-        console.log("no hay nada escrito")
+       
+        this.vacio = false
+        this.producto.productos = []
+
       }
     })
   }
@@ -108,6 +128,15 @@ SortDis() {
   }
   this.producto.tiendas.tiendas = this.productos
   this.productos = []
+}
+
+seleccionar(indice:any){
+  this.producto.tiendas = this.producto.productos[indice];
+          this.SortPre()
+          this.producto.precio = []
+          //console.log(this.producto.tiendas);
+          
+          this.router.navigate(['./buscar']); 
 }
 
 }

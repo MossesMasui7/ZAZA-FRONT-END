@@ -3,3 +3,20 @@
      <img src="../../../assets/iconos/price-scan-scanner-bar-barcode-code_108573.ico" alt="">
     </ion-button>
     </div>
+    <div class="busquedas" *ngIf="vacio"   >
+        <p *ngIf="resultado" >Sin resultados</p>
+        <ion-card button class="card" *ngFor="let producto of this.producto.productos;index as i" (click)="seleccionar(i)">
+            <ion-card-header>
+                    <p class="clasificacion">
+                      <label >★</label>
+                      <label >★</label>
+                      <label >★</label>
+                      <label >★</label>
+                      <label >★</label>
+                    </p>
+                <ion-card-subtitle><img class="img" src="https://i.ya-webdesign.com/images/no-image-png-1.png" alt=""></ion-card-subtitle>
+                <ion-card-title class="titulo">{{producto.nombre}}</ion-card-title>
+                <ion-card-subtitle>Desde: ${{producto.tiendas[0].Precio}}.00</ion-card-subtitle>
+            </ion-card-header>
+        </ion-card>
+    </div>

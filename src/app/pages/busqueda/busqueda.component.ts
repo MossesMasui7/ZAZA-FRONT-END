@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import {ProductoService} from '../../services/producto.service'
 @Component({
   selector: 'app-busqueda',
   templateUrl: './busqueda.component.html',
@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BusquedaComponent implements OnInit {
 
-  constructor() { }
+  constructor(public producto :ProductoService) { }
 
   ngOnInit() {}
 
