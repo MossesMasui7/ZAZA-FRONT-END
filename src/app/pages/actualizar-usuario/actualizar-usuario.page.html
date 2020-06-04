@@ -14,12 +14,7 @@
 
     <ion-input placeholder="Telefono" type="text" [(ngModel)]="telefono">
     </ion-input>
-
-    <ion-input placeholder="Contrasena" type="text" [(ngModel)]="contrasena">
-    </ion-input>
-
-    <ion-input placeholder="ConfirmarContrasena" type="text" [(ngModel)]="confirmarContrasena">
-    </ion-input>
+    <ion-button (click)="imgSelect()" expand=block>Actualizar imagen</ion-button>
     
     <ion-button (click)="actualizacion()" expand=block>Guardar cambios</ion-button>
   </div>

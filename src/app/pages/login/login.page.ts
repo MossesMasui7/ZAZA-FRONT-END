@@ -30,9 +30,11 @@ export class LoginPage  {
     this.myserviceService.postUser(user).then(data =>{
       if(this.username == this.username && this.contrasena == this.contrasena ){
         console.log("Usuario correcto")
+
        this.router.navigate(['./home']);  
         this.myserviceService.postCon(user).then(data => {
           console.log(this.username);
+
           // revisar por que le falta usar no esta usando para,etps
 
         })
