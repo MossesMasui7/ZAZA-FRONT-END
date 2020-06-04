@@ -17,8 +17,8 @@ URL = "http://192.168.1.79:3000/api/usuario/"
   }
 
 
-  actualizar(nombre:String,contrasena:String,telefono:String){
-    return this.http.put(`${this.URL}actualizar/5ec96b36fcbbe72b60ba9da4`,{nombre,contrasena,telefono}).toPromise();
+  actualizar(nombre:String,contraseña:String,telefono:String){
+    return this.http.post(`${this.URL}actualizar/5ebc3daf8c9a721a906c92c4`,{nombre,contraseña,telefono}).toPromise();
   }
 
   reset(email:any){

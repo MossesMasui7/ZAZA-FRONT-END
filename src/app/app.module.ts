@@ -29,6 +29,7 @@ import {MapaComponent} from './componentes/mapa/mapa.component'
 
 
 import {NegocioService} from './services/negocio.service';
+
 @NgModule({
   declarations: [AppComponent, RegistroComponent,LoginPage,AltaProductoPage,MapaComponent,BusquedaComponent,PrecioPromedioComponent,TiendasCercanasComponent,],
   entryComponents: [],
@@ -40,6 +41,7 @@ import {NegocioService} from './services/negocio.service';
     Camera,
     BarcodeScanner,
     Geolocation,
+    
     NegocioService
   ],
   bootstrap: [AppComponent]

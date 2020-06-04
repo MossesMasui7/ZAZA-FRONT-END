@@ -8,8 +8,8 @@
         <ion-content>
             <ion-list>
                 <ion-item color="medium">
-                    <ion-icon name="home-sharp" slot="start"></ion-icon>
-                    <ion-label>Principal</ion-label>
+                    <ion-icon name="person-circle-outline" slot="start"></ion-icon>
+                    <ion-label>Perfil</ion-label>
                 </ion-item>
                 <ion-item-sliding>
                     <ion-item-options side="start">
@@ -31,7 +31,7 @@
   
                 <ion-item>
                   <ion-icon name="home-sharp" slot="start"></ion-icon>
-                    <ion-label>Principal</ion-label>
+                    <ion-label>Principal </ion-label>
                 </ion-item>
   
                 <ion-item-sliding>
@@ -43,8 +43,8 @@
                     </ion-item-options>
   
                     <ion-item>
-                      <ion-icon name="home-sharp" slot="start"></ion-icon>
-                        <ion-label>principal</ion-label>
+                      <ion-icon name="log-out-outline" slot="start"></ion-icon>
+                        <ion-label>Cerrar Sesion</ion-label>
                     </ion-item>
                 </ion-item-sliding>
             </ion-list>
@@ -53,12 +53,12 @@
   
     <div class="ion-page" id="main-content">
         <ion-header>
-            <ion-toolbar class="ion-hijo" color="dark">
+            <ion-toolbar class="ion-hijo" color="tertiary">
                 
                 <ion-buttons slot="start">
                     <ion-menu-button></ion-menu-button>
                 </ion-buttons>
-                <ion-title>lista de compras 
+                <ion-title>Lista de compras 
       </ion-title>
                 
             </ion-toolbar>
@@ -72,6 +72,9 @@
   <ion-button (click)="alta()" expand="block" fill="clear" shape="round">
       Alta Producto
   </ion-button>
+  <ion-button (click)="actualizarUsuario()" expand="block" fill="clear" shape="round">
+    Actualizar Perfil
+</ion-button>
         </ion-content>
     </div>
     

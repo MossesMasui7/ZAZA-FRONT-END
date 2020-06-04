@@ -4,6 +4,7 @@ import { AlertController } from '@ionic/angular';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { debounceTime } from 'rxjs/operators';
 import { FormControl } from '@angular/forms';
+import { Router } from "@angular/router";
 @Component({
   selector: 'app-alta-producto',
   templateUrl: './alta-producto.page.html',
@@ -20,7 +21,6 @@ export class AltaProductoPage implements OnInit {
   cdb:any = new FormControl('')
   cdbs: string;
   precio: string;
-  ubicacion: string;
   descripcion: string;
   alias:string;
 
@@ -32,7 +32,8 @@ export class AltaProductoPage implements OnInit {
 
 
   constructor(private productoService:ProductoService,
-     private camera:Camera,private alertController :AlertController, 
+     private camera:Camera,private alertController :AlertController,
+     private router: Router, 
      private zone: NgZone ) { } 
 
   ngOnInit() {
@@ -78,18 +79,19 @@ export class AltaProductoPage implements OnInit {
       nombre:this.nombre,
       cdb:this.cdbs,
       precio:this.precio,
-      ubicacion:this.ubicacion,
+      
       descripcion:this.descripcion,
       alias:this.alias,
       img:this.img
     }
     if(this.marca == null || this.modelo == null || this.nombre == null|| this.cdb == null ||this.precio == null||
-      this.ubicacion == null || this.descripcion == null ||this.alias == null) {
+       this.descripcion == null ||this.alias == null) {
         this.presentAlert("Faltan campos","Alerta");
       }
       else {
         this.productoService.postproducto(pro).then(data=>{
           this.presentAlert("Producto agregado con Exito","Alerta");
+          this.router.navigate([`/home`]);
         })
         
         

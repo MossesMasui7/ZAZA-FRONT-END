@@ -25,3 +25,26 @@ ion-grid {
     margin: 20px;
     position: center;
 }
+
+.img-div {
+    position: relative;
+}
+
+.img-div .img-add {
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    width: 150px;
+    height: 150px;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 50%;
+    ;
+}
+
+.img-div .img-label {
+    position: absolute;
+    left: 50%;
+    bottom: 35%;
+    background-color: rgba(0, 0, 255, 0.459);
+    transform: translate(-50%, 0%);
+}
