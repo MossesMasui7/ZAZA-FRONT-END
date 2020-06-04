@@ -1,8 +1,16 @@
 <ion-content class="background" [fullscreen]="true">
 
-    <ion-grid>
-        <legend class="titulo">Agregar Producto</legend><br>
 
+    
+
+    
+        <ion-header>
+            <ion-toolbar color="tertiary"   >
+              <ion-title class="ion-text-center">Agregar Producto</ion-title>
+            </ion-toolbar>
+          </ion-header>
+        <!-- <legend class="titulo">Agregar Producto</legend><br> -->
+        <ion-grid>
         <ion-row class="img-div">
 
             <ion-label class="img-label">Seleccionar Foto</ion-label>
@@ -42,7 +50,7 @@
                     <ion-input type="text" [(ngModel)]="precio" placeholder="Precio">$</ion-input>
                 </ion-item><br>
             </ion-col>
-
+            
         </ion-row>
         <ion-row>
             <ion-col col-12>
@@ -58,9 +66,7 @@
                 </ion-item><br>
             </ion-col>
         </ion-row>
-        <ion-button class="boton" (click)="subir()" expand="block" fill="clear">
-            agregar
-        </ion-button>
+        <ion-button color="tertiary" (click)="subir()" expand=block>Agregar</ion-button>
     </ion-grid>
 
 </ion-content>

@@ -27,13 +27,13 @@ export class ProductoService {
   });
  }
 
- obtenerCDB(cdb:any){
+obtenerCDB(cdb:any){
   return this.http.get(`${this.URL_API}/verificar/cdb/${cdb}`).toPromise()
- }
+}
 
 
- obtener(cdb:any){
+obtener(cdb:any){
   return this.http.get(`${this.URL_API}/obtener/${cdb}`).toPromise()
- }
- }
+}
+}
 

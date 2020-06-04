@@ -3,15 +3,7 @@
     <ion-grid>
         <legend class="titulo">Saul Carrillo</legend><br>
         <ion-row class="img-div">
-
-
-            <img (click)="PickFile()" expand="full" color="gray" class="img-add" alt="">
-            <ion-grid>
-                <ion-col>
-                    {{img}}
-                </ion-col>
-
-            </ion-grid>
+            <img (click)="imgSelect()" class="img-add" src="{{Img}}" alt="">
 
         </ion-row>
         <ion-row>

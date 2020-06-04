@@ -1,31 +1,34 @@
 .titulo {
     color: rgb(0, 0, 0);
     text-align: center;
-    font-weight: bold;
+    font-weight: lighter;
     font-size: 20px;
 }
 
 ion-input {
-    background: rgb(3, 3, 3);
+    background: rgb(255, 255, 255);
 }
 
-ion-content.background {
-    --background: url('../../../assets/playa-de-isuntza-lekeitio.jpg') 0 0/100% 100% no-repeat;
-}
+// ion-content.background {
+//     --background: url('../../../assets/restablecer.jpg') 0 0/100% 100% no-repeat;
+// }
 
 .boton {
     background-color: #333FFF;
     color: rgb(255, 255, 255);
+   
+}
+ion-button{
     border-radius: 25px;
 }
-
-ion-grid {
-    background-color: rgba(0, 248, 124, 0.24);
-    border: 10px solid;
-    border-radius: 25px;
-    margin: 20px;
-    position: center;
-}
+// ion-grid {
+//     background-color: rgb(255, 255, 255);
+//     border-color: black;
+//     border: 10px ridge;
+//     border-radius: 25px;
+//     margin: 20px;
+//     position: center;
+// }
 
 .img-div {
     position: relative;
@@ -48,4 +51,7 @@ ion-grid {
     bottom: 35%;
     background-color: rgba(0, 0, 255, 0.459);
     transform: translate(-50%, 0%);
+}
+ion-row{
+    font-weight: lighter;
 }
