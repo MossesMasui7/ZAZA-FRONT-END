@@ -1,8 +1,7 @@
 import { Component, OnInit,NgZone } from '@angular/core';
 import { RegistroService } from '../../services/usuario.service';
 import { AlertController } from '@ionic/angular';
-import { FileChooser } from '@ionic-native/file-chooser/ngx';
-import { FilePath } from '@ionic-native/file-path/ngx';
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 
 @Component({
   selector: 'app-perfil',
@@ -18,19 +17,27 @@ export class PerfilPage implements OnInit {
  seguidos: string;
 
   constructor(private zone: NgZone,private registroService:RegistroService,
-    private alertController :AlertController, public filePath: FilePath, public fileChooser: FileChooser) { }
+    private alertController :AlertController,private camera:Camera ) { }
 
   ngOnInit() {
     
   }
 
-  PickFile(){
-    this.fileChooser.open().then((fileuri)=>{
-      this.filePath.resolveNativePath(fileuri).then((resolvednativepath)=>{
-        this.img = resolvednativepath;
-
-      })
-    })
+  imgSelect(){
+    const options: CameraOptions = {
+      quality: 100,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+      saveToPhotoAlbum:false
+    }
+    
+    this.camera.getPicture(options).then((imageData) => {
+     // imageData is either a base64 encoded string or a file URI
+     // If it's base64 (DATA_URL):
+     this.img = 'data:image/jpeg;base64,' + imageData;
+    }, (err) => {
+     // Handle error
+    });
   }
 
 

@@ -13,6 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule,ReactiveFormsModule } from "@angular/forms";
 import { RecaptchaModule } from 'ng-recaptcha';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import {Geolocation} from '@ionic-native/geolocation/ngx'
 
@@ -25,11 +26,10 @@ import {TiendasCercanasComponent} from './componentes/tiendas-cercanas/tiendas-c
 import {LoginPage} from './pages/login/login.page'
 import {AltaProductoPage} from './pages/alta-producto/alta-producto.page'
 import {MapaComponent} from './componentes/mapa/mapa.component'
-import { FileChooser } from '@ionic-native/file-chooser/ngx';
-import {FilePath} from '@ionic-native/file-path/ngx';
 
 
 import {NegocioService} from './services/negocio.service';
+
 @NgModule({
   declarations: [AppComponent, RegistroComponent,LoginPage,AltaProductoPage,MapaComponent,BusquedaComponent,PrecioPromedioComponent,TiendasCercanasComponent,],
   entryComponents: [],
@@ -39,9 +39,9 @@ import {NegocioService} from './services/negocio.service';
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     Camera,
-    FileChooser,
-    FilePath,
+    BarcodeScanner,
     Geolocation,
+    
     NegocioService
   ],
   bootstrap: [AppComponent]
