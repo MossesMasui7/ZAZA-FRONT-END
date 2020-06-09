@@ -4,8 +4,8 @@ import {HttpClient} from '@angular/common/http';
   providedIn: 'root'
 })
 export class ProductoService {
-  //URL_API = 'http://localhost:3000/api/producto';
-  URL_API = 'http://192.168.1.79:3000/api/producto';
+  URL_API = 'http://localhost:3000/api/producto';
+  //URL_API = 'http://192.168.1.79:3000/api/producto';
   public precio = []
   public tiendas = {
     "nombre":"",
@@ -13,6 +13,7 @@ export class ProductoService {
   "tiendas" : [{"Nombre" : "","Precio" : 0,"ubicacion" : {"longitude" :0 ,"latitude" : 0}}]} 
   public productos:any[] = []
   constructor(private http: HttpClient) { }
+
 
   
 
@@ -37,6 +38,15 @@ obtenerCDB(cdb:any){
 
 obtener(cdb:any){
   return this.http.get(`${this.URL_API}/obtener/${cdb}`).toPromise()
+}
+actualizar(id, nombre, marca, modelo, descripcion, img) {
+  return this.http.put(`${this.URL_API}/actualizarProducto/${id}`, {
+  nombre,
+  marca,
+  modelo,
+  descripcion,
+  img,
+  }).toPromise()
 }
 }
 

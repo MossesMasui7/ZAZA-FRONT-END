@@ -55,6 +55,15 @@ component:LoginPage
     path: 'perfil-tienda',
     loadChildren: () => import('./pages/perfil-tienda/perfil-tienda.module').then( m => m.PerfilTiendaPageModule)
   },
+  {
+    path: 'perfil-producto',
+    loadChildren: () => import('./pages/perfil-producto/perfil-producto.module').then( m => m.PerfilProductoPageModule)
+  },
+  {
+    path: 'actualizar-producto',
+    loadChildren: () => import('./pages/actualizar-producto/actualizar-producto.module').then( m => m.ActualizarProductoPageModule)
+  }
+
 ];
 
 @NgModule({

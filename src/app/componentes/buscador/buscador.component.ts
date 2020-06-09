@@ -136,7 +136,7 @@ seleccionar(indice:any){
           this.producto.precio = []
           //console.log(this.producto.tiendas);
           
-          this.router.navigate(['./buscar']); 
+          this.router.navigate(['./perfil-producto']); 
 }
 
 }
