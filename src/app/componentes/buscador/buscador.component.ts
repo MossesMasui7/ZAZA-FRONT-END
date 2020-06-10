@@ -1,10 +1,12 @@
 import { MyserviceService } from 'src/app/services/myservice.service';
+import {RegistroService} from '../../services/usuario.service'
 import { Component, OnInit, Injectable } from '@angular/core';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { FormControl } from '@angular/forms';
 import {debounceTime} from 'rxjs/operators'
 import {ProductoService} from '../../services/producto.service'
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2'
 @Injectable({
   providedIn: 'root'
 })
@@ -18,42 +20,47 @@ codigo:any = ""
 vacio:boolean = false
 resultado:boolean = false
 productos:any[] = []
-  constructor(public usuario:MyserviceService,private barcodeScanner: BarcodeScanner,public producto:ProductoService,public router:Router) { }
+  constructor(public usuario:MyserviceService,public usuarios:RegistroService,private barcodeScanner: BarcodeScanner,public producto:ProductoService,public router:Router) { }
 
   ngOnInit() {
+
     this.search.valueChanges.pipe(
       debounceTime(500)
     ).subscribe((texto)=>{
       if (texto) {
         this.vacio = true
+        
+
+        if (texto.startsWith("@")) {
+          let usuario = texto.substring(1)
+          this.usuarios.buscar(usuario).then((data)=>{
+            console.log(data);
+          }).catch((err)=>{
+            console.log("Usuario no existe")
+            
+          })
+          
+        }
+
         this.producto.obtener(texto).then((prod)=>{
           if (prod['resp'].length > 1) {
             this.producto.productos = prod['resp']
             this.resultado = false
            // console.log(this.producto.productos);
-            
           }else{
           this.producto.tiendas = prod['resp']['0']
           this.SortPre()
           this.producto.precio = []
          // console.log(this.producto.tiendas);
-          
           this.router.navigate(['./buscar']); 
           }
-      
-          
-          
         }).catch((err)=>{
-         
           this.resultado = true
           this.producto.productos = []
-
         })
       }else{
-       
         this.vacio = false
         this.producto.productos = []
-
       }
     })
   }
@@ -135,8 +142,44 @@ seleccionar(indice:any){
           this.SortPre()
           this.producto.precio = []
           //console.log(this.producto.tiendas);
+          this.alerta()
           
-          this.router.navigate(['./perfil-producto']); 
 }
 
+
+addProducto(){
+  this.router.navigate(["alta-producto"])
+}
+
+alerta(){
+  const swalWithBootstrapButtons = Swal.mixin({
+    customClass: {
+      confirmButton: 'btn btn-success',
+      cancelButton: 'btn btn-danger'
+    },
+    buttonsStyling: false
+  })
+  
+  swalWithBootstrapButtons.fire({
+    title: 'Seleccione la opcion',
+    text: "Desea Comparar el producto ó ver perfil de producto",
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Comparar',
+    cancelButtonText: 'Ver perfil',
+    reverseButtons: true
+  }).then((result) => {
+    if (result.value) {
+      this.router.navigate(["buscar"])
+
+    } else if (
+      /* Read more about handling dismissals below */
+      result.dismiss === Swal.DismissReason.cancel
+    ) {
+      this.router.navigate(["perfil-producto"])
+
+    }
+  })
+}
 }

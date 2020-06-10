@@ -5,6 +5,9 @@
     </div>
     <div class="busquedas" *ngIf="vacio"   >
         <p *ngIf="resultado" >Sin resultados</p>
+        <ion-button *ngIf="resultado" (click)="addProducto()" expand="block" fill="clear" shape="round">
+            AGREGAR PRODUCTO
+        </ion-button>
         <ion-card button class="card" *ngFor="let producto of this.producto.productos;index as i" (click)="seleccionar(i)">
             <ion-card-header>
                     <p class="clasificacion">

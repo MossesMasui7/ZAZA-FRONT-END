@@ -22,6 +22,10 @@ URL = "http://localhost:3000/api/usuario/"
     return this.http.put(`${this.URL}actualizar/${this.cliente.userID}`,{nombre,telefono,Img}).toPromise();
   }
 
+  buscar(usuario:String){
+    return this.http.get(`${this.URL}/buscar/${usuario}`).toPromise()
+  }
+
   reset(email:any){
     return this.http.get(`${this.URL}/resetpass/${email}`).toPromise()
   }
