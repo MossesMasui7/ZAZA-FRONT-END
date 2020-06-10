@@ -1,21 +1,18 @@
 .precio{
     position: relative;
-    border: 1px solid black;
-    padding: 20px;
+    
+    text-align: center;
+    
 }
 .precioBajo{
     color: rgb(114, 172, 27);
 }
-.agregar{
-
-    position: absolute;
-    background:none;
-    right: 20px;
-    top: 50%;
-    transform: translate(-0%,-50%);
+.precio label{
+    position: relative;
     border: 1px solid black;
-    height: 45px;
-    width: 45px;
-    font-size: 45px;
-    
+    border-radius: 5px;
+    margin: 0px 10px 0px 0px;
+    padding: 5px;
+  
+  
 }

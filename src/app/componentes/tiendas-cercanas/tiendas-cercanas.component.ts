@@ -11,6 +11,8 @@ export class TiendasCercanasComponent implements OnInit {
   constructor(public producto: ProductoService,public buscador:BuscadorComponent) { }
 
   ngOnInit() {
+ 
+    
     this.producto.tiendas.tiendas.forEach(element => {
       let tienda = {
       
@@ -23,19 +25,19 @@ export class TiendasCercanasComponent implements OnInit {
     });
 
   }
-onChange($event){
-if ($event.target.value == 1) {
+
+dis(){
   this.buscador.SortDis()
-}else if($event.target.value == 2){
+}
+pre(){
   this.buscador.SortPre()
-
-}
-
 }
 
 
-
-
-
-
 }
+
+
+
+
+
+
