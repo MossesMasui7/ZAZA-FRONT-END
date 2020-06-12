@@ -16,48 +16,18 @@ import Swal from 'sweetalert2'
   styleUrls: ['./buscador.component.scss'],
 })
 export class BuscadorComponent implements OnInit {
-codigo:any = ""
 vacio:boolean = false
 resultado:boolean = false
 productos:any[] = []
   constructor(public usuario:MyserviceService,public usuarios:RegistroService,private barcodeScanner: BarcodeScanner,public producto:ProductoService,public router:Router) { }
 
   ngOnInit() {
-
     this.search.valueChanges.pipe(
       debounceTime(500)
     ).subscribe((texto)=>{
       if (texto) {
         this.vacio = true
-        
-
-        if (texto.startsWith("@")) {
-          let usuario = texto.substring(1)
-          this.usuarios.buscar(usuario).then((data)=>{
-            console.log(data);
-          }).catch((err)=>{
-            console.log("Usuario no existe")
-            
-          })
-          
-        }
-
-        this.producto.obtener(texto).then((prod)=>{
-          if (prod['resp'].length > 1) {
-            this.producto.productos = prod['resp']
-            this.resultado = false
-           // console.log(this.producto.productos);
-          }else{
-          this.producto.tiendas = prod['resp']['0']
-          this.SortPre()
-          this.producto.precio = []
-         // console.log(this.producto.tiendas);
-          this.router.navigate(['./buscar']); 
-          }
-        }).catch((err)=>{
-          this.resultado = true
-          this.producto.productos = []
-        })
+        this.obtenerProducto(texto)
       }else{
         this.vacio = false
         this.producto.productos = []
@@ -67,7 +37,6 @@ productos:any[] = []
   search:any = new FormControl('')
 escanear(){
 this.barcodeScanner.scan().then(barcodeData => {
-
  this.search = barcodeData.text
  this.producto.obtenerCDB(this.search).then((prod)=>{
   this.producto.tiendas = prod['resp']['0']
@@ -159,7 +128,6 @@ alerta(){
     },
     buttonsStyling: false
   })
-  
   swalWithBootstrapButtons.fire({
     title: 'Seleccione la opcion',
     text: "Desea Comparar el producto ó ver perfil de producto",

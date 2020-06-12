@@ -73,7 +73,6 @@ disponible:boolean = false
   }
 
   captchaResolved(response: string): void {
-
     this.zone.run(() => {
         this.captchaPassed = true;
         this.captchaResponse = response;
