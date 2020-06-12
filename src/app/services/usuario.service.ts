@@ -6,8 +6,8 @@ import {MyserviceService} from './myservice.service'
   providedIn: 'root'
 })
 export class RegistroService {
-URL = "http://localhost:3000/api/usuario/"
-//URL = "http://192.168.1.79:3000/api/usuario/"
+//URL = "http://localhost:3000/api/usuario/"
+URL = "http://192.168.1.79:3000/api/usuario/"
   constructor(private http: HttpClient,private cliente:MyserviceService) { }
 
   registrar(nombre:String,username:String,email:String,contrasena:String,img:String,telefono:String){
