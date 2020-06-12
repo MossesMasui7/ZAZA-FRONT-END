@@ -1,13 +1,11 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';   
-
-@Injectable({
+import {HttpClient} from '@angular/common/http';   @Injectable({
   providedIn: 'root'
 })
 export class MyserviceService {
 public userID:String
-  URL_API = 'http://localhost:3000/api/';
-
+  //URL_API = 'http://localhost:3000/api/';
+  URL_API = 'http://192.168.1.79:3000/api/';
   public la:any = 0
   public lo:any = 0
   constructor(private http: HttpClient) { 
