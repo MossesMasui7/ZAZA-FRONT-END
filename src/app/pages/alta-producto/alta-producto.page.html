@@ -1,7 +1,22 @@
-<ion-content class="background" [fullscreen]="true">
 
+<ion-app>
+   
 
-    
+    <div class="ion-page" id="main-content">
+        <ion-header>
+            <ion-toolbar class="ion-hijo" color="tertiary">
+                
+                <ion-buttons slot="start">
+                    <ion-menu-button></ion-menu-button>
+                </ion-buttons>
+                <ion-title>Actualizar Usuario
+      </ion-title>
+                
+            </ion-toolbar>
+            
+        </ion-header>
+        <ion-content class="background">
+         
 
     
         <ion-header>
@@ -11,6 +26,7 @@
           </ion-header>
         <!-- <legend class="titulo">Agregar Producto</legend><br> -->
         <ion-grid>
+
         <ion-row class="img-div">
 
             <ion-label class="img-label">Seleccionar Foto</ion-label>
@@ -68,5 +84,8 @@
         </ion-row>
         <ion-button color="tertiary" (click)="subir()" expand=block>Agregar</ion-button>
     </ion-grid>
-
-</ion-content>
+        </ion-content>
+    </div>
+    
+  
+  </ion-app>

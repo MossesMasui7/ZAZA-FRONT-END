@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { ActualizarProductoPageRoutingModule } from './actualizar-producto-routing.module';
+import {MenuComponent} from '../../componentes/menu/menu.component'
 
 import { ActualizarProductoPage } from './actualizar-producto.page';
 
@@ -15,6 +16,6 @@ import { ActualizarProductoPage } from './actualizar-producto.page';
     IonicModule,
     ActualizarProductoPageRoutingModule
   ],
-  declarations: [ActualizarProductoPage]
+  declarations: [ActualizarProductoPage,MenuComponent]
 })
 export class ActualizarProductoPageModule {}
