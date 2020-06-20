@@ -1,91 +1,174 @@
+<ion-content class="background" [fullscreen]="true">
+    <ion-header>
+        <ion-toolbar>
+            <ion-title class="ion-text-center">Agregar Producto</ion-title>
+        </ion-toolbar>
 
-<ion-app>
-   
+    </ion-header>
+    <!-- <legend class="titulo">Agregar Producto</legend><br> -->
+    <!-- <ion-row>
+        <ion-col col-12>
+            <ion-item>
+                <ion-input [ngClass]="{disponiblee: this.disponible == true, ocupado: this.disponible == false}" [formControl]="cdb" type="text" placeholder="Codigo de barra"></ion-input>
+            </ion-item>
+        </ion-col>
+    </ion-row> -->
 
-    <div class="ion-page" id="main-content">
-        <ion-header>
-            <ion-toolbar class="ion-hijo" color="tertiary">
-                
-                <ion-buttons slot="start">
-                    <ion-menu-button></ion-menu-button>
-                </ion-buttons>
-                <ion-title>Actualizar Usuario
-      </ion-title>
-                
-            </ion-toolbar>
-            
-        </ion-header>
-        <ion-content class="background">
-         
+    <ion-grid>
 
-    
-        <ion-header>
-            <ion-toolbar color="tertiary"   >
-              <ion-title class="ion-text-center">Agregar Producto</ion-title>
-            </ion-toolbar>
-          </ion-header>
-        <!-- <legend class="titulo">Agregar Producto</legend><br> -->
-        <ion-grid>
 
         <ion-row class="img-div">
+            <img (click)="imgSelect()" class="img-add" alt="">
 
-            <ion-label class="img-label">Seleccionar Foto</ion-label>
-            <img (click)="imgSelect()" class="img-add" src="{{Img}}" alt="">
-
-        </ion-row>
-        <ion-row>
-            <ion-col col-12>
-                <ion-item>
-                    <ion-input type="text" [(ngModel)]="marca" placeholder="Marca"></ion-input>
-                </ion-item><br>
-            </ion-col>
 
         </ion-row>
         <ion-row>
             <ion-col col-12>
+                <ion-label class="comentarios">Artículo ejemplo:coca-cola</ion-label>
                 <ion-item>
-                    <ion-input type="text" [(ngModel)]="modelo" placeholder="Modelo"></ion-input>
-                </ion-item><br>
+
+                    <ion-input type="text" [(ngModel)]="nombre" placeholder=""></ion-input>
+                </ion-item>
             </ion-col>
+
+        </ion-row>
+        <ion-row>
             <ion-col col-12>
+                <ion-label class="comentarios">Descripción: (Ejemplo: Regular)</ion-label>
                 <ion-item>
-                    <ion-input type="text" [(ngModel)]="nombre" placeholder="Nombre"></ion-input>
-                </ion-item><br>
+                    <ion-input type="text" [(ngModel)]="descripcion" placeholder=""></ion-input>
+                </ion-item>
             </ion-col>
         </ion-row>
         <ion-row>
             <ion-col col-12>
+                <ion-label class="comentarios">Precio</ion-label>
                 <ion-item>
-                    <ion-input [ngClass]="{disponiblee: this.disponible == true, ocupado: this.disponible == false}" [formControl]="cdb" type="text" placeholder="Codigo de barra"></ion-input>
-                </ion-item><br>
+                    <ion-input type="text" [(ngModel)]="precio" placeholder="">$</ion-input>
+                </ion-item>
+            </ion-col>
+
+        </ion-row>
+
+        <ion-row>
+            <ion-col col-12>
+                <ion-label class="comentarios">Departamento: (Ejemplo: Ferretería, Abarrotes...)</ion-label>
+                <ion-item>
+
+                    <ion-label>Departamento:</ion-label>
+                    <ion-select [(ngModel)]="departamento" multiple="true" cancelText="Regresar" okText="OKay">
+                        <ion-select-option value="Abarrotes">Abarrotes</ion-select-option>
+                        <ion-select-option value="Lacteos">Lacteos</ion-select-option>
+                        <ion-select-option value="Frutas y verduras">Frutas y verduras</ion-select-option>
+                        <ion-select-option value="Carnes y pescados">Carnes y pescados</ion-select-option>
+                        <ion-select-option value="Salchichoneria">Salchichoneria</ion-select-option>
+                        <ion-select-option value="Panederia">Panederia</ion-select-option>
+                        <ion-select-option value="Bebidas">Bebidas</ion-select-option>
+                        <ion-select-option value="Vinos y licores">Vinos y licores</ion-select-option>
+                        <ion-select-option value="Limpieza">Limpieza</ion-select-option>
+                        <ion-select-option value="Farmacias"> Farmacias </ion-select-option>
+                        <ion-select-option value="Higiene y belleza"> Higiene y belleza </ion-select-option>
+                    </ion-select>
+                </ion-item>
             </ion-col>
         </ion-row>
         <ion-row>
             <ion-col col-12>
+                <ion-label class="comentarios"> Sección (Ejemplo: Ferretería, Abarrotes...)</ion-label>
                 <ion-item>
-                    <ion-input type="text" [(ngModel)]="precio" placeholder="Precio">$</ion-input>
-                </ion-item><br>
+
+                    <ion-label>Seccion:</ion-label>
+                    <ion-select [(ngModel)]="seccion" multiple="true" cancelText="Regresar" okText="OKay">
+                        <ion-select-option value="Abarrotes">Abarrotes</ion-select-option>
+                        <ion-select-option value="Lacteos">Lacteos</ion-select-option>
+                        <ion-select-option value="Frutas y verduras">Frutas y verduras</ion-select-option>
+                        <ion-select-option value="Carnes y pescados">Carnes y pescados</ion-select-option>
+                        <ion-select-option value="Salchichoneria">Salchichoneria</ion-select-option>
+                        <ion-select-option value="Panederia">Panederia</ion-select-option>
+                        <ion-select-option value="Bebidas">Bebidas</ion-select-option>
+                        <ion-select-option value="Vinos y licores">Vinos y licores</ion-select-option>
+                        <ion-select-option value="Limpieza">Limpieza</ion-select-option>
+                        <ion-select-option value="Farmacias"> Farmacias </ion-select-option>
+                        <ion-select-option value="Higiene y belleza"> Higiene y belleza </ion-select-option>
+                    </ion-select>
+                </ion-item>
             </ion-col>
-            
+
         </ion-row>
         <ion-row>
             <ion-col col-12>
+                <ion-label class="comentarios"> Producto: (Ejemplo: Enlatados, Libro...)</ion-label>
                 <ion-item>
-                    <ion-input type="text" [(ngModel)]="descripcion" placeholder="Descripcion"></ion-input>
+
+                    <ion-label>Producto:</ion-label>
+                    <ion-select [(ngModel)]="producto" multiple="true" cancelText="Regresar" okText="OKay">
+                        <ion-select-option value="bacon">Abarrotes</ion-select-option>
+                        <ion-select-option value="olives">Lacteos</ion-select-option>
+                        <ion-select-option value="xcheese">Frutas y verduras</ion-select-option>
+                        <ion-select-option value="peppers">Carnes y pescados</ion-select-option>
+                        <ion-select-option value="mushrooms">Salchichoneria</ion-select-option>
+                        <ion-select-option value="onions">Panederia</ion-select-option>
+                        <ion-select-option value="pepperoni">Bebidas</ion-select-option>
+                        <ion-select-option value="pineapple">Vinos y licores</ion-select-option>
+                        <ion-select-option value="sausage">Limpieza</ion-select-option>
+                        <ion-select-option value="Spinach"> Farmacias </ion-select-option>
+                        <ion-select-option value="Spinach"> Higiene y belleza </ion-select-option>
+                    </ion-select>
+                </ion-item>
+            </ion-col>
+
+        </ion-row>
+        <ion-row>
+            <ion-col col-12>
+                <ion-label class="comentarios">Marca: (Ejemplo: Dolores, Samsung, Bimbo...)</ion-label>
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="marca" placeholder=""></ion-input>
+                </ion-item>
+            </ion-col>
+
+        </ion-row>
+        <ion-row>
+            <ion-col col-12>
+                <ion-label class="comentarios"> Alias: (Ejemplo: Plátano, Banana, Banano)</ion-label>
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="alias" placeholder=""></ion-input>
                 </ion-item><br>
             </ion-col>
         </ion-row>
         <ion-row>
-            <ion-col col-12>
+            <ion-col col-4>
+                <ion-label class="comentarios"> Cantidad</ion-label>
                 <ion-item>
-                    <ion-input type="text" [(ngModel)]="alias" placeholder="Alias"></ion-input>
+                    <ion-input type="text" [(ngModel)]="cantidad" placeholder=""></ion-input>
+                </ion-item><br>
+            </ion-col>
+            <ion-col col-8>
+                <ion-label class="comentarios"> Contenido Neto individual: </ion-label>
+                <ion-item>
+                    <ion-label>Piezas</ion-label>
+                    <ion-select [(ngModel)]="contenido" value="brown" okText="Okay" cancelText="Regresar">
+                        <ion-select-option value="brown">Brown</ion-select-option>
+                        <ion-select-option value="blonde">Blonde</ion-select-option>
+                        <ion-select-option value="black">Black</ion-select-option>
+                        <ion-select-option value="red">Red</ion-select-option>
+                    </ion-select>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col col-12>
+                <ion-label class="comentarios"> Elementos por paquete:</ion-label>
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="elementos" placeholder=""></ion-input>
                 </ion-item><br>
             </ion-col>
         </ion-row>
-        <ion-button color="tertiary" (click)="subir()" expand=block>Agregar</ion-button>
+
+        <ion-button class="boton" color="success" (click)="subir()">Guardar</ion-button>
+
+        <ion-button class="boton2" color="danger" href="/home">Descartar</ion-button>
+
+
     </ion-grid>
-        </ion-content>
-    </div>
-    
-  
-  </ion-app>
+
+</ion-content>
