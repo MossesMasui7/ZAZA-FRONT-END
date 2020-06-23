@@ -1,48 +1,32 @@
-
 <ion-app>
-  <app-menu></app-menu>
-
   <div class="ion-page" id="main-content">
-      <ion-header>
-          <ion-toolbar class="ion-hijo" color="tertiary">
-              
-              <ion-buttons slot="start">
-                  <ion-menu-button></ion-menu-button>
-              </ion-buttons>
-              <ion-title>Actualizar Usuario
-    </ion-title>
-              
-          </ion-toolbar>
-          
-      </ion-header>
-      <ion-content class="background">
-        <ion-grid>
-
-          <div>
-            <ion-input placeholder="Nombre" type="text" [(ngModel)]="nombre">
-            </ion-input>
-        
-            <ion-input placeholder="Marca" type="text" [(ngModel)]="marca">
-            </ion-input>
-        
-            <ion-input placeholder="Modelo" type="text" [(ngModel)]="modelo">
-            </ion-input>
-        
-            <ion-input placeholder="Descripcion" type="text" [(ngModel)]="descripcion">
-            </ion-input>
-        
-            <ion-row class="img-div">
-        
-              <ion-label class="img-label">Seleccionar Foto</ion-label>
-              <img (click)="imgSelect()" class="img-add" src="{{Img}}" alt="">
-        
+    <ion-header>
+      <ion-toolbar class="ion-hijo" color="tertiary">
+        <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Actualizar Usuario </ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="background">
+      <ion-grid>
+        <div>
+          <ion-row class="img-div">
+            <ion-label class="img-label">Seleccionar Foto</ion-label>
+            <img (click)="imgSelect()" class="img-add" src="{{Img}}" alt="" />
           </ion-row>
-            
-            <ion-button (click)="actualizar(nombre,marca,modelo,descripcion)" expand=block>Guardar cambios</ion-button>
-          </div>
-        </ion-grid>
-      </ion-content>
-  </div>
-  
+          <ion-input
+            placeholder="{{this.actualizacion.tiendas['descripcion']}}"
+            type="text"
+            [(ngModel)]="descripcion"
+          >
+          </ion-input>
 
+          <ion-button (click)="actualizar(descripcion)" expand="block"
+            >Guardar cambios</ion-button
+          >
+        </div>
+      </ion-grid>
+    </ion-content>
+  </div>
 </ion-app>

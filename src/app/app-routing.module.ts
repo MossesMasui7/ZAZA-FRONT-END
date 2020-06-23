@@ -85,7 +85,11 @@ const routes: Routes = [
       import("./pages/actualizar-producto/actualizar-producto.module").then(
         (m) => m.ActualizarProductoPageModule
       ),
+  },  {
+    path: 'agregar-tienda-producto',
+    loadChildren: () => import('./pages/agregar-tienda-producto/agregar-tienda-producto.module').then( m => m.AgregarTiendaProductoPageModule)
   },
+
 ];
 
 @NgModule({

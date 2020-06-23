@@ -1,32 +1,28 @@
 <ion-app>
-    <app-menu></app-menu>
-  
-    <div class="ion-page" id="main-content">
-        <ion-header>
-            <ion-toolbar class="ion-hijo" color="tertiary">
-                
-                <ion-buttons slot="start">
-                    <ion-menu-button></ion-menu-button>
-                </ion-buttons>
-                <ion-title>Lista de compras 
-      </ion-title>
-                
-            </ion-toolbar>
-            
-        </ion-header>
-        <ion-content class="background">
-          <app-buscador></app-buscador>
-  
-            <h1>Botones prueba</h1>
-          
-  <ion-button (click)="alta()" expand="block" fill="clear" shape="round">
-      Alta Producto
-  </ion-button>
-  <ion-button (click)="actualizarUsuario()" expand="block" fill="clear" shape="round">
-    Actualizar Perfil
-</ion-button>
-        </ion-content>
-    </div>
-    
-  
-  </ion-app>
+  <app-menu></app-menu>
+
+  <div class="ion-page" id="main-content">
+    <ion-header>
+      <ion-toolbar class="ion-hijo" color="tertiary">
+        <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Lista de compras </ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="background">
+      <app-buscador></app-buscador>
+
+      <h1>Botones prueba</h1>
+
+      <ion-button
+        (click)="actualizarUsuario()"
+        expand="block"
+        fill="clear"
+        shape="round"
+      >
+        Actualizar Perfil
+      </ion-button>
+    </ion-content>
+  </div>
+</ion-app>
