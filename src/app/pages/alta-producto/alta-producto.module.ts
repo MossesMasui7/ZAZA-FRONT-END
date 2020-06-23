@@ -1,23 +1,20 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { IonicModule } from "@ionic/angular";
 
-import { IonicModule } from '@ionic/angular';
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { AltaProductoPageRoutingModule } from "./alta-producto-routing.module";
 
-
-import { AltaProductoPageRoutingModule } from './alta-producto-routing.module';
-
-import { AltaProductoPage } from './alta-producto.page';
-
+import { AltaProductoPage } from "./alta-producto.page";
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     IonicModule,
     AltaProductoPageRoutingModule,
-   
   ],
-  declarations: [AltaProductoPage, ]
+  declarations: [AltaProductoPage],
 })
 export class AltaProductoPageModule {}

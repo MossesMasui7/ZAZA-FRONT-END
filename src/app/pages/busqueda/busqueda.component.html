@@ -8,13 +8,18 @@
 </ion-header>
 <ion-content>
   <div class="div">
-    <h1 class="ion-text-center">{{ this.producto.tiendas["nombre"] }}</h1>
+    <img
+      src="https://i.ya-webdesign.com/images/no-image-png-1.png"
+      width="50%"
+      alt=""
+    />
+    <h1 class="ion-text-center">{{ this.producto.tiendas["descripcion"] }}</h1>
     <br /><br />
     <app-precio-promedio></app-precio-promedio>
     <app-tiendas-cercanas></app-tiendas-cercanas>
     <!-- <app-mapa></app-mapa> -->
   </div>
-  <ion-label class="addNegocio"
+  <ion-label class="ion-text-center" class="addNegocio"
     >¿Conoces un negocio que tiene este producto? <br />
     Agregalo <a (click)="addNegocio()">Aqui</a></ion-label
   >

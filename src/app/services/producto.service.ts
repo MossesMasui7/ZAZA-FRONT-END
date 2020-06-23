@@ -4,8 +4,8 @@ import { HttpClient } from "@angular/common/http";
   providedIn: "root",
 })
 export class ProductoService {
-  //URL_API = 'http://localhost:3000/api/producto';
-  URL_API = "http://192.168.1.79:3000/api/producto";
+  URL_API = "http://localhost:3000/api/producto";
+  //URL_API = "http://192.168.1.79:3000/api/producto";
   public precio = [];
   public tiendas = {};
   public productos: any[] = [];
@@ -13,18 +13,7 @@ export class ProductoService {
 
   // aqui es donde manda a llamar al back
   postproducto(pro): Promise<any> {
-    return new Promise((resolve, reject) => {
-      this.http.post(`${this.URL_API}/registrar`, pro).subscribe(
-        (res) => {
-          console.log("respuesta", res);
-          resolve();
-        },
-        (err) => {
-          console.log("error", err);
-          reject();
-        }
-      );
-    });
+    return this.http.post(`${this.URL_API}/registrar`, pro).toPromise();
   }
 
   obtenerCDB(cdb: any) {
@@ -34,14 +23,33 @@ export class ProductoService {
   obtener(cdb: any) {
     return this.http.get(`${this.URL_API}/obtener/${cdb}`).toPromise();
   }
-  actualizar(id, nombre, marca, modelo, descripcion, img) {
+  actualizar(id, descripcion, img) {
     return this.http
       .put(`${this.URL_API}/actualizarProducto/${id}`, {
-        nombre,
-        marca,
-        modelo,
         descripcion,
         img,
+      })
+      .toPromise();
+  }
+
+  agregarNegocio(idNegocio, negocio) {
+    return this.http
+      .put(`${this.URL_API}/add/negocio/${idNegocio}`, negocio)
+      .toPromise();
+  }
+  agregarComentario(
+    id: any,
+    _idUsuario: String,
+    username: String,
+    texto: String,
+    fecha: Date
+  ) {
+    return this.http
+      .put(`${this.URL_API}agregarComentario/${id}`, {
+        _idUsuario,
+        username,
+        texto,
+        fecha,
       })
       .toPromise();
   }

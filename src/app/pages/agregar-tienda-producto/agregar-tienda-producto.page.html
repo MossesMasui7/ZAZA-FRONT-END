@@ -10,18 +10,22 @@
 <ion-content class="content">
   <div class="content">
     <div class="infProducto">
-      <img
-        src="https://cdn.shopify.com/s/files/1/0706/6309/products/000115705m_300x300.jpg?v=1563811368"
-        alt=""
-      />
-      <h1>{{this.producto.tiendas['nombre']}}</h1>
+      <img src="https://i.ya-webdesign.com/images/no-image-png-1.png" alt="" />
+      <h1>{{this.producto.tiendas['descripcion']}}</h1>
     </div>
 
-    <form>
-      <ion-input type="number" placeholder="Precio del Producto"></ion-input>
+    <form (ngSubmit)="agregarNegocio()">
       <ion-input
+        [ngModelOptions]="{standalone: true}"
+        type="number"
+        [(ngModel)]="precio"
+        placeholder="Precio del Producto"
+      ></ion-input>
+      <ion-input
+        [ngModelOptions]="{standalone: true}"
         type="number"
         placeholder="Cuantos tiene en existencia"
+        [(ngModel)]="inventario"
       ></ion-input>
       <p>
         Estos son algunos lugares cercanos a tu ubicacion <br />
@@ -30,13 +34,16 @@
       <ion-item>
         <ion-label>Negocio</ion-label>
         <ion-select
+          [ngModelOptions]="{standalone: true}"
           value="Seleccione"
           multiple="false"
           placeholder="Seleccione"
+          [(ngModel)]="idNegocio"
         >
-          <ion-select-option value="Oxxo">Oxxo</ion-select-option>
-          <ion-select-option value="abarrotes don cuco"
-            >Abarrotes Don CUCO</ion-select-option
+          <ion-select-option
+            *ngFor="let negocio of negociosCercanos"
+            value="{{negocio['_id']}}"
+            >{{negocio['nombre']}}</ion-select-option
           >
         </ion-select>
       </ion-item>

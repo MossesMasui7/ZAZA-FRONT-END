@@ -74,6 +74,7 @@ export class BuscadorComponent implements OnInit {
     var R = 6378.137; //Radio de la tierra en km
     var dLat = this.rad(lat2 - this.usuario.la);
     var dLong = this.rad(lon2 - this.usuario.lo);
+
     var a =
       Math.sin(dLat / 2) * Math.sin(dLat / 2) +
       Math.cos(this.rad(this.usuario.la)) *
