@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { ActualizarUsuarioPageRoutingModule } from './actualizar-usuario-routing.module';
+import {MenuComponent} from '../../componentes/menu/menu.component'
 
 import { ActualizarUsuarioPage } from './actualizar-usuario.page';
 
@@ -15,6 +16,6 @@ import { ActualizarUsuarioPage } from './actualizar-usuario.page';
     IonicModule,
     ActualizarUsuarioPageRoutingModule
   ],
-  declarations: [ActualizarUsuarioPage]
+  declarations: [ActualizarUsuarioPage,MenuComponent]
 })
 export class ActualizarUsuarioPageModule {}

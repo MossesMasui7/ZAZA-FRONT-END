@@ -5,6 +5,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { debounceTime } from 'rxjs/operators';
 import { FormControl } from '@angular/forms';
 import { Router } from "@angular/router";
+import { element } from 'protractor';
 @Component({
   selector: 'app-alta-producto',
   templateUrl: './alta-producto.page.html',
@@ -16,17 +17,22 @@ import { Router } from "@angular/router";
 export class AltaProductoPage implements OnInit {
 
   marca :string ;
-  modelo :string;
   nombre: string;
   cdb:any = new FormControl('')
   cdbs: string;
   precio: string;
   descripcion: string;
   alias:string;
+  departamento: String;
+  seccion: String;
+  producto: String;
+  cantidad: String;
+  contenido: String;
+  elementos: String;
 
   
 
-  img:String = "../../../assets/iconos/user_add_21977.ico";
+  img:String = "../../../assets/iconos/userico";
   coinciden:boolean = false;
   disponible:boolean = false;
 
@@ -75,16 +81,22 @@ export class AltaProductoPage implements OnInit {
   subir(){
     let pro ={
       marca:this.marca,
-      modelo:this.modelo,
       nombre:this.nombre,
       cdb:this.cdbs,
       precio:this.precio,
-      
       descripcion:this.descripcion,
       alias:this.alias,
-      img:this.img
+      img:this.img,
+      departamento:this.departamento,
+      seccion:this.seccion,
+      producto: this.producto,
+      cantidad:this.cantidad,
+      contenido:this.contenido,
+      elemento: this.elementos
+
+
     }
-    if(this.marca == null || this.modelo == null || this.nombre == null|| this.cdb == null ||this.precio == null||
+    if(this.marca == null ||  this.nombre == null|| this.cdb == null ||this.precio == null||
        this.descripcion == null ||this.alias == null) {
         this.presentAlert("Faltan campos","Alerta");
       }
