@@ -33,6 +33,15 @@
         </ion-row>
         <ion-row>
             <ion-col col-12>
+                <ion-label class="comentarios">Marca: (Ejemplo: Dolores, Samsung, Bimbo...)</ion-label>
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="marca" placeholder=""></ion-input>
+                </ion-item>
+            </ion-col>
+
+        </ion-row>
+        <ion-row>
+            <ion-col col-12>
                 <ion-label class="comentarios">Artículo ejemplo:coca-cola</ion-label>
                 <ion-item>
                     <ion-input type="text" [(ngModel)]="nombre" placeholder=""></ion-input>
@@ -45,6 +54,14 @@
                 <ion-item>
                     <ion-input type="text" [(ngModel)]="descripcion" placeholder=""></ion-input>
                 </ion-item>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col col-12>
+                <ion-label class="comentarios"> Alias: (Ejemplo: Plátano, Banana, Banano)</ion-label>
+                <ion-item>
+                    <ion-input type="text" [(ngModel)]="alias" placeholder=""></ion-input>
+                </ion-item><br>
             </ion-col>
         </ion-row>
 
