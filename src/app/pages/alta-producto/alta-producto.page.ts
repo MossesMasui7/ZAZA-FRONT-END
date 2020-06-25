@@ -22,6 +22,9 @@ import { BarcodeScanner } from "@ionic-native/barcode-scanner/ngx";
 export class AltaProductoPage implements OnInit {
   cdb: any = new FormControl("");
   descripcion: string;
+ 
+  nombre: string;
+
 
   img: String = "../../../assets/iconos/userico";
   coinciden: boolean = false;
@@ -84,6 +87,8 @@ export class AltaProductoPage implements OnInit {
     let pro = {
       cdb: this.cdb.value,
       descripcion: this.descripcion,
+      
+      nombre: this.nombre,
       img: this.img,
     };
     if (this.cdb.value == null || this.descripcion == null) {

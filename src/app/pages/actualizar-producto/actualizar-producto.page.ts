@@ -11,6 +11,8 @@ import { Camera, CameraOptions } from "@ionic-native/camera/ngx";
 export class ActualizarProductoPage implements OnInit {
   public descripcion: String;
   public Img: String = "../../../assets/iconos/user_add_21977.ico";
+  public nombre:String;
+  public marca:String;
 
   constructor(
     public actualizacion: ProductoService,
@@ -21,7 +23,7 @@ export class ActualizarProductoPage implements OnInit {
   ngOnInit() {}
   actualizar(descripcion) {
     this.actualizacion
-      .actualizar(this.actualizacion.tiendas["_id"], descripcion, this.Img)
+      .actualizar(this.actualizacion.tiendas["_id"], descripcion,this.Img)
       .then((data) => {
         alert("Producto Actualizado");
         console.log(data);

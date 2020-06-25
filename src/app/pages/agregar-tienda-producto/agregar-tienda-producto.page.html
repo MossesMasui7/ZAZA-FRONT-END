@@ -1,60 +1,39 @@
 <ion-header>
-  <ion-toolbar color="tertiary">
-    <ion-title class="ion-text-center">Agregar Producto a Negocio</ion-title>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
-  </ion-toolbar>
+    <ion-toolbar color="tertiary">
+        <ion-title class="ion-text-center">Agregar Producto a Negocio</ion-title>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content class="content">
-  <div class="content">
-    <div class="infProducto">
-      <img src="https://i.ya-webdesign.com/images/no-image-png-1.png" alt="" />
-      <h1>{{this.producto.tiendas['descripcion']}}</h1>
+    <div class="content">
+        <div class="infProducto">
+            <img src="https://i.ya-webdesign.com/images/no-image-png-1.png" alt="" />
+            <h1>{{this.producto.tiendas['nombre']}}</h1>
+        </div>
+
+        <form (ngSubmit)="agregarNegocio()">
+            <ion-input [ngModelOptions]="{standalone: true}" type="number" [(ngModel)]="precio" placeholder="Precio del Producto"></ion-input>
+            <ion-input [ngModelOptions]="{standalone: true}" type="number" placeholder="Cuantos tiene en existencia" [(ngModel)]="inventario"></ion-input>
+            <p>
+                Estos son algunos lugares cercanos a tu ubicacion <br /> Seleccione el negocio donde se encuentra el producto
+            </p>
+            <ion-item>
+                <ion-label>Negocio</ion-label>
+                <ion-select [ngModelOptions]="{standalone: true}" value="Seleccione" multiple="false" placeholder="Seleccione" [(ngModel)]="idNegocio">
+                    <ion-select-option *ngFor="let negocio of negociosCercanos" value="{{negocio['_id']}}">{{negocio['nombre']}}</ion-select-option>
+                </ion-select>
+            </ion-item>
+            <p>
+                Ó <br />
+                <a> Agregar un negocio que no esta en la lista</a>
+            </p>
+
+            <ion-button type="submit" expand="block" shape="round">
+                Agregar Producto
+            </ion-button>
+        </form>
     </div>
-
-    <form (ngSubmit)="agregarNegocio()">
-      <ion-input
-        [ngModelOptions]="{standalone: true}"
-        type="number"
-        [(ngModel)]="precio"
-        placeholder="Precio del Producto"
-      ></ion-input>
-      <ion-input
-        [ngModelOptions]="{standalone: true}"
-        type="number"
-        placeholder="Cuantos tiene en existencia"
-        [(ngModel)]="inventario"
-      ></ion-input>
-      <p>
-        Estos son algunos lugares cercanos a tu ubicacion <br />
-        Seleccione el negocio donde se encuentra el producto
-      </p>
-      <ion-item>
-        <ion-label>Negocio</ion-label>
-        <ion-select
-          [ngModelOptions]="{standalone: true}"
-          value="Seleccione"
-          multiple="false"
-          placeholder="Seleccione"
-          [(ngModel)]="idNegocio"
-        >
-          <ion-select-option
-            *ngFor="let negocio of negociosCercanos"
-            value="{{negocio['_id']}}"
-            >{{negocio['nombre']}}</ion-select-option
-          >
-        </ion-select>
-      </ion-item>
-      <p>
-        Ó <br />
-        <a> Agregar un negocio que no esta en la lista</a>
-      </p>
-
-      <ion-button type="submit" expand="block" shape="round">
-        Agregar Producto
-      </ion-button>
-    </form>
-  </div>
 </ion-content>

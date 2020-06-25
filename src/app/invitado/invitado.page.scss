@@ -1,0 +1,50 @@
+.logo .img-add {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    left: 50%;
+    background: url(../../assets/iconos/CM.png);
+    transform: translate(-50%, 0%);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 150px;
+    border-radius: 50%;
+}
+
+.logo {
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    width: 150px;
+    height: 150px;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 50%;
+}
+
+.comentarios {
+    position: relative;
+    width: 83px;
+    height: 54px;
+    left: 42%;
+    top: 25%;
+    font-family: Ovo;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 27px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+}
+
+.boton {
+    position: absolute;
+    width: 150px;
+    height: 28px;
+    left: 35%;
+    top: 90%;
+    botton: 0px;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
