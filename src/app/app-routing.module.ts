@@ -5,7 +5,7 @@ import { BusquedaComponent } from "./pages/busqueda/busqueda.component";
 import { LoginPage } from "./pages/login/login.page";
 import { AltaProductoPage } from "./pages/alta-producto/alta-producto.page";
 import { ActualizarUsuarioPage } from "./pages/actualizar-usuario/actualizar-usuario.page";
-import { InvitadoPage } from './invitado/invitado.page';
+
 const routes: Routes = [
   {
     path: "login",
@@ -13,7 +13,7 @@ const routes: Routes = [
   },
   {
     path: 'invitado',
-    loadChildren: () => import('./invitado/invitado.module').then( m => m.InvitadoPageModule)
+    loadChildren: () => import('./pages/invitado/invitado.module').then( m => m.InvitadoPageModule)
   },
   {
     path: "home",
@@ -95,6 +95,8 @@ const routes: Routes = [
     path: 'agregar-tienda-producto',
     loadChildren: () => import('./pages/agregar-tienda-producto/agregar-tienda-producto.module').then( m => m.AgregarTiendaProductoPageModule)
   },
+  
+
  
 
 ];
