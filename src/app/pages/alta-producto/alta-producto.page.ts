@@ -22,7 +22,8 @@ import { BarcodeScanner } from "@ionic-native/barcode-scanner/ngx";
 export class AltaProductoPage implements OnInit {
   cdb: any = new FormControl("");
   descripcion: string;
- 
+  marca: string;
+  alias: string;
   nombre: string;
 
 
@@ -86,12 +87,13 @@ export class AltaProductoPage implements OnInit {
   subir() {
     let pro = {
       cdb: this.cdb.value,
-      descripcion: this.descripcion,
-      
+      descripcion: this.descripcion, 
       nombre: this.nombre,
+      marca: this.marca,
+      alias: this.alias,
       img: this.img,
     };
-    if (this.cdb.value == null || this.descripcion == null) {
+    if (this.cdb.value == null || this.descripcion == null || this.nombre == null || this.marca == null) {
       this.presentAlert("Faltan campos", "Alerta");
     } else {
       this.productoService

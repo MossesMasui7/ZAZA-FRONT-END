@@ -13,6 +13,12 @@ export class AgregarTiendaProductoPage implements OnInit {
   idNegocio: String;
   precio: Number;
   inventario: Number;
+  contenido: String;
+  elementos: String;
+  departamento: String;
+  seccion: String;
+  productos: String;
+
 
   constructor(
     public producto: ProductoService,
@@ -31,6 +37,11 @@ export class AgregarTiendaProductoPage implements OnInit {
       precio: this.precio,
       inventario: this.inventario,
       negocio: this.idNegocio,
+      contenido: this.contenido,
+      elementos: this.elementos,
+      departamento:this.departamento,
+      seccion: this.seccion,
+      productos: this.productos
     };
     this.producto
       .agregarNegocio(this.producto.tiendas["_id"], infNegocio)
