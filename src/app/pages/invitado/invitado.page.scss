@@ -12,6 +12,7 @@
 }
 
 .logo {
+    background-position: center;
     position: relative;
     left: 50%;
     transform: translate(-50%, 0%);
@@ -26,11 +27,11 @@
     width: 83px;
     height: 54px;
     left: 42%;
-    top: 25%;
+    top: 60%;
     font-family: Ovo;
     font-style: normal;
     font-weight: normal;
-    font-size: 24px;
+    font-size: 30px;
     line-height: 27px;
     display: flex;
     align-items: center;
@@ -42,9 +43,9 @@
     position: absolute;
     width: 150px;
     height: 28px;
-    left: 35%;
-    top: 90%;
-    botton: 0px;
+    background-position: center;
+    left: 36%;
+    top: 85%;
     box-sizing: border-box;
     border-radius: 10px;
 }
