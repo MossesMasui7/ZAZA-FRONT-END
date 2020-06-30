@@ -47,7 +47,9 @@
         "rxjs": "~6.5.1",
         "sweetalert2": "^9.15.1",
         "tslib": "^1.9.0",
-        "zone.js": "~0.9.1"
+        "zone.js": "~0.9.1",
+        "@ionic/app-scripts": "2.1.4",
+        "typescript": "2.3.4"
     },
     "devDependencies": {
         "@angular-devkit/build-angular": "~0.803.20",
