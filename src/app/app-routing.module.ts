@@ -1,14 +1,19 @@
-import { NgModule } from "@angular/core";
+import { NgModule, Component } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from "@angular/router";
 import { RegistroComponent } from "./pages/registro/registro.component";
 import { BusquedaComponent } from "./pages/busqueda/busqueda.component";
 import { LoginPage } from "./pages/login/login.page";
 import { AltaProductoPage } from "./pages/alta-producto/alta-producto.page";
 import { ActualizarUsuarioPage } from "./pages/actualizar-usuario/actualizar-usuario.page";
+
 const routes: Routes = [
   {
     path: "login",
     component: LoginPage,
+  },
+  {
+    path: 'invitado',
+    loadChildren: () => import('./pages/invitado/invitado.module').then( m => m.InvitadoPageModule)
   },
   {
     path: "home",
@@ -19,7 +24,7 @@ const routes: Routes = [
   },
   {
     path: "",
-    redirectTo: "login",
+    redirectTo: "invitado",
     pathMatch: "full",
   },
   {
@@ -86,6 +91,14 @@ const routes: Routes = [
         (m) => m.ActualizarProductoPageModule
       ),
   },
+  {
+    path: 'agregar-tienda-producto',
+    loadChildren: () => import('./pages/agregar-tienda-producto/agregar-tienda-producto.module').then( m => m.AgregarTiendaProductoPageModule)
+  },
+  
+
+ 
+
 ];
 
 @NgModule({

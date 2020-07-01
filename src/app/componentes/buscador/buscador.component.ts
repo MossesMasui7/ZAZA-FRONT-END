@@ -25,6 +25,7 @@ export class BuscadorComponent implements OnInit {
   resultado: boolean = false;
   productos: any[] = [];
   search: any = new FormControl("");
+  codigo: any;
 
   // Constructor
 
@@ -73,6 +74,7 @@ export class BuscadorComponent implements OnInit {
     var R = 6378.137; //Radio de la tierra en km
     var dLat = this.rad(lat2 - this.usuario.la);
     var dLong = this.rad(lon2 - this.usuario.lo);
+
     var a =
       Math.sin(dLat / 2) * Math.sin(dLat / 2) +
       Math.cos(this.rad(this.usuario.la)) *
@@ -98,58 +100,78 @@ export class BuscadorComponent implements OnInit {
   // Funcion para Ordenar productos por precio
 
   SortPre() {
-    for (let i = 0; i < this.producto.tiendas.tiendas.length; i++) {
+    for (let i = 0; i < this.producto.tiendas["tiendas"].length; i++) {
       if (
         parseFloat(
           this.getKilometros(
-            this.producto.tiendas.tiendas[i].ubicacion.longitude,
-            this.producto.tiendas.tiendas[i].ubicacion.latitude
+            this.producto.tiendas["tiendas"][i]["negocio"]["cordenadas"][
+              "longitude"
+            ],
+            this.producto.tiendas["tiendas"][i]["negocio"]["cordenadas"][
+              "latitude"
+            ]
           )
         ) <= 15
       ) {
-        this.productos.push(this.producto.tiendas.tiendas[i]);
+        this.productos.push(this.producto.tiendas["tiendas"][i]);
         this.productos[i]["distancia"] = this.getKilometros(
-          this.producto.tiendas.tiendas[i].ubicacion.longitude,
-          this.producto.tiendas.tiendas[i].ubicacion.latitude
+          this.producto.tiendas["tiendas"][i]["negocio"]["cordenadas"][
+            "longitude"
+          ],
+          this.producto.tiendas["tiendas"][i]["negocio"]["cordenadas"][
+            "latitude"
+          ]
         );
-        this.productos.sort(this.GetSortOrder("Precio"));
+        this.productos.sort(this.GetSortOrder("precio"));
       } else {
-        this.productos.push(this.producto.tiendas.tiendas[i]);
+        this.productos.push(this.producto.tiendas["tiendas"][i]);
         this.productos[i]["alcance"] = false;
       }
     }
-    this.producto.tiendas.tiendas = this.productos;
+    this.producto.tiendas["tiendas"] = this.productos;
     this.productos = [];
   }
 
   //Funcion para odenar productos por distancia
 
   SortDis() {
-    for (let i = 0; i < this.producto.tiendas.tiendas.length; i++) {
+    for (let i = 0; i < this.producto.tiendas["tiendas"].length; i++) {
       if (
         parseFloat(
           this.getKilometros(
-            this.producto.tiendas.tiendas[i].ubicacion.longitude,
-            this.producto.tiendas.tiendas[i].ubicacion.latitude
+            this.producto.tiendas["tiendas"][i]["negocio"]["cordenadas"][
+              "longitude"
+            ],
+            this.producto.tiendas["tiendas"][i]["negocio"]["cordenadas"][
+              "latitude"
+            ]
           )
         ) <= 15
       ) {
-        this.productos.push(this.producto.tiendas.tiendas[i]);
+        this.productos.push(this.producto.tiendas["tiendas"][i]);
         this.productos[i]["distancia"] = this.getKilometros(
-          this.producto.tiendas.tiendas[i].ubicacion.longitude,
-          this.producto.tiendas.tiendas[i].ubicacion.latitude
+          this.producto.tiendas["tiendas"][i]["negocio"]["cordenadas"][
+            "longitude"
+          ],
+          this.producto.tiendas["tiendas"][i]["negocio"]["cordenadas"][
+            "latitude"
+          ]
         );
         this.productos.sort(this.GetSortOrder("distancia"));
       } else {
-        this.productos.push(this.producto.tiendas.tiendas[i]);
+        this.productos.push(this.producto.tiendas["tiendas"][i]);
         this.productos[i]["distancia"] = this.getKilometros(
-          this.producto.tiendas.tiendas[i].ubicacion.longitude,
-          this.producto.tiendas.tiendas[i].ubicacion.latitude
+          this.producto.tiendas["tiendas"][i]["negocio"]["cordenadas"][
+            "longitude"
+          ],
+          this.producto.tiendas["tiendas"][i]["negocio"]["cordenadas"][
+            "latitude"
+          ]
         );
         this.productos[i]["alcance"] = false;
       }
     }
-    this.producto.tiendas.tiendas = this.productos;
+    this.producto.tiendas["tiendas"] = this.productos;
     this.productos = [];
   }
 
@@ -215,25 +237,31 @@ export class BuscadorComponent implements OnInit {
         .catch((err) => {
           console.log("Usuario no existe");
         });
+    } else {
+      this.producto
+        .obtener(texto)
+        .then((prod) => {
+          if (prod["resp"].length > 1) {
+            this.producto.productos = prod["resp"];
+
+            this.resultado = false;
+            // console.log(this.producto.productos);
+          } else if (prod["resp"].length == 0) {
+            this.resultado = true;
+          } else {
+            this.producto.tiendas = prod["resp"]["0"];
+            this.resultado = false;
+            this.router.navigate(["./buscar"]);
+
+            this.SortPre();
+            this.producto.precio = [];
+            // console.log(this.producto.tiendas);
+          }
+        })
+        .catch((err) => {
+          this.resultado = true;
+          this.producto.productos = [];
+        });
     }
-    this.producto
-      .obtener(texto)
-      .then((prod) => {
-        if (prod["resp"].length > 1) {
-          this.producto.productos = prod["resp"];
-          this.resultado = false;
-          // console.log(this.producto.productos);
-        } else {
-          this.producto.tiendas = prod["resp"]["0"];
-          this.SortPre();
-          this.producto.precio = [];
-          // console.log(this.producto.tiendas);
-          this.router.navigate(["./buscar"]);
-        }
-      })
-      .catch((err) => {
-        this.resultado = true;
-        this.producto.productos = [];
-      });
   }
 }

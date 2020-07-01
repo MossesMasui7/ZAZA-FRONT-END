@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AlertController} from '@ionic/angular'
 import { RouterLink, Router } from '@angular/router';
-import {Store} from '../../models/Store'
+import {Store} from '../../models/store';
 import {Category} from '../../models/categoria'
 import {NegocioService} from '../../services/negocio.service';
 

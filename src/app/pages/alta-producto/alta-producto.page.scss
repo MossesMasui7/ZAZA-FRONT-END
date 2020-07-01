@@ -6,7 +6,7 @@
 }
 
 ion-item {
-    border: 1px solid #2F80ED;
+    border: 1px solid #2f80ed;
     box-sizing: border-box;
     border-radius: 7px;
 }
@@ -65,7 +65,7 @@ ion-item {
     width: 150px;
     height: 28px;
     left: 60%;
-    top: 1060px;
+    botton: 0px;
     box-sizing: border-box;
     border-radius: 10px;
 }
@@ -75,7 +75,7 @@ ion-item {
     width: 150px;
     height: 28px;
     right: 60%;
-    top: 1060px;
+    botton: 0px;
     box-sizing: border-box;
     border-radius: 10px;
 }
@@ -90,4 +90,8 @@ ion-item {
     align-items: center;
     text-align: center;
     color: #000000;
+}
+
+.botonScan {
+    width: 50px;
 }

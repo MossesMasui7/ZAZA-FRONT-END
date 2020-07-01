@@ -1,4 +1,17 @@
-.div{
-    margin-left: 40px;
-    margin-right: 40px;
+.div {
+  margin-left: 40px;
+  margin-right: 40px;
+}
+.addNegocio {
+  margin-left: 40px;
+  margin-right: 40px;
+  position: relative;
+  bottom: 0px;
+  font-size: 18px;
+  text-align: center;
+}
+img {
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 0%);
 }
