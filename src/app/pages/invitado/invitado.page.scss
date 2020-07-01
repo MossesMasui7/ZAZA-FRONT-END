@@ -26,7 +26,7 @@
     position: relative;
     width: 83px;
     height: 54px;
-    left: 42%;
+    left: 40%;
     top: 60%;
     font-family: Ovo;
     font-style: normal;
@@ -40,12 +40,8 @@
 }
 
 .boton {
-    position: absolute;
-    width: 150px;
-    height: 28px;
-    background-position: center;
-    left: 36%;
-    top: 85%;
-    box-sizing: border-box;
-    border-radius: 10px;
+    text-align: center;
+    position: relative;
+    bottom: 0px;
+    margin-top: 200px;
 }

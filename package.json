@@ -13,6 +13,12 @@
     },
     "private": true,
     "dependencies": {
+        "@angular-devkit/build-angular": "~0.803.20",
+        "@angular/cli": "~8.3.23",
+        "@angular/compiler": "~8.2.14",
+        "@angular/compiler-cli": "~8.2.14",
+        "@angular/language-service": "~8.2.14",
+        "@ionic/angular-toolkit": "^2.1.1",
         "@angular/common": "~8.2.14",
         "@angular/core": "~8.2.14",
         "@angular/forms": "~8.2.14",
@@ -47,16 +53,12 @@
         "rxjs": "~6.5.1",
         "sweetalert2": "^9.15.1",
         "tslib": "^1.9.0",
-        "zone.js": "~0.9.1"
-
+        "zone.js": "~0.9.1",
+        "@ionic/app-scripts": "2.1.4",
+        "typescript": "2.3.4"
     },
     "devDependencies": {
-        "@angular-devkit/build-angular": "~0.803.20",
-        "@angular/cli": "~8.3.23",
-        "@angular/compiler": "~8.2.14",
-        "@angular/compiler-cli": "~8.2.14",
-        "@angular/language-service": "~8.2.14",
-        "@ionic/angular-toolkit": "^2.1.1",
+
         "@types/jasmine": "~3.3.8",
         "@types/jasminewd2": "~2.0.3",
         "@types/node": "~8.9.4",
