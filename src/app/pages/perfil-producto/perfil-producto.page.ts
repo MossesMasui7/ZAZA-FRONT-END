@@ -159,8 +159,8 @@ export class PerfilProductoPage implements OnInit {
     this.comenta
       .agregarComentario(
         this.comenta.tiendas["_id"],
-        this.cliente.userID,
-        this.cliente.userName,
+        this.cliente.usuario["_id"],
+        this.cliente.usuario["username"],
         this.texto,
         this.fecha
       )

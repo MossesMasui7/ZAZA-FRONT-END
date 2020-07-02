@@ -1,16 +1,42 @@
 <div class="div">
   <div class="sort">
+    <br /><br />
     <div class="btn-ordenar">
-      <ion-button (click)="dis()" fill="clear" shape="round">
-        Ubicacion
-      </ion-button>
-      <ion-button (click)="pre()" fill="clear" shape="round">
-        Precio
-      </ion-button>
+      <ion-label class="txtSort">Sort By</ion-label>
+      <br />
+      <br />
+      <ion-select
+        (ionChange)="onChange($event)"
+        class="select"
+        value="Distancia"
+        multiple="false"
+        placeholder="Sort By"
+      >
+        <ion-select-option value="Distancia">Distancia</ion-select-option>
+        <ion-select-option value="Precio">Precio</ion-select-option>
+      </ion-select>
+    </div>
+
+    <div class="cantidad">
+      <ion-label class="txtCantidad">Cantidad</ion-label> <br />
+      <button class="btnLess" (click)="less()">
+        -
+      </button>
+      <ion-input
+        class="iCantidad"
+        value="{{ cantidad }}"
+        type="Number"
+      ></ion-input>
+      <button class="btnLess" (click)="more()">
+        +
+      </button>
     </div>
   </div>
 
-  <div *ngFor="let tienda of this.producto.tiendas['tiendas']" class="tienda">
+  <div
+    *ngFor="let tienda of this.producto.tiendas['tiendas']; let i = index"
+    class="tienda"
+  >
     <tr *ngIf="this.tienda['alcance'] != false">
       <td class="der">
         {{ tienda["negocio"]["nombre"] }} <br />
@@ -18,9 +44,16 @@
         {{ tienda["inventario"] }} uni. disponibles
       </td>
       <td class="izq">${{ tienda.precio }}.00</td>
+
       <!-- <img *ngIf="tienda['oferta']"  class="oferta" src="../../../assets/iconos/bitmap.png" alt=""> -->
     </tr>
-
+    <tr class="selecTr">
+      <td class="selecTd">
+        <ion-button (click)="seleccionar(i)" class="selecBtn" expand="block">
+          Seleccionar
+        </ion-button>
+      </td>
+    </tr>
     <br />
   </div>
 </div>
