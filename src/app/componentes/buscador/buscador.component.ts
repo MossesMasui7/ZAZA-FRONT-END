@@ -179,7 +179,7 @@ export class BuscadorComponent implements OnInit {
 
   seleccionar(indice: any) {
     this.producto.tiendas = this.producto.productos[indice];
-    this.SortPre();
+    this.SortDis();
     this.producto.precio = [];
     //console.log(this.producto.tiendas);
     this.alerta();
@@ -253,7 +253,7 @@ export class BuscadorComponent implements OnInit {
             this.resultado = false;
             this.router.navigate(["./buscar"]);
 
-            this.SortPre();
+            this.SortDis();
             this.producto.precio = [];
             // console.log(this.producto.tiendas);
           }

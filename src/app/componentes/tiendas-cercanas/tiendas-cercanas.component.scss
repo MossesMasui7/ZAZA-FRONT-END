@@ -1,32 +1,88 @@
-.div{
-    position: relative;
-    height: auto;
-    padding: 0px;
+.txtSort {
+  position: relative;
+  margin: 0px;
+  padding: 0px;
+  font-size: 15px;
+}
+.select {
+  position: relative;
+  margin: 0px;
+  padding: 0px;
+  font-size: 15px;
+  border: 1px solid black;
+}
+.iCantidad {
+  position: relative;
+  width: 50%;
+  height: 20px;
+  border: 1px solid black;
+  display: inline-block;
+  margin-top: 20px;
 }
 
-.oferta{
-    position: relative;
-    width: 40px;
-    top: -8px;
-    right: -110px;
+.cantidad {
+  position: absolute;
+  width: 40%;
+  right: 0px;
+  text-align: center;
+  display: inline-block;
 }
-.izq{
-    position:absolute;
-    right: 0px;
-    margin-right: 20px;
+.btnLess {
+  position: relative;
+  display: inline-block;
+  margin: 0px;
+  padding: 0px;
+  background-color: white;
+  height: 20px;
+  width: 20%;
 }
 
-.btn-ordenar{
-    position: relative;
-    width: 100%;
-    text-align: center;
+.div {
+  position: relative;
+  height: auto;
+  padding: 0px;
 }
-.btn-ordenar ion-button{
-    width: 45%;
+
+.oferta {
+  position: relative;
+  width: 40px;
+  top: -8px;
+  right: -110px;
 }
-.tienda{
-    border: 1px solid black;
-    border-radius: 8px;
-    margin-top: 10px;
-    padding: 5px;
+.izq {
+  position: absolute;
+  right: 0px;
+  margin-right: 20px;
+  text-align: left;
+}
+
+.btn-ordenar {
+  position: relative;
+  width: 40%;
+  text-align: left;
+  display: inline-block;
+}
+.tienda {
+  border: 1px solid black;
+  border-radius: 8px;
+  margin-top: 10px;
+  padding: 10px;
+  height: auto;
+}
+
+.selecBtn {
+  position: absolute;
+  padding: 0px;
+  margin: 0px;
+  height: 15px;
+}
+.selecTr {
+  position: relative;
+  margin: 0px;
+  padding: 0px;
+}
+.selecTd {
+  position: relative;
+  margin: 0px;
+  padding: 0px;
 }

@@ -1,0 +1,61 @@
+<div class="ion-page" id="main-content">
+  <ion-header>
+    <ion-toolbar class="ion-hijo" color="tertiary">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Lista de compras </ion-title>
+      <div class="cart">
+        <ion-icon slot="end" name="cart"></ion-icon>
+        <!-- <ion-label>{{this.usuario.usuario['carrito'].length}}</ion-label> -->
+      </div>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <div *ngIf="mostrarVacio">
+      <ion-item color="warning" class="planet">
+        <ion-label style="text-align: center;">
+          Tu Carrito Esta Vacio
+        </ion-label>
+        <ion-icon name="cart"></ion-icon>
+      </ion-item>
+    </div>
+    <div *ngIf="mostrarCarrito">
+      <ion-card
+        class="card"
+        *ngFor="let carrito of this.usuario.usuario['carrito']"
+      >
+        <ion-card-header class="ion-text-right infProducto">
+          <ion-card-title
+            >{{carrito['producto']['descripcion']}}</ion-card-title
+          >
+          <ion-card-subtitle
+            >Cantidad:{{carrito['cantidad']}}</ion-card-subtitle
+          >
+          <ion-card-subtitle
+            >Precio:${{carrito['precio']}}.00</ion-card-subtitle
+          >
+          <ion-card-subtitle
+            >{{carrito['negocio']['nombre']}}</ion-card-subtitle
+          >
+          <ion-button
+            (click)="eliminar(carrito['_id'])"
+            expand="block"
+            color="danger"
+            class="btnEliminar"
+          >
+            Eliminar
+          </ion-button>
+        </ion-card-header>
+        <ion-card-content class="cardImg">
+          <img
+            class="imgProducto"
+            src="https://i.ya-webdesign.com/images/no-image-png-1.png"
+            alt=""
+          />
+        </ion-card-content>
+      </ion-card>
+      <ion-button class="comparador" color="primary">Comparador</ion-button>
+    </div>
+  </ion-content>
+</div>

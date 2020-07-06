@@ -1,4 +1,4 @@
-import { NgModule, Component } from '@angular/core';
+import { NgModule, Component } from "@angular/core";
 import { PreloadAllModules, RouterModule, Routes } from "@angular/router";
 import { RegistroComponent } from "./pages/registro/registro.component";
 import { BusquedaComponent } from "./pages/busqueda/busqueda.component";
@@ -12,8 +12,11 @@ const routes: Routes = [
     component: LoginPage,
   },
   {
-    path: 'invitado',
-    loadChildren: () => import('./pages/invitado/invitado.module').then( m => m.InvitadoPageModule)
+    path: "invitado",
+    loadChildren: () =>
+      import("./pages/invitado/invitado.module").then(
+        (m) => m.InvitadoPageModule
+      ),
   },
   {
     path: "home",
@@ -24,7 +27,7 @@ const routes: Routes = [
   },
   {
     path: "",
-    redirectTo: "invitado",
+    redirectTo: "login",
     pathMatch: "full",
   },
   {
@@ -92,13 +95,17 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'agregar-tienda-producto',
-    loadChildren: () => import('./pages/agregar-tienda-producto/agregar-tienda-producto.module').then( m => m.AgregarTiendaProductoPageModule)
+    path: "agregar-tienda-producto",
+    loadChildren: () =>
+      import(
+        "./pages/agregar-tienda-producto/agregar-tienda-producto.module"
+      ).then((m) => m.AgregarTiendaProductoPageModule),
   },
-  
-
- 
-
+  {
+    path: "carrito",
+    loadChildren: () =>
+      import("./pages/carrito/carrito.module").then((m) => m.CarritoPageModule),
+  },
 ];
 
 @NgModule({
