@@ -101,6 +101,11 @@ const routes: Routes = [
         "./pages/agregar-tienda-producto/agregar-tienda-producto.module"
       ).then((m) => m.AgregarTiendaProductoPageModule),
   },
+  {
+    path: "carrito",
+    loadChildren: () =>
+      import("./pages/carrito/carrito.module").then((m) => m.CarritoPageModule),
+  },
 ];
 
 @NgModule({

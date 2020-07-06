@@ -8,6 +8,10 @@
           <ion-menu-button></ion-menu-button>
         </ion-buttons>
         <ion-title>Lista de compras </ion-title>
+        <div class="cart">
+          <ion-icon (click)="cart()" slot="end" name="cart"></ion-icon>
+          <ion-label>{{this.usuario.usuario['carrito'].length}}</ion-label>
+        </div>
       </ion-toolbar>
     </ion-header>
     <ion-content class="background">

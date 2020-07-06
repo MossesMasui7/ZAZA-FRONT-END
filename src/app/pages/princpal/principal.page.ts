@@ -31,4 +31,8 @@ export class PrincipalPage implements OnInit {
   actualizarUsuario() {
     this.router.navigate(["./actualizar-usuario"]);
   }
+
+  cart() {
+    this.router.navigate(["./carrito"]);
+  }
 }

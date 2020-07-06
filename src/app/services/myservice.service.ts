@@ -16,6 +16,7 @@ export class MyserviceService {
       this.http.post(`${this.URL_API}login`, user).subscribe(
         (res) => {
           this.usuario = res["usuario"];
+
           resolve();
         },
         (err) => {

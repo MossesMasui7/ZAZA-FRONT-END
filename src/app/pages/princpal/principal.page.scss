@@ -1,24 +1,27 @@
 ion-content.background {
-    --background: url('../../../assets/292ddcf1fdbcff99169b93d6507b59bf.jpg') 0 0/100% 100% no-repeat;
+  --background: url("../../../assets/292ddcf1fdbcff99169b93d6507b59bf.jpg") 0 0/100%
+    100% no-repeat;
 }
 
 .logout {
-    position: absolute;
-    bottom: 0px;
+  position: absolute;
+  bottom: 0px;
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 p {
-    text-align: center;
+  text-align: center;
 }
 
 ion-icon {
-    width: 25px;
-    height: 25px;
+  width: 25px;
+  height: 25px;
 }
-
-
-
+.cart {
+  position: absolute;
+  right: 0px;
+  top: 10px;
+}

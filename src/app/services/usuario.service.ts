@@ -52,12 +52,25 @@ export class RegistroService {
     return this.http.get(`${this.URL}/resetpass/${email}`).toPromise();
   }
 
-  carrito(cantidad: number, negocio: String, producto: String) {
+  carrito(cantidad: number, precio: number, negocio: String, producto: String) {
     return this.http
       .put(`${this.URL}carrito/${this.cliente.usuario["_id"]}`, {
         cantidad: cantidad,
+        precio: precio,
         negocio: negocio,
         producto: producto,
+      })
+      .toPromise();
+  }
+  actualizarUsuario() {
+    return this.http
+      .get(`${this.URL}actualizarUsuario/${this.cliente.usuario["_id"]}`)
+      .toPromise();
+  }
+  eliminarCarrito(id: String) {
+    return this.http
+      .put(`${this.URL}eliminarCarrito/${this.cliente.usuario["_id"]}`, {
+        idCarrito: id,
       })
       .toPromise();
   }

@@ -3,6 +3,7 @@ import { ProductoService } from "../../services/producto.service";
 import { BuscadorComponent } from "../buscador/buscador.component";
 import { RegistroService } from "../../services/usuario.service";
 import { ToastController } from "@ionic/angular";
+import { MyserviceService } from "src/app/services/myservice.service";
 @Component({
   selector: "app-tiendas-cercanas",
   templateUrl: "./tiendas-cercanas.component.html",
@@ -14,7 +15,8 @@ export class TiendasCercanasComponent implements OnInit {
     public producto: ProductoService,
     public buscador: BuscadorComponent,
     public usuario: RegistroService,
-    public toastController: ToastController
+    public toastController: ToastController,
+    public cliente: MyserviceService
   ) {}
 
   ngOnInit() {
@@ -44,10 +46,14 @@ export class TiendasCercanasComponent implements OnInit {
     this.usuario
       .carrito(
         this.cantidad,
+        this.producto.tiendas["tiendas"][i]["precio"],
         this.producto.tiendas["tiendas"][i]["negocio"]["_id"],
         this.producto.tiendas["_id"]
       )
       .then((data) => {
+        this.usuario
+          .actualizarUsuario()
+          .then((data) => (this.cliente.usuario = data["resp"]));
         this.presentToast();
       })
       .catch((err) => {

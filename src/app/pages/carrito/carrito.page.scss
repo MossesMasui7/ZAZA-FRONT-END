@@ -1,0 +1,41 @@
+.cart {
+  position: absolute;
+  right: 0px;
+  top: 10px;
+}
+
+.cartR {
+  font-size: 40px;
+  margin-left: 80%;
+}
+.planet {
+  margin-top: 40%;
+}
+.comparador {
+  margin-top: 5%;
+  margin-left: 50%;
+  transform: translate(-50%, -50%);
+}
+.infProducto {
+  position: relative;
+  width: 65%;
+  right: -35%;
+}
+.card {
+  position: relative;
+}
+.cardImg {
+  position: absolute;
+  width: 35%;
+  top: 0px;
+  height: 100%;
+}
+.imgProducto {
+  position: relative;
+  width: 100%;
+  top: 0%;
+}
+.btnEliminar {
+  background-color: red;
+  height: 15px;
+}
