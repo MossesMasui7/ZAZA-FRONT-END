@@ -45,12 +45,15 @@ export class ProductoService {
     fecha: Date
   ) {
     return this.http
-      .put(`${this.URL_API}agregarComentario/${id}`, {
+      .put(`${this.URL_API}/producto/agregarComentario/${id}`, {
         _idUsuario,
         username,
         texto,
         fecha,
       })
       .toPromise();
+  }
+  obtenerComentarios(id: any){
+    return this.http.get(`${this.URL_API}/producto/obtenerComentarios/${id}`).toPromise();
   }
 }

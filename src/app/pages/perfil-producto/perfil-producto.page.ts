@@ -4,19 +4,22 @@ import { Router } from "@angular/router";
 import { AlertController } from "@ionic/angular";
 import { HttpClient } from "@angular/common/http";
 import { MyserviceService } from "../../services/myservice.service";
+import { PopoverController } from '@ionic/angular';
+
 @Component({
   selector: "app-perfil-producto",
   templateUrl: "./perfil-producto.page.html",
   styleUrls: ["./perfil-producto.page.scss"],
 })
 export class PerfilProductoPage implements OnInit {
-  public _id: String;
   public _idUsuario: String;
   public username: String;
   public texto: String;
-  public fecha: Date;
+  public fecha = new Date();
 
+  
   constructor(
+    public popoverCtrl: PopoverController,
     public producto: ProductoService,
     public router: Router,
     public alertController: AlertController,
@@ -24,6 +27,7 @@ export class PerfilProductoPage implements OnInit {
     private comenta: ProductoService,
     private cliente: MyserviceService
   ) {}
+  
   estrella1 = true;
   estrella2 = true;
   estrella3 = true;
@@ -36,7 +40,13 @@ export class PerfilProductoPage implements OnInit {
   cal5 = false;
   comment = false;
   comentario: String;
-  ngOnInit() {}
+  ngOnInit() {
+    this.comenta.obtenerComentarios(this.comenta.tiendas["_id"]).then((respuesta) =>{
+      console.log(respuesta);
+    }).catch((err) => {
+      console.log(err)
+    })
+  }
   Update() {
     this.router.navigateByUrl("actualizar-producto");
   }
@@ -163,7 +173,7 @@ export class PerfilProductoPage implements OnInit {
         this.cliente.usuario["username"],
         this.texto,
         this.fecha
-      )
+        )
       .then((respuesta) => {
         console.log(respuesta);
       })
@@ -173,5 +183,17 @@ export class PerfilProductoPage implements OnInit {
   }
   actualizar() {
     this.router.navigate(["/actualizar-producto"]);
+  }
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Alerta',
+      subHeader: 'recuerda respetar las normas de comentarios',
+      message: 'Tu comentario ha sido publicado.',
+      buttons: ['OK']
+    });
+
+    await alert.present();
+    this.agregarComentario();
   }
 }
