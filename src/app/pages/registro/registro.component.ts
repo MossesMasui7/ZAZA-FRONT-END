@@ -10,13 +10,6 @@ import { FormControl } from "@angular/forms";
   selector: "app-registro",
   templateUrl: "./registro.component.html",
   styleUrls: ["./registro.component.scss"],
-  styles: [
-    `
-      .ocupado {
-        border: 0.5px solid rgba(231, 12, 12, 0.685);
-      }
-    `,
-  ],
 })
 //.disponiblee { border:0.5px solid rgba(187, 255, 0, 0.685); }
 export class RegistroComponent implements OnInit {
@@ -32,8 +25,8 @@ export class RegistroComponent implements OnInit {
   captchaPassed: boolean = false;
   captchaResponse: string;
   Img: String = "../../../assets/iconos/user_add_21977.ico";
-  coinciden: boolean = false;
-  disponible: boolean = false;
+  coinciden: boolean = true;
+  disponible: boolean = true;
 
   constructor(
     private zone: NgZone,
@@ -81,28 +74,6 @@ export class RegistroComponent implements OnInit {
        console.log('Error', err);
    });
 }*/
-  imgSelect() {
-    const options: CameraOptions = {
-      quality: 50,
-      destinationType: this.camera.DestinationType.DATA_URL,
-      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
-      saveToPhotoAlbum: false,
-      allowEdit: true,
-      targetWidth: 300,
-      targetHeight: 300,
-    };
-
-    this.camera.getPicture(options).then(
-      (imageData) => {
-        // imageData is either a base64 encoded string or a file URI
-        // If it's base64 (DATA_URL):
-        this.Img = "data:image/jpeg;base64," + imageData;
-      },
-      (err) => {
-        // Handle error
-      }
-    );
-  }
 
   registrar(
     nombre: String,

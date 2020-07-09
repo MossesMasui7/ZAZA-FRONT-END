@@ -1,3 +1,4 @@
+import { SharedModule } from "./../../componentes/shared/shared.module";
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
@@ -15,6 +16,7 @@ import { ActualizarUsuarioPage } from "./actualizar-usuario.page";
     FormsModule,
     IonicModule,
     ActualizarUsuarioPageRoutingModule,
+    SharedModule,
   ],
   declarations: [ActualizarUsuarioPage],
 })

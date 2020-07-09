@@ -1,3 +1,4 @@
+import { SharedModule } from "./../../componentes/shared/shared.module";
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 
@@ -15,6 +16,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
     IonicModule,
     AgregarTiendaProductoPageRoutingModule,
     ReactiveFormsModule,
+    SharedModule,
   ],
   exports: [FormsModule, ReactiveFormsModule],
   declarations: [AgregarTiendaProductoPage],

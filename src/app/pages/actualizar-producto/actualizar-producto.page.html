@@ -1,32 +1,31 @@
 <ion-app>
-    <div class="ion-page" id="main-content">
-        <ion-header>
-            <ion-toolbar class="ion-hijo" color="tertiary">
-                <ion-buttons slot="start">
-                    <ion-menu-button></ion-menu-button>
-                </ion-buttons>
-                <ion-title>Actualizar producto </ion-title>
-            </ion-toolbar>
-        </ion-header>
-        <ion-content class="background">
-            <ion-grid>
-                <div>
-                    <ion-row class="img-div">
-                        <ion-label class="img-label">Seleccionar Foto</ion-label>
-                        <img (click)="imgSelect()" class="img-add" src="{{Img}}" alt="" />
+  <app-menu [titulo]="'Actualizar Producto'"></app-menu>
+  <ion-content class="background">
+    <ion-grid>
+      <div>
+        <ion-row class="img-div">
+          <ion-label class="img-label">Seleccionar Foto</ion-label>
+          <img (click)="imgSelect()" class="img-add" src="{{Img}}" alt="" />
+        </ion-row>
 
-                    </ion-row>
+        <ion-input
+          placeholder="{{this.actualizacion.tiendas['nombre']}}"
+          type="text"
+          [(ngModel)]="nombre"
+        >
+        </ion-input>
 
-                    <ion-input placeholder="{{this.actualizacion.tiendas['nombre']}}" type="text" [(ngModel)]="nombre">
-                    </ion-input>
+        <ion-input
+          placeholder="{{this.actualizacion.tiendas['descripcion']}}"
+          type="text"
+          [(ngModel)]="descripcion"
+        >
+        </ion-input>
 
-                    <ion-input placeholder="{{this.actualizacion.tiendas['descripcion']}}" type="text" [(ngModel)]="descripcion">
-                    </ion-input>
-
-
-                    <ion-button (click)="actualizar(descripcion,nombre)" expand="block">Guardar cambios</ion-button>
-                </div>
-            </ion-grid>
-        </ion-content>
-    </div>
+        <ion-button (click)="actualizar(descripcion,nombre)" expand="block"
+          >Guardar cambios</ion-button
+        >
+      </div>
+    </ion-grid>
+  </ion-content>
 </ion-app>

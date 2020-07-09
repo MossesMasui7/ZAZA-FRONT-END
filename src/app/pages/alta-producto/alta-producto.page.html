@@ -1,73 +1,98 @@
-<ion-header>
-    <ion-toolbar>
-        <ion-buttons slot="start">
-            <ion-back-button></ion-back-button>
-        </ion-buttons>
-        <ion-title class="ion-text-center">Agregar Producto</ion-title>
-    </ion-toolbar>
-</ion-header>
-<ion-content class="background" [fullscreen]="true">
-    <!-- <legend class="titulo">Agregar Producto</legend><br> -->
-    <!-- <ion-row>
-        <ion-col col-12>
-            <ion-item>
-                <ion-input [ngClass]="{disponiblee: this.disponible == true, ocupado: this.disponible == false}" [formControl]="cdb" type="text" placeholder="Codigo de barra"></ion-input>
-            </ion-item>
-        </ion-col>
-    </ion-row> -->
+<ion-app>
+  <app-menu [titulo]="'Actualizar Perfil'"></app-menu>
 
+  <ion-content (swipe)="swipe()">
     <ion-grid>
-        <ion-row class="img-div">
-            <img (click)="imgSelect()" class="img-add" alt="" />
-        </ion-row>
-        <ion-row>
-            <ion-col col-12>
-                <ion-label class="comentarios">Codigo de Barras ejemplo:1234567890</ion-label>
-                <ion-item>
-                    <ion-input type="text" [ngClass]="{disponiblee: this.disponible == true, ocupado: this.disponible == false}" placeholder="" [formControl]="cdb"></ion-input>
-                    <ion-button class="botonScan" (click)="escanear()" fill="clear">
-                        <img src="../../../assets//iconos/price-scan-scanner-bar-barcode-code_108573.ico" alt="" />
-                    </ion-button>
-                </ion-item>
-            </ion-col>
-        </ion-row>
-        <ion-row>
-            <ion-col col-12>
-                <ion-label class="comentarios">Marca: (Ejemplo: Dolores, Samsung, Bimbo...)</ion-label>
-                <ion-item>
-                    <ion-input type="text" [(ngModel)]="marca" placeholder=""></ion-input>
-                </ion-item>
-            </ion-col>
+      <ion-row class="img-div">
+        <img (click)="imgSelect()" src="{{this.img}}" class="img-add" alt="" />
+      </ion-row>
+      <ion-row>
+        <ion-col col-12>
+          <ion-label class="comentarios"
+            >Codigo de Barras ejemplo:1234567890</ion-label
+          >
+          <ion-item>
+            <ion-input
+              type="text"
+              [ngClass]="{disponiblee: this.disponible == true, ocupado: this.disponible == false}"
+              placeholder=""
+              [formControl]="cdb"
+            ></ion-input>
+            <ion-button class="botonScan" (click)="escanear()" fill="clear">
+              <img
+                src="../../../assets//iconos/price-scan-scanner-bar-barcode-code_108573.ico"
+                alt=""
+              />
+            </ion-button>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-12>
+          <ion-label class="comentarios"
+            >Marca: (Ejemplo: Dolores, Samsung, Bimbo...)</ion-label
+          >
+          <ion-item>
+            <ion-input
+              type="text"
+              [(ngModel)]="marca"
+              placeholder=""
+            ></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-12>
+          <ion-label class="comentarios">Artículo ejemplo:coca-cola</ion-label>
+          <ion-item>
+            <ion-input
+              type="text"
+              [(ngModel)]="nombre"
+              placeholder=""
+            ></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-12>
+          <ion-label class="comentarios"
+            >Descripción: (Ejemplo: Regular)</ion-label
+          >
+          <ion-item>
+            <ion-input
+              type="text"
+              [(ngModel)]="descripcion"
+              placeholder=""
+            ></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-12>
+          <ion-label class="comentarios">
+            Alias: (Ejemplo: Plátano, Banana, Banano)</ion-label
+          >
+          <ion-item>
+            <ion-input
+              type="text"
+              [(ngModel)]="alias"
+              placeholder=""
+            ></ion-input> </ion-item
+          ><br />
+        </ion-col>
+      </ion-row>
 
-        </ion-row>
-        <ion-row>
-            <ion-col col-12>
-                <ion-label class="comentarios">Artículo ejemplo:coca-cola</ion-label>
-                <ion-item>
-                    <ion-input type="text" [(ngModel)]="nombre" placeholder=""></ion-input>
-                </ion-item>
-            </ion-col>
-        </ion-row>
-        <ion-row>
-            <ion-col col-12>
-                <ion-label class="comentarios">Descripción: (Ejemplo: Regular)</ion-label>
-                <ion-item>
-                    <ion-input type="text" [(ngModel)]="descripcion" placeholder=""></ion-input>
-                </ion-item>
-            </ion-col>
-        </ion-row>
-        <ion-row>
-            <ion-col col-12>
-                <ion-label class="comentarios"> Alias: (Ejemplo: Plátano, Banana, Banano)</ion-label>
-                <ion-item>
-                    <ion-input type="text" [(ngModel)]="alias" placeholder=""></ion-input>
-                </ion-item><br>
-            </ion-col>
-        </ion-row>
+      <ion-button
+        class="boton"
+        disabled="{{!this.disponible}}"
+        color="success"
+        (click)="subir()"
+        >Guardar</ion-button
+      >
 
-
-        <ion-button class="boton" disabled="{{!this.disponible}}" color="success" (click)="subir()">Guardar</ion-button>
-
-        <ion-button class="boton2" color="danger" href="/home">Descartar</ion-button>
+      <ion-button class="boton2" color="danger" href="/home"
+        >Descartar</ion-button
+      >
     </ion-grid>
-</ion-content>
+  </ion-content>
+</ion-app>

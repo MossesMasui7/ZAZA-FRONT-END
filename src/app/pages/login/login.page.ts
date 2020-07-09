@@ -2,6 +2,7 @@ import { Component, OnInit, NgZone } from "@angular/core";
 import { AlertController } from "@ionic/angular";
 import { MyserviceService } from "../../services/myservice.service";
 import { Router } from "@angular/router";
+import { RegistroService } from "src/app/services/usuario.service";
 
 @Component({
   selector: "app-login",
@@ -17,8 +18,21 @@ export class LoginPage {
   constructor(
     private alertController: AlertController,
     public myserviceService: MyserviceService,
-    private router: Router
+    private router: Router,
+    public usuario: RegistroService
   ) {}
+
+  ionViewWillEnter() {
+    if (localStorage.getItem("usuario")) {
+      this.myserviceService.usuario = JSON.parse(
+        localStorage.getItem("usuario")
+      );
+      this.usuario.actualizarUsuario().then((data) => {
+        this.myserviceService.usuario = data["resp"];
+      });
+      this.router.navigate(["/home"]);
+    }
+  }
 
   registrar() {
     this.router.navigate(["/registro"]);

@@ -21,6 +21,8 @@ export class TiendasCercanasComponent implements OnInit {
 
   ngOnInit() {
     this.producto.tiendas["tiendas"].forEach((element) => {
+      console.log(element);
+
       let tienda = {};
       if (element["alcance"] != false) {
         tienda["nombre"] = element["negocio"]["nombre"];

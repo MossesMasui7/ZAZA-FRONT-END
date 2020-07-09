@@ -1,6 +1,6 @@
 import { Component, OnInit, NgZone } from "@angular/core";
 import { ProductoService } from "../../services/producto.service";
-import { AlertController } from "@ionic/angular";
+import { AlertController, NavController } from "@ionic/angular";
 import { Camera, CameraOptions } from "@ionic-native/camera/ngx";
 import { debounceTime } from "rxjs/operators";
 import { FormControl } from "@angular/forms";
@@ -26,8 +26,7 @@ export class AltaProductoPage implements OnInit {
   alias: string;
   nombre: string;
 
-
-  img: String = "../../../assets/iconos/userico";
+  public img: String = "../../../assets/iconos/userico";
   coinciden: boolean = false;
   disponible: boolean = false;
 
@@ -37,7 +36,8 @@ export class AltaProductoPage implements OnInit {
     private alertController: AlertController,
     private router: Router,
     private zone: NgZone,
-    private barcodeScanner: BarcodeScanner
+    private barcodeScanner: BarcodeScanner,
+    public navCtrl: NavController
   ) {}
 
   ngOnInit() {
@@ -66,10 +66,13 @@ export class AltaProductoPage implements OnInit {
 
   imgSelect() {
     const options: CameraOptions = {
-      quality: 100,
+      quality: 50,
       destinationType: this.camera.DestinationType.DATA_URL,
       sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
       saveToPhotoAlbum: false,
+      allowEdit: true,
+      targetWidth: 300,
+      targetHeight: 300,
     };
 
     this.camera.getPicture(options).then(
@@ -87,13 +90,16 @@ export class AltaProductoPage implements OnInit {
   subir() {
     let pro = {
       cdb: this.cdb.value,
-      descripcion: this.descripcion, 
-      nombre: this.nombre,
-      marca: this.marca,
-      alias: this.alias,
+      descripcion: `${this.nombre.toLowerCase()} ${this.marca.toLowerCase()} ${this.descripcion.toLowerCase()} (${this.alias.toLowerCase()}) `,
+      nombre: this.nombre.toLowerCase(),
       img: this.img,
     };
-    if (this.cdb.value == null || this.descripcion == null || this.nombre == null || this.marca == null) {
+    if (
+      this.cdb.value == null ||
+      this.descripcion == null ||
+      this.nombre == null ||
+      this.marca == null
+    ) {
       this.presentAlert("Faltan campos", "Alerta");
     } else {
       this.productoService
@@ -117,5 +123,8 @@ export class AltaProductoPage implements OnInit {
     });
 
     await alert.present();
+  }
+  swipe() {
+    this.navCtrl.pop();
   }
 }

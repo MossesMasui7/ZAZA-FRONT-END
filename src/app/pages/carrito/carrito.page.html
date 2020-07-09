@@ -1,16 +1,5 @@
 <div class="ion-page" id="main-content">
-  <ion-header>
-    <ion-toolbar class="ion-hijo" color="tertiary">
-      <ion-buttons slot="start">
-        <ion-menu-button></ion-menu-button>
-      </ion-buttons>
-      <ion-title>Lista de compras </ion-title>
-      <div class="cart">
-        <ion-icon slot="end" name="cart"></ion-icon>
-        <!-- <ion-label>{{this.usuario.usuario['carrito'].length}}</ion-label> -->
-      </div>
-    </ion-toolbar>
-  </ion-header>
+  <app-menu [titulo]="'Carrito'"></app-menu>
   <ion-content>
     <div *ngIf="mostrarVacio">
       <ion-item color="warning" class="planet">
@@ -50,7 +39,7 @@
         <ion-card-content class="cardImg">
           <img
             class="imgProducto"
-            src="https://i.ya-webdesign.com/images/no-image-png-1.png"
+            src="https://zaza-app.herokuapp.com/api/imagen/producto/{{carrito['producto']['img']}}"
             alt=""
           />
         </ion-card-content>

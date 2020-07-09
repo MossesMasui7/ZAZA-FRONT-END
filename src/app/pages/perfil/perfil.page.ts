@@ -1,45 +1,53 @@
-import { Component, OnInit,NgZone } from '@angular/core';
-import { RegistroService } from '../../services/usuario.service';
-import { AlertController } from '@ionic/angular';
-import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { MyserviceService } from "./../../services/myservice.service";
+import { Router } from "@angular/router";
+import { Component, OnInit, NgZone } from "@angular/core";
+import { RegistroService } from "../../services/usuario.service";
+import { AlertController } from "@ionic/angular";
+import { Camera, CameraOptions } from "@ionic-native/camera/ngx";
 
 @Component({
-  selector: 'app-perfil',
-  templateUrl: './perfil.page.html',
-  styleUrls: ['./perfil.page.scss'],
+  selector: "app-perfil",
+  templateUrl: "./perfil.page.html",
+  styleUrls: ["./perfil.page.scss"],
 })
 export class PerfilPage implements OnInit {
- img: string= "";
- insignia: string;
- nivel: string;
- puntos: string;
- seguidores: string;
- seguidos: string;
+  img: string = "";
+  insignia: string;
+  nivel: string;
+  puntos: string;
+  seguidores: string;
+  seguidos: string;
 
-  constructor(private zone: NgZone,private registroService:RegistroService,
-    private alertController :AlertController,private camera:Camera ) { }
+  constructor(
+    private zone: NgZone,
+    private registroService: RegistroService,
+    private alertController: AlertController,
+    private camera: Camera,
+    public router: Router,
+    public myserviceService: MyserviceService,
+    public usuario: RegistroService
+  ) {}
+  ngOnInit(): void {}
 
-  ngOnInit() {
-    
-  }
-
-  imgSelect(){
+  imgSelect() {
     const options: CameraOptions = {
       quality: 100,
       destinationType: this.camera.DestinationType.DATA_URL,
       sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
-      saveToPhotoAlbum:false
-    }
-    
-    this.camera.getPicture(options).then((imageData) => {
-     // imageData is either a base64 encoded string or a file URI
-     // If it's base64 (DATA_URL):
-     this.img = 'data:image/jpeg;base64,' + imageData;
-    }, (err) => {
-     // Handle error
-    });
-  }
+      saveToPhotoAlbum: false,
+    };
 
+    this.camera.getPicture(options).then(
+      (imageData) => {
+        // imageData is either a base64 encoded string or a file URI
+        // If it's base64 (DATA_URL):
+        this.img = "data:image/jpeg;base64," + imageData;
+      },
+      (err) => {
+        // Handle error
+      }
+    );
+  }
 
   // imgSelect(){
   //   let pro ={
@@ -50,14 +58,13 @@ export class PerfilPage implements OnInit {
   //   })
   // }
 
-  async presentAlert(mensaje:any,heade:any) {
+  async presentAlert(mensaje: any, heade: any) {
     const alert = await this.alertController.create({
       header: heade,
       message: mensaje,
-      buttons: ['OK']
+      buttons: ["OK"],
     });
-  
+
     await alert.present();
   }
-
 }

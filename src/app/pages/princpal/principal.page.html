@@ -1,32 +1,24 @@
 <ion-app>
-  <app-menu></app-menu>
-
-  <div class="ion-page" id="main-content">
-    <ion-header>
-      <ion-toolbar class="ion-hijo" color="tertiary">
-        <ion-buttons slot="start">
-          <ion-menu-button></ion-menu-button>
-        </ion-buttons>
-        <ion-title>Lista de compras </ion-title>
-        <div class="cart">
-          <ion-icon (click)="cart()" slot="end" name="cart"></ion-icon>
-          <ion-label>{{this.usuario.usuario['carrito'].length}}</ion-label>
-        </div>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content class="background">
-      <app-buscador></app-buscador>
-
-      <h1>Botones prueba</h1>
-
-      <ion-button
-        (click)="actualizarUsuario()"
-        expand="block"
-        fill="clear"
-        shape="round"
-      >
-        Actualizar Perfil
-      </ion-button>
-    </ion-content>
-  </div>
+  <app-menu [titulo]="'Inicio'"></app-menu>
+  <ion-content>
+    <app-buscador></app-buscador>
+    <br /><br /><br />
+    <ion-slides
+      [options]="slideOptions"
+      pager="true"
+      #slider
+      (ionSlidesDidLoad)="slidesDidLoad(slider)"
+    >
+      <ion-slide *ngFor="let imgs of data">
+        <img [src]="imgs" />
+      </ion-slide>
+    </ion-slides>
+    <br /><br />
+    <legend class="ion-text-center">Marcas Asociadas</legend>
+    <img
+      src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSShBKuXi48pbx5cHR2EWX0e5Bn6memoii7jw&usqp=CAU"
+      alt=""
+      width="100%"
+    />
+  </ion-content>
 </ion-app>

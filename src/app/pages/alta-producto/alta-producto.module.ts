@@ -1,3 +1,4 @@
+import { SharedModule } from "./../../componentes/shared/shared.module";
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { IonicModule } from "@ionic/angular";
@@ -14,6 +15,7 @@ import { AltaProductoPage } from "./alta-producto.page";
     ReactiveFormsModule,
     IonicModule,
     AltaProductoPageRoutingModule,
+    SharedModule,
   ],
   declarations: [AltaProductoPage],
 })
