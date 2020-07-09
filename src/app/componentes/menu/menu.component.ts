@@ -1,5 +1,7 @@
+import { MyserviceService } from "src/app/services/myservice.service";
+import { RegistroService } from "./../../services/usuario.service";
 import { Router } from "@angular/router";
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 
 @Component({
   selector: "app-menu",
@@ -7,14 +9,60 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./menu.component.scss"],
 })
 export class MenuComponent implements OnInit {
-  constructor(private router: Router) {}
+  @Input() titulo: String;
+  constructor(
+    private router: Router,
+    public usuario2: RegistroService,
+    public usuario: MyserviceService
+  ) {}
 
-  ngOnInit() {}
+  public sideBar: any[] = [
+    {
+      titulo: "Inicio",
+      icono: "home",
+      ruta: "home",
+      color: "",
+    },
+    {
+      titulo: "Alta Producto",
+      icono: "add",
+      ruta: "alta-producto",
+      color: "",
+    },
+    {
+      titulo: "Alta Negocio",
+      icono: "add",
+      ruta: "registrar-negocio",
+      color: "",
+    },
+    {
+      titulo: "Comparador Productos",
+      icono: "cash",
+      ruta: "registrar-negocio",
+      color: "",
+    },
+    {
+      titulo: "Cerrar Sesión",
+      icono: "log-out",
+      ruta: "login",
+      color: "danger",
+    },
+  ];
 
-  principal() {
-    this.router.navigate(["./home"]);
+  ngOnInit() {
+    if (!this.usuario.usuario) {
+      location.href = "/";
+    }
   }
-  alta() {
-    this.router.navigate(["./alta-producto"]);
+
+  cart() {
+    this.router.navigate(["/carrito"]);
+  }
+  navegar(ruta: String) {
+    if (ruta == "login") {
+      localStorage.removeItem("usuario");
+    }
+
+    this.router.navigate([`./${ruta}`]);
   }
 }

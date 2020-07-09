@@ -1,3 +1,4 @@
+import { SharedModule } from "./componentes/shared/shared.module";
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { RouteReuseStrategy } from "@angular/router";
@@ -28,10 +29,22 @@ import { MapaComponent } from "./componentes/mapa/mapa.component";
 
 import { NegocioService } from "./services/negocio.service";
 
-
+import { RouterModule } from "@angular/router";
+import {
+  HammerGestureConfig,
+  HAMMER_GESTURE_CONFIG,
+} from "@angular/platform-browser";
+import * as Hammer from "hammerjs";
+export class CustomHammerConfig extends HammerGestureConfig {
+  overrides = {
+    pan: {
+      direction: Hammer.DIRECTION_ALL,
+    },
+    swipe: { direction: Hammer.DIRECTION_RIGHT },
+  };
+}
 @NgModule({
   declarations: [
-    
     AppComponent,
     RegistroComponent,
     LoginPage,
@@ -50,11 +63,14 @@ import { NegocioService } from "./services/negocio.service";
     FormsModule,
     ReactiveFormsModule,
     RecaptchaModule.forRoot(),
+    RouterModule,
+    SharedModule,
   ],
   providers: [
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    { provide: HAMMER_GESTURE_CONFIG, useClass: CustomHammerConfig },
     Camera,
     BarcodeScanner,
     Geolocation,

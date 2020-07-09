@@ -1,35 +1,25 @@
 <ion-app>
-  <!-- <app-menu></app-menu> -->
+  <app-menu [titulo]="'Actualizar Perfil'"></app-menu>
 
-  <div class="ion-page" id="main-content">
-    <ion-header>
-      <ion-toolbar class="ion-hijo" color="tertiary">
-        <ion-buttons slot="start">
-          <ion-menu-button></ion-menu-button>
-        </ion-buttons>
-        <ion-title>Actualizar Usuario </ion-title>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content class="background">
-      <ion-grid>
-        <div>
-          <ion-input placeholder="Nombre" type="text" [(ngModel)]="nombre">
-          </ion-input>
+  <ion-content>
+    <ion-grid>
+      <div>
+        <ion-input placeholder="Nombre" type="text" [(ngModel)]="nombre">
+        </ion-input>
 
-          <ion-input placeholder="Telefono" type="text" [(ngModel)]="telefono">
-          </ion-input>
-          <ion-button (click)="imgSelect()" expand="block"
-            >Actualizar imagen</ion-button
-          >
-          <ion-button (click)="actualizarPass()" expand="block"
-            >Actualizar Contraseña</ion-button
-          >
+        <ion-input placeholder="Telefono" type="text" [(ngModel)]="telefono">
+        </ion-input>
+        <ion-button (click)="imgSelect()" expand="block"
+          >Actualizar imagen</ion-button
+        >
+        <ion-button (click)="actualizarPass()" expand="block"
+          >Actualizar Contraseña</ion-button
+        >
 
-          <ion-button (click)="actualizacion()" expand="block"
-            >Guardar cambios</ion-button
-          >
-        </div>
-      </ion-grid>
-    </ion-content>
-  </div>
+        <ion-button (click)="actualizacion()" expand="block"
+          >Guardar cambios</ion-button
+        >
+      </div>
+    </ion-grid>
+  </ion-content>
 </ion-app>

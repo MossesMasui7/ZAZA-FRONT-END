@@ -59,6 +59,9 @@ export class BuscadorComponent implements OnInit {
       .then((barcodeData) => {
         this.search = barcodeData.text;
         this.obtenerProducto(this.search);
+        if (this.resultado == true) {
+          this.router.navigate(["./alta-producto"]);
+        }
       })
       .catch((err) => {
         console.log("Error", err);
@@ -239,7 +242,7 @@ export class BuscadorComponent implements OnInit {
         });
     } else {
       this.producto
-        .obtener(texto)
+        .obtener(texto.toLowerCase())
         .then((prod) => {
           if (prod["resp"].length > 1) {
             this.producto.productos = prod["resp"];

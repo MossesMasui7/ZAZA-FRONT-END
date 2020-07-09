@@ -1,23 +1,23 @@
-<ion-menu side="start" content-id="main-content">
+<ion-menu side="start" content-id="main">
   <ion-header>
-    <ion-toolbar translucent color="dark"> </ion-toolbar>
+    <ion-toolbar translucent color="primary">
+      <ion-title>Hola {{ this.usuario.usuario["nombre"] }}</ion-title>
+    </ion-toolbar>
   </ion-header>
   <ion-content>
     <ion-list>
-      <ion-item color="medium">
-        <ion-icon name="home-sharp" slot="start"></ion-icon>
-        <ion-label (click)="principal()">Inicio</ion-label>
+      <ion-item (click)="navegar('actualizar-usuario')">
+        <ion-avatar slot="start">
+          <img
+            src="https://concepto.de/wp-content/uploads/2018/08/persona-e1533759204552.jpg"
+          />
+        </ion-avatar>
+        <ion-label>Perfil</ion-label>
       </ion-item>
-      <ion-item-sliding>
-        <ion-item-options side="start">
-          <ion-item-option>
-            <ion-icon color="green"></ion-icon>
-          </ion-item-option>
-        </ion-item-options>
-
-        <ion-item>
-          <ion-icon name="add-circle-outline" slot="start"></ion-icon>
-          <ion-label (click)="alta()">Alta Producto</ion-label>
+      <ion-item-sliding autoHide="true" *ngFor="let menu of sideBar">
+        <ion-item color="{{ menu['color'] }}" (click)="navegar(menu['ruta'])">
+          <ion-icon name="{{ menu['icono'] }}" slot="start"></ion-icon>
+          <ion-label>{{ menu["titulo"] }}</ion-label>
         </ion-item>
         <ion-item-options side="end">
           <ion-item-option>
@@ -25,24 +25,19 @@
           </ion-item-option>
         </ion-item-options>
       </ion-item-sliding>
-
-      <ion-item>
-        <ion-icon name="person-circle-outline" slot="start"></ion-icon>
-        <ion-label>Perfil</ion-label>
-      </ion-item>
-
-      <ion-item-sliding>
-        <ion-item-options side="start">
-          <ion-item-option color="danger">
-            <ion-icon slot="bottom" name="log-out-outline"></ion-icon>
-          </ion-item-option>
-        </ion-item-options>
-
-        <ion-item>
-          <ion-icon name="log-out-outline" slot="start"></ion-icon>
-          <ion-label>Cerrar Sesion</ion-label>
-        </ion-item>
-      </ion-item-sliding>
     </ion-list>
   </ion-content>
 </ion-menu>
+
+<ion-header id="main">
+  <ion-toolbar class="ion-hijo" color="tertiary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">{{ titulo }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-icon (click)="cart()" slot="end" name="cart"></ion-icon>
+      <ion-label>{{ this.usuario.usuario["carrito"].length }}</ion-label>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>

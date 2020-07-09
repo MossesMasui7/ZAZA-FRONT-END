@@ -1,51 +1,88 @@
-  <ion-header [translucent]="true">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
-  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <ion-toolbar color="tertiary">
-    <ion-title class="ion-text-center" >
-      Registra Tu Negocio
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
+<app-menu [titulo]="'Alta Negocio'"></app-menu>
+<link
+  rel="stylesheet"
+  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+  integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+  crossorigin="anonymous"
+/>
+<script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+<meta
+  name="viewport"
+  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+/>
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+/>
 <ion-content [fullscreen]="true">
   <form>
     <div class="form-group">
       <label for="exampleInputEmail1">Nombre del Negocio</label>
-      <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="Ejemplo: Abarrotes La Esperanza" [(ngModel)]="dataS.nombre" [ngModelOptions]="{standalone: true}">
+      <input
+        type="email"
+        class="form-control"
+        aria-describedby="emailHelp"
+        placeholder="Ejemplo: Abarrotes La Esperanza"
+        [(ngModel)]="dataS.nombre"
+        [ngModelOptions]="{standalone: true}"
+      />
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1">Direccion / Ubicacion</label>
-      <input type="text" class="form-control" placeholder="Ejemplo: Carlos Corral Chavero, #214, J. Guadulpe Peralta" [(ngModel)]="dataS.direccion" [ngModelOptions]="{standalone: true}">
-      <small id="emailHelp" class="form-text text-muted">Maximo 60 caracteres.</small>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Ejemplo: Carlos Corral Chavero, #214, J. Guadulpe Peralta"
+        [(ngModel)]="dataS.direccion"
+        [ngModelOptions]="{standalone: true}"
+      />
+      <small id="emailHelp" class="form-text text-muted"
+        >Maximo 60 caracteres.</small
+      >
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1">Contacto</label>
-      <input type="number" class="form-control" placeholder="Ejemplo: 4491121998" [(ngModel)]="dataS.calificacion" [ngModelOptions]="{standalone: true}">
-      <small id="emailHelp" class="form-text text-muted">Numero de telefono a 10 caracteres</small>
+      <input
+        type="number"
+        class="form-control"
+        placeholder="Ejemplo: 4491121998"
+        [(ngModel)]="dataS.calificacion"
+        [ngModelOptions]="{standalone: true}"
+      />
+      <small id="emailHelp" class="form-text text-muted"
+        >Numero de telefono a 10 caracteres</small
+      >
     </div>
-    
+
     <ion-list>
       <ion-list-header>
         <ion-label>
           Selecciona Maximo 4 categorias
         </ion-label>
       </ion-list-header>
-    
+
       <ion-item>
         <ion-label>Categorias</ion-label>
-        <ion-select multiple="true" cancelText="Nah" okText="Okay!"[(ngModel)]="dataS.categorias" [ngModelOptions]="{standalone: true}">
-          <ion-select-option *ngFor="let categoria of categorias">{{categoria.nombre}}</ion-select-option>
+        <ion-select
+          multiple="true"
+          cancelText="Nah"
+          okText="Okay!"
+          [(ngModel)]="dataS.categorias"
+          [ngModelOptions]="{standalone: true}"
+        >
+          <ion-select-option *ngFor="let categoria of categorias"
+            >{{categoria.nombre}}</ion-select-option
+          >
         </ion-select>
       </ion-item>
     </ion-list>
 
-    
-    <button type="button" class="btn btn-primary btn-lg btn-block" (click)="presentAlertPrompt()">Registrar</button>
+    <button
+      type="button"
+      class="btn btn-primary btn-lg btn-block"
+      (click)="presentAlertPrompt()"
+    >
+      Registrar
+    </button>
   </form>
-
-  
-
 </ion-content>
