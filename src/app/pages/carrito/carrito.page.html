@@ -1,50 +1,30 @@
 <div class="ion-page" id="main-content">
-  <app-menu [titulo]="'Carrito'"></app-menu>
-  <ion-content>
-    <div *ngIf="mostrarVacio">
-      <ion-item color="warning" class="planet">
-        <ion-label style="text-align: center;">
-          Tu Carrito Esta Vacio
-        </ion-label>
-        <ion-icon name="cart"></ion-icon>
-      </ion-item>
-    </div>
-    <div *ngIf="mostrarCarrito">
-      <ion-card
-        class="card"
-        *ngFor="let carrito of this.usuario.usuario['carrito']"
-      >
-        <ion-card-header class="ion-text-right infProducto">
-          <ion-card-title
-            >{{carrito['producto']['descripcion']}}</ion-card-title
-          >
-          <ion-card-subtitle
-            >Cantidad:{{carrito['cantidad']}}</ion-card-subtitle
-          >
-          <ion-card-subtitle
-            >Precio:${{carrito['precio']}}.00</ion-card-subtitle
-          >
-          <ion-card-subtitle
-            >{{carrito['negocio']['nombre']}}</ion-card-subtitle
-          >
-          <ion-button
-            (click)="eliminar(carrito['_id'])"
-            expand="block"
-            color="danger"
-            class="btnEliminar"
-          >
-            Eliminar
-          </ion-button>
-        </ion-card-header>
-        <ion-card-content class="cardImg">
-          <img
-            class="imgProducto"
-            src="https://zaza-app.herokuapp.com/api/imagen/producto/{{carrito['producto']['img']}}"
-            alt=""
-          />
-        </ion-card-content>
-      </ion-card>
-      <ion-button class="comparador" color="primary">Comparador</ion-button>
-    </div>
-  </ion-content>
+    <app-menu [titulo]="'Carrito'"></app-menu>
+    <ion-content>
+        <div *ngIf="mostrarVacio">
+            <ion-item color="warning" class="planet">
+                <ion-label style="text-align: center;">
+                    Tu Carrito Esta Vacio
+                </ion-label>
+                <ion-icon name="cart"></ion-icon>
+            </ion-item>
+        </div>
+        <div *ngIf="mostrarCarrito">
+            <ion-card class="card" *ngFor="let carrito of this.usuario.usuario['carrito']">
+                <ion-card-header class="ion-text-right infProducto">
+                    <ion-card-title>{{carrito['producto']['descripcion']}}</ion-card-title>
+                    <ion-card-subtitle>Cantidad:{{carrito['cantidad']}}</ion-card-subtitle>
+                    <ion-card-subtitle>Precio:${{carrito['precio']}}.00</ion-card-subtitle>
+                    <ion-card-subtitle>{{carrito['negocio']['nombre']}}</ion-card-subtitle>
+                    <ion-button (click)="eliminar(carrito['_id'])" expand="block" color="danger" class="btnEliminar">
+                        Eliminar
+                    </ion-button>
+                </ion-card-header>
+                <ion-card-content class="cardImg">
+                    <img class="imgProducto" src="https://zaza-app.herokuapp.com/api/imagen/producto/{{carrito['producto']['img']}}" alt="" />
+                </ion-card-content>
+            </ion-card>
+            <ion-button (click)="comparadortienda()" class="comparador" color="primary">Comparador</ion-button>
+        </div>
+    </ion-content>
 </div>

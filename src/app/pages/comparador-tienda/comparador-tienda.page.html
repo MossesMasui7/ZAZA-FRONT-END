@@ -1,0 +1,53 @@
+<ion-header>
+
+</ion-header>
+
+<ion-content>
+    <ion-grid>
+
+        <ion-label class="cuadro">
+            <ion-row>
+                <ion-col>
+                    <ion-label class="nombre">
+                        PRODUCTO
+                    </ion-label>
+
+                </ion-col>
+
+                <ion-col class="tamaño">
+                    <ion-item>
+                        <ion-label>Negocio</ion-label>
+                        <ion-select [ngModelOptions]="{standalone: true}" value="Seleccione" multiple="false" placeholder="Seleccione" [(ngModel)]="idNegocio">
+                            <ion-select-option *ngFor="let negocio of negociosCercanos" value="{{negocio['_id']}}">{{negocio['nombre']}}</ion-select-option>
+                        </ion-select>
+                    </ion-item>
+                </ion-col>
+                <ion-col class="tamaño2">
+                    <ion-item>
+                        <ion-label>Negocio</ion-label>
+                        <ion-select [ngModelOptions]="{standalone: true}" value="Seleccione" multiple="false" placeholder="Seleccione" [(ngModel)]="idNegocio2">
+                            <ion-select-option *ngFor="let negocio of negociosCercanos" value="{{negocio['_id']}}">{{negocio['nombre']}}</ion-select-option>
+                        </ion-select>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+
+        </ion-label>
+        <div *ngIf="mostrarCarrito" class="lista">
+            <ion-card class="card" *ngFor="let carrito of this.usuario.usuario['carrito']">
+                <ion-card-header class="ion-text-right infProducto">
+                    <ion-label>{{carrito['producto']['descripcion']}}</ion-label>
+
+                    <ion-button (click)="eliminar(carrito['_id'])" expand="block" color="danger" class="btnEliminar">
+                        Eliminar
+                    </ion-button>
+                </ion-card-header>
+
+            </ion-card>
+
+        </div>
+
+
+
+    </ion-grid>
+</ion-content>
