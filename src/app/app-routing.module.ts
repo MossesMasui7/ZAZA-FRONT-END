@@ -106,6 +106,16 @@ const routes: Routes = [
     loadChildren: () =>
       import("./pages/carrito/carrito.module").then((m) => m.CarritoPageModule),
   },
+  {
+    path: "comparador-tienda",
+    loadChildren: () =>
+      import("./pages/comparador-tienda/comparador-tienda.module").then((m) => m.ComparadorTiendaPageModule),
+  },
+  {
+    path: 'carrusel-departamentos',
+    loadChildren: () => import('./pages/carrusel-departamentos/carrusel-departamentos.module').then( m => m.CarruselDepartamentosPageModule)
+  },
+
 ];
 
 @NgModule({

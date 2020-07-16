@@ -1,6 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { RegistroService } from "../../services/usuario.service";
 import { MyserviceService } from "../../services/myservice.service";
+import { Router } from '@angular/router';
+
+
 @Component({
   selector: "app-carrito",
   templateUrl: "./carrito.page.html",
@@ -13,7 +16,8 @@ export class CarritoPage implements OnInit {
   public data;
   constructor(
     private usuarioService: RegistroService,
-    private usuario: MyserviceService
+    private usuario: MyserviceService,public router: Router
+
   ) {}
 
   ngOnInit() {
@@ -29,5 +33,9 @@ export class CarritoPage implements OnInit {
     this.usuarioService.eliminarCarrito(id).then((data) => {
       this.usuario.usuario = data["cont"];
     });
+  }
+  comparadortienda(){
+    this.router.navigate(["./comparador-tienda"]);
+
   }
 }
