@@ -1,0 +1,44 @@
+.cuadro {
+    position: absolute;
+    width: 100%;
+    height: 78px;
+    left: 0px;
+    top: -0.7px;
+    background: #C1876A;
+}
+
+.nombre {
+    position: absolute;
+    width: 360px;
+    height: 43.43px;
+    left: 30%;
+    top: 200%;
+    font-family: Oxygen;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 20px;
+    /* or 83% */
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.departamentos {
+    position: absolute;
+    width: 127px;
+    height: 20px;
+    right: 50%;
+    top: 226.89px;
+    font-family: Ovo;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 20px;
+    /* identical to box height, or 111% */
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #898989;
+}
