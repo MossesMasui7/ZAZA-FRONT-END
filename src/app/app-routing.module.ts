@@ -115,6 +115,11 @@ const routes: Routes = [
     path: 'carrusel-departamentos',
     loadChildren: () => import('./pages/carrusel-departamentos/carrusel-departamentos.module').then( m => m.CarruselDepartamentosPageModule)
   },
+  {
+    path: 'comparador',
+    loadChildren: () => import('./pages/comparador/comparador.module').then( m => m.ComparadorPageModule)
+  },
+
 
 ];
 
