@@ -1,0 +1,111 @@
+.muestra {
+    height: 35%;
+}
+
+.seleccionar {
+    position: absolute;
+    width: 95%;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.otro {
+    width: 100%;
+    align-content: center;
+}
+
+.compararOtro {
+    position: absolute;
+    width: 99%;
+}
+
+#precio {
+    width: 50px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 15%;
+    top: 60%;
+}
+
+.nombre {
+    position: absolute;
+    top: 7%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.descripcion {
+    position: absolute;
+    top: 16%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.rating {
+    position: absolute;
+    top: 26%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.contenido {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 46%;
+}
+
+.precio {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 10%;
+    top: 46%;
+}
+
+.precioGramo {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    right: 3%;
+    top: 44%;
+}
+
+.gramos {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 60%;
+}
+
+.gramosPrecio {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    right: 20%;
+    top: 60%;
+}
+
+.imagen {
+    width: 60px;
+    height: 60px;
+    border: 1px solid white;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.nombre {
+    position: absolute;
+    width: 267.53px;
+    height: 40px;
+    left: 100px;
+    top: 60px;
+    font-family: Ovo;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+}

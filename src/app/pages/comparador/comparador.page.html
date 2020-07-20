@@ -1,0 +1,21 @@
+<ion-header>
+</ion-header>
+
+<div *ngIf="mostrarCarrito" class="lista">
+    <ion-card class="card" *ngFor="let carrito of this.usuario.usuario['carrito']">
+        <ion-card-header class="ion-text-right infProducto">
+            <!-- <ion-card-content class="cardImg">
+                <img class="imgProducto" src="https://zaza-app.herokuapp.com/api/imagen/producto/{{carrito['producto']['img']}}" alt="" />
+            </ion-card-content> -->
+            <ion-label class="nombre">{{carrito['producto']['descripcion']}}</ion-label>
+            <ion-card-subtitle>Cantidad:{{carrito['cantidad']}}</ion-card-subtitle>
+            <ion-card-subtitle>Precio:${{carrito['precio']}}.00</ion-card-subtitle>
+            <ion-card-subtitle>{{carrito['negocio']['nombre']}}</ion-card-subtitle>
+
+
+
+        </ion-card-header>
+
+    </ion-card>
+
+</div>

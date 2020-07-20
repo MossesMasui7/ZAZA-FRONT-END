@@ -1,24 +1,21 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit } from '@angular/core';
+import { NegocioService } from "../../services/negocio.service";
 import { RegistroService } from "../../services/usuario.service";
 import { MyserviceService } from "../../services/myservice.service";
-import { Router } from '@angular/router';
-
-
 @Component({
-  selector: "app-carrito",
-  templateUrl: "./carrito.page.html",
-  styleUrls: ["./carrito.page.scss"],
+  selector: 'app-comparador',
+  templateUrl: './comparador.page.html',
+  styleUrls: ['./comparador.page.scss'],
 })
-export class CarritoPage implements OnInit {
-  productos = ["Leche", "Kleenex"];
+export class ComparadorPage implements OnInit {
+  negociosCercanos: any;
   mostrarCarrito = true;
   mostrarVacio = false;
   public data;
-  constructor(
-    private usuarioService: RegistroService,
-    private usuario: MyserviceService,public router: Router
-
-  ) {}
+  idNegocio: String;
+  idNegocio2: String;
+  constructor(public negocios: NegocioService,private usuarioService: RegistroService,
+    private usuario: MyserviceService) { }
 
   ngOnInit() {
     if (this.usuario.usuario["carrito"].length > 0) {
@@ -29,16 +26,10 @@ export class CarritoPage implements OnInit {
       this.mostrarVacio = true;
     }
   }
+
   eliminar(id: String) {
     this.usuarioService.eliminarCarrito(id).then((data) => {
       this.usuario.usuario = data["cont"];
     });
-  }
-  comparadortienda(){
-    this.router.navigate(["./comparador-tienda"]);
-
-  }
-  comparadorprecio(){
-    this.router.navigate(["./comparador"]);
   }
 }
