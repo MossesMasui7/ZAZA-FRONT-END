@@ -4,7 +4,7 @@ import { HttpClient } from "@angular/common/http";
   providedIn: "root",
 })
 export class ProductoService {
-  URL_API = "https://zaza-app.herokuapp.com/api/producto";
+  URL_API = "http://localhost:3000/api/producto";
   //URL_API = "http://192.168.1.79:3000/api/producto";
   public precio = [];
   public tiendas = {};
@@ -45,15 +45,12 @@ export class ProductoService {
     fecha: Date
   ) {
     return this.http
-      .put(`${this.URL_API}/producto/agregarComentario/${id}`, {
+      .put(`${this.URL_API}agregarComentario/${id}`, {
         _idUsuario,
         username,
         texto,
         fecha,
       })
       .toPromise();
-  }
-  obtenerComentarios(id: any){
-    return this.http.get(`${this.URL_API}/producto/obtenerComentarios/${id}`).toPromise();
   }
 }
