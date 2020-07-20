@@ -38,4 +38,7 @@ export class CarritoPage implements OnInit {
     this.router.navigate(["./comparador-tienda"]);
 
   }
+  comparadorprecio(){
+    this.router.navigate(["./comparador"]);
+  }
 }

@@ -1,29 +1,23 @@
 <ion-header>
 </ion-header>
 
-<ion-content>
-    <ion-card class="muestra">
-        <ion-label class="nombre">Nombre</ion-label><br>
-        <ion-label class="descripcion">Descripcion</ion-label><br>
-        <ion-label class="rating">Estrellas</ion-label>
-        <ion-label class="precio">Precio</ion-label><br>
-        <ion-label class="precioGramo">Precio <br>por gr.</ion-label><br>
-        <ion-label class="contenido">Cont.</ion-label>
-        <ion-label class="cont"></ion-label>
-        <ion-label class="gramos">gr.</ion-label>
-        <ion-label class="gramosPrecio">$</ion-label>
-        <ion-img src="https://i.ya-webdesign.com/images/no-image-png-1.png" class="imagen"></ion-img>
-        <ion-select value="Precio" id="precio">
-            <ion-select-option>$cinko peso</ion-select-option>
-            <ion-select-option>$cinko peso</ion-select-option>
-            <ion-select-option>$cinko peso</ion-select-option>
-            <ion-select-option>$cinko peso</ion-select-option>
-            <ion-select-option>$cinko peso</ion-select-option>
-            <ion-select-option>$cinko peso</ion-select-option>
-        </ion-select>
-        <ion-button class="seleccionar">SELECCIONAR</ion-button>
+
+<div *ngIf="mostrarCarrito" class="lista">
+    <ion-card class="card" *ngFor="let carrito of this.usuario.usuario['carrito']">
+        <ion-card-header class="ion-text-right infProducto">
+            <!-- <ion-card-content class="cardImg">
+                <img class="imgProducto" src="https://zaza-app.herokuapp.com/api/imagen/producto/{{carrito['producto']['img']}}" alt="" />
+            </ion-card-content> -->
+            <ion-label class="nombre">{{carrito['producto']['descripcion']}}</ion-label>
+            <ion-card-subtitle>Cantidad:{{carrito['cantidad']}}</ion-card-subtitle>
+            <ion-card-subtitle>Precio:${{carrito['precio']}}.00</ion-card-subtitle>
+            <ion-card-subtitle>{{carrito['negocio']['nombre']}}</ion-card-subtitle>
+
+
+
+        </ion-card-header>
+
     </ion-card>
-    <div class="otro">
-        <ion-button class="compararOtro" color="danger">comparar otro</ion-button>
-    </div>
-</ion-content>
+
+</div>
+

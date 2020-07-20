@@ -118,7 +118,8 @@ const routes: Routes = [
   {
     path: 'comparador',
     loadChildren: () => import('./pages/comparador/comparador.module').then( m => m.ComparadorPageModule)
-  },
+
+  }
 
 
 ];

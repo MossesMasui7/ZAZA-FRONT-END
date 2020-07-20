@@ -33,10 +33,11 @@
             </ion-row>
 
         </ion-label>
-        <div *ngIf="mostrarCarrito" class="lista">
+        <!-- <div *ngIf="mostrarCarrito" class="lista">
             <ion-card class="card" *ngFor="let carrito of this.usuario.usuario['carrito']">
                 <ion-card-header class="ion-text-right infProducto">
                     <ion-label>{{carrito['producto']['descripcion']}}</ion-label>
+
 
                     <ion-button (click)="eliminar(carrito['_id'])" expand="block" color="danger" class="btnEliminar">
                         Eliminar
@@ -45,7 +46,28 @@
 
             </ion-card>
 
+        </div> -->
+        <div *ngIf="mostrarCarrito" class="lista">
+            <ion-list class="card" *ngFor="let carrito of this.usuario.usuario['carrito']">
+                <ion-item>
+                    <ion-label>{{carrito['producto']['descripcion']}}</ion-label>
+                </ion-item>
+
+            </ion-list>
+
         </div>
+        <div *ngIf="mostrarCarrito" class="lista">
+            <ion-list class="card" *ngFor="let carrito of this.usuario.usuario['carrito']">
+                <ion-item>
+                    <ion-label>{{carrito['producto']['descripcion']}}</ion-label>
+                    <ion-label>{{carrito['precio']}}</ion-label>
+                </ion-item>
+
+            </ion-list>
+
+        </div>
+
+
 
 
 
