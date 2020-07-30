@@ -17,8 +17,8 @@
                 <ion-col class="tamaño">
                     <ion-item>
                         <ion-label>Negocio</ion-label>
-                        <ion-select [ngModelOptions]="{standalone: true}" value="Seleccione" multiple="false" placeholder="Seleccione" [(ngModel)]="idNegocio">
-                            <ion-select-option *ngFor="let negocio of negociosCercanos" value="{{negocio['_id']}}">{{negocio['nombre']}}</ion-select-option>
+                        <ion-select (ionChange)="onChange($event)" [ngModelOptions]="{standalone: true}" value="Seleccione" multiple="false" placeholder="Seleccione" (click)="precio1(idNegocio)" [(ngModel)]="idNegocio">
+                            <ion-select-option *ngFor="let negocio of negocio" value="{{negocio['_id']}}">{{negocio['nombre']}}</ion-select-option>
                         </ion-select>
                     </ion-item>
                 </ion-col>
@@ -48,24 +48,37 @@
 
         </div> -->
         <div *ngIf="mostrarCarrito" class="lista">
-            <ion-list class="card" *ngFor="let carrito of this.usuario.usuario['carrito']">
+            <ion-list class="card" *ngFor="let producto of productosPrecio">
                 <ion-item>
-                    <ion-label>{{carrito['producto']['descripcion']}}</ion-label>
+                    <ion-label>{{producto['Producto']}}</ion-label>
                 </ion-item>
 
             </ion-list>
 
         </div>
-        <div *ngIf="mostrarCarrito" class="lista">
-            <ion-list class="card" *ngFor="let carrito of this.usuario.usuario['carrito']">
-                <ion-item>
-                    <ion-label>{{carrito['producto']['descripcion']}}</ion-label>
-                    <ion-label>{{carrito['precio']}}</ion-label>
-                </ion-item>
+        <div *ngIf="mostrarCarrito" class="precios">
+            <ion-card class="card" *ngFor="let producto of productosPrecio">
+                <ion-card-header class="ion-text-right infProducto">
 
-            </ion-list>
+                    <ion-card-subtitle>Precio:${{producto['Precio']}}.00</ion-card-subtitle>
 
+
+                </ion-card-header>
+
+            </ion-card>
         </div>
+        <div *ngIf="mostrarCarrito" class="precios2">
+            <ion-card class="card" *ngFor="let carrito of this.usuario.usuario['carrito']">
+                <ion-card-header class="ion-text-right infProducto">
+
+                    <ion-card-subtitle>Precio:${{carrito['precio']}}.00</ion-card-subtitle>
+
+
+                </ion-card-header>
+
+            </ion-card>
+        </div>
+
 
 
 
