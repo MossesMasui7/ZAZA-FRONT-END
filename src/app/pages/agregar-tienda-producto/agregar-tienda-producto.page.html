@@ -1,213 +1,437 @@
 <app-menu [titulo]="'Agregar Negocio'"></app-menu>
 
 <ion-content class="content">
-  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
-    <ion-refresher-content></ion-refresher-content>
-  </ion-refresher>
-  <div class="content">
-    <div class="infProducto">
-      <img
-        src="https://zaza-app.herokuapp.com/api/imagen/producto/{{this.producto.tiendas['img']}}"
-        alt=""
-      />
-      <h1>{{this.producto.tiendas['descripcion']}}</h1>
-    </div>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <div class="content">
+        <div class="infProducto">
+            <img src="https://zaza-app.herokuapp.com/api/imagen/producto/{{this.producto.tiendas['img']}}" alt="" />
+            <h1>{{this.producto.tiendas['descripcion']}}</h1>
+        </div>
 
-    <form (ngSubmit)="agregarNegocio()">
-      <ion-input
-        [ngModelOptions]="{standalone: true}"
-        type="number"
-        [(ngModel)]="precio"
-        placeholder="Precio del Producto"
-      ></ion-input>
-      <ion-input
-        [ngModelOptions]="{standalone: true}"
-        type="number"
-        placeholder="Cuantos tiene en existencia"
-        [(ngModel)]="inventario"
-      ></ion-input>
-      <ion-input
-        [ngModelOptions]="{standalone: true}"
-        type="text"
-        placeholder="Elementos por paquetes "
-        [(ngModel)]="elementos"
-      ></ion-input>
+        <form (ngSubmit)="agregarNegocio()">
+            <ion-input [ngModelOptions]="{standalone: true}" type="number" [(ngModel)]="precio" placeholder="Precio del Producto"></ion-input>
+            <ion-input [ngModelOptions]="{standalone: true}" type="number" placeholder="Cuantos tiene en existencia" [(ngModel)]="inventario"></ion-input>
+            <ion-input [ngModelOptions]="{standalone: true}" type="text" placeholder="Elementos por paquetes " [(ngModel)]="elementos"></ion-input>
 
-      <ion-item>
-        <ion-label>Pzas</ion-label>
-        <ion-select
-          [ngModelOptions]="{standalone: true}"
-          value="contenido"
-          multiple="false"
-          [(ngModel)]="contenido"
-        >
-          <ion-select-option value="Pzas">Pzas</ion-select-option>
-          <ion-select-option value="Paquetes">Paquete</ion-select-option>
-        </ion-select>
-      </ion-item>
+            <ion-item>
+                <ion-label>Pzas</ion-label>
+                <ion-select [ngModelOptions]="{standalone: true}" value="contenido" multiple="false" [(ngModel)]="contenido">
+                    <ion-select-option value="Pzas">Pzas</ion-select-option>
+                    <ion-select-option value="Paquetes">Paquete</ion-select-option>
+                </ion-select>
+            </ion-item>
 
-      <ion-item>
-        <ion-label>Departamento:</ion-label>
-        <ion-select
-          [ngModelOptions]="{standalone: true}"
-          [(ngModel)]="departamento"
-          multiple="false"
-          value="departamento"
-        >
-          <ion-select-option value="Abarrotes">Abarrotes</ion-select-option>
-          <ion-select-option value="Lacteos">Lacteos</ion-select-option>
-          <ion-select-option value="Frutas y Verduras"
-            >Frutas y Verduras</ion-select-option
-          >
-          <ion-select-option value="Carnes y Pescados"
-            >Carnes y Pescados</ion-select-option
-          >
-          <ion-select-option value="Salchichoneria"
-            >Salchichoneria</ion-select-option
-          >
-          <ion-select-option value="Panederia">Panederia</ion-select-option>
-          <ion-select-option value="Jugos y Bebidas"
-            >Jugos y Bebidas</ion-select-option
-          >
-          <ion-select-option value="Vinos y Licores"
-            >Vinos y Licores</ion-select-option
-          >
-          <ion-select-option value="Limpieza y Mascotas "
-            >Limpieza y Mascotas
-          </ion-select-option>
-          <ion-select-option value="Farmacias"> Farmacias </ion-select-option>
-          <ion-select-option value="Higiene y Belleza">
-            Higiene y Belleza
-          </ion-select-option>
-        </ion-select>
-      </ion-item>
+            <ion-item>
+                <ion-label>Departamento:</ion-label>
+                <ion-select [ngModelOptions]="{standalone: true}" [(ngModel)]="departamento" multiple="false" value="departamento">
+                    <ion-select-option value="Abarrotes">Abarrotes</ion-select-option>
+                    <ion-select-option value="Lacteos">Lacteos</ion-select-option>
+                    <ion-select-option value="Frutas y Verduras">Frutas y Verduras</ion-select-option>
+                    <ion-select-option value="Carnes y Pescados">Carnes y Pescados</ion-select-option>
+                    <ion-select-option value="Salchichoneria">Salchichoneria</ion-select-option>
+                    <ion-select-option value="Panederia">Panederia</ion-select-option>
+                    <ion-select-option value="Jugos y Bebidas">Jugos y Bebidas</ion-select-option>
+                    <ion-select-option value="Vinos y Licores">Vinos y Licores</ion-select-option>
+                    <ion-select-option value="Limpieza y Mascotas ">Limpieza y Mascotas
+                    </ion-select-option>
+                    <ion-select-option value="Farmacias"> Farmacias </ion-select-option>
+                    <ion-select-option value="Higiene y Belleza">
+                        Higiene y Belleza
+                    </ion-select-option>
+                </ion-select>
+            </ion-item>
 
-      <ion-item>
-        <!--recuerda puedes ponerlo adentro de un select y de ese que se le desgloce su seccion y de su seccion se le desgloce el producto -->
-        <ion-label>Seccion:</ion-label>
-        <ion-select
-          [ngModelOptions]="{standalone: true}"
-          [(ngModel)]="seccion"
-          multiple="false"
-          value="seccion"
-        >
-          <ion-select-option value="Especias y sazonadores "
-            >Especias y sazonadores
-          </ion-select-option>
-          <ion-select-option value="Botana y Fruta Seca "
-            >Botana y Fruta Seca
-          </ion-select-option>
-          <ion-select-option value="Café, Té y Sustitutos "
-            >Café, Té y Sustitutos
-          </ion-select-option>
-          <ion-select-option value="Salsas, Aderezos y Vinagre "
-            >Salsas, Aderezos y Vinagre
-          </ion-select-option>
-          <ion-select-option value="Dulces y Chocolates "
-            >Dulces y Chocolates
-          </ion-select-option>
-          <ion-select-option value="Alimentos Instantáneos "
-            >Alimentos Instantáneos
-          </ion-select-option>
-          <ion-select-option value="Cereales y Barras "
-            >Cereales y Barras
-          </ion-select-option>
-          <ion-select-option value="Galletas ">Galletas </ion-select-option>
-          <ion-select-option value="Enlatados y Conservas "
-            >Enlatados y Conservas
-          </ion-select-option>
-          <ion-select-option value="Arroz, Frijol y Semillas ">
-            Arroz, Frijol y Semillas
-          </ion-select-option>
-          <ion-select-option value="Pasta "> Pasta </ion-select-option>
-          <ion-select-option value="Mermeladas y miel  "
-            >Mermeladas y miel
-          </ion-select-option>
-          <ion-select-option value="Harina y repostería  ">
-            Harina y repostería
-          </ion-select-option>
-          <ion-select-option value="Azúcar y postres  ">
-            Azúcar y postres
-          </ion-select-option>
-          <ion-select-option value="Pan y Tortillas  ">
-            Pan y Tortillas
-          </ion-select-option>
-          <ion-select-option value="Saborizantes y jarabes  ">
-            Saborizantes y jarabes
-          </ion-select-option>
-          <ion-select-option value="Aceite de cocina ">
-            Aceite de cocina
-          </ion-select-option>
-          <ion-select-option value="Leche  "> Leche </ion-select-option>
-          <ion-select-option value="Quesos  "> Quesos </ion-select-option>
-          <ion-select-option value="Yogurt  "> Yogurt </ion-select-option>
-          <ion-select-option value="Mantequilla y margarina   ">
-            Mantequilla y margarina
-          </ion-select-option>
-          <ion-select-option value="Huevo   "> Huevo </ion-select-option>
-          <ion-select-option value="Crema   "> Crema </ion-select-option>
-          <ion-select-option value="Frutas   "> Frutas </ion-select-option>
-        </ion-select>
-      </ion-item>
-      <ion-item>
-        <ion-label>Producto:</ion-label>
-        <ion-select
-          [ngModelOptions]="{standalone: true}"
-          [(ngModel)]="productos"
-          multiple="false"
-          value="producto"
-        >
-          <ion-select-option value="Abarrotes">Abarrotes</ion-select-option>
-          <ion-select-option value="Lacteos">Lacteos</ion-select-option>
-          <ion-select-option value="Frutas y Verduras"
-            >Frutas y Verduras</ion-select-option
-          >
-          <ion-select-option value="Carnes y Pescados"
-            >Carnes y Pescados</ion-select-option
-          >
-          <ion-select-option value="Salchichoneria"
-            >Salchichoneria</ion-select-option
-          >
-          <ion-select-option value="Panederia">Panederia</ion-select-option>
-          <ion-select-option value="Jugos y Bebidas"
-            >Jugos y Bebidas</ion-select-option
-          >
-          <ion-select-option value="Vinos y Licores"
-            >Vinos y Licores</ion-select-option
-          >
-          <ion-select-option value="Limpieza y Mascotas "
-            >Limpieza y Mascotas
-          </ion-select-option>
-          <ion-select-option value="Farmacias"> Farmacias </ion-select-option>
-          <ion-select-option value="Higiene y Belleza">
-            Higiene y Belleza
-          </ion-select-option>
-        </ion-select>
-      </ion-item>
+            <ion-item>
+                <!--recuerda puedes ponerlo adentro de un select y de ese que se le desgloce su seccion y de su seccion se le desgloce el producto -->
+                <ion-label>Seccion:</ion-label>
+                <ion-select [ngModelOptions]="{standalone: true}" [(ngModel)]="seccion" multiple="false" value="seccion">
+                    <ion-select-option value="Especias y sazonadores ">Especias y sazonadores
+                    </ion-select-option>
+                    <ion-select-option value="Botana y Fruta Seca ">Botana y Fruta Seca
+                    </ion-select-option>
+                    <ion-select-option value="Café, Té y Sustitutos ">Café, Té y Sustitutos
+                    </ion-select-option>
+                    <ion-select-option value="Salsas, Aderezos y Vinagre ">Salsas, Aderezos y Vinagre
+                    </ion-select-option>
+                    <ion-select-option value="Dulces y Chocolates ">Dulces y Chocolates
+                    </ion-select-option>
+                    <ion-select-option value="Alimentos Instantáneos ">Alimentos Instantáneos
+                    </ion-select-option>
+                    <ion-select-option value="Cereales y Barras ">Cereales y Barras
+                    </ion-select-option>
+                    <ion-select-option value="Galletas ">Galletas </ion-select-option>
+                    <ion-select-option value="Enlatados y Conservas ">Enlatados y Conservas
+                    </ion-select-option>
+                    <ion-select-option value="Arroz, Frijol y Semillas ">
+                        Arroz, Frijol y Semillas
+                    </ion-select-option>
+                    <ion-select-option value="Pasta "> Pasta </ion-select-option>
+                    <ion-select-option value="Mermeladas y miel  ">Mermeladas y miel
+                    </ion-select-option>
+                    <ion-select-option value="Harina y repostería  ">
+                        Harina y repostería
+                    </ion-select-option>
+                    <ion-select-option value="Azúcar y postres  ">
+                        Azúcar y postres
+                    </ion-select-option>
+                    <ion-select-option value="Pan y Tortillas  ">
+                        Pan y Tortillas
+                    </ion-select-option>
+                    <ion-select-option value="Saborizantes y jarabes  ">
+                        Saborizantes y jarabes
+                    </ion-select-option>
+                    <ion-select-option value="Aceite de cocina ">
+                        Aceite de cocina
+                    </ion-select-option>
+                    <ion-select-option value="Leche  "> Leche </ion-select-option>
+                    <ion-select-option value="Quesos  "> Quesos </ion-select-option>
+                    <ion-select-option value="Yogurt  "> Yogurt </ion-select-option>
+                    <ion-select-option value="Mantequilla y margarina   ">
+                        Mantequilla y margarina
+                    </ion-select-option>
+                    <ion-select-option value="Huevo   "> Huevo </ion-select-option>
+                    <ion-select-option value="Crema   "> Crema </ion-select-option>
+                    <ion-select-option value="Frutas   "> Frutas </ion-select-option>
+                    <ion-select-option value="Verduras    "> Verduras </ion-select-option>
+                    <ion-select-option value="Aves    "> Aves </ion-select-option>
+                    <ion-select-option value="Res    "> Res </ion-select-option>
+                    <ion-select-option value="Pescados y mariscos    "> Pescados y mariscos </ion-select-option>
+                    <ion-select-option value="Cerdo   "> Cerdo </ion-select-option>
+                    <ion-select-option value="Carnes frías   "> Carnes frías </ion-select-option>
+                    <ion-select-option value="Agua   "> Agua </ion-select-option>
+                    <ion-select-option value="Jugos y néctares   "> Jugos y néctares </ion-select-option>
+                    <ion-select-option value="Refrescos   ">Refrescos </ion-select-option>
+                    <ion-select-option value="Energizantes e Hidratantes    ">Energizantes e Hidratantes </ion-select-option>
+                    <ion-select-option value="Cervezas   ">Cervezas </ion-select-option>
+                    <ion-select-option value="Licores   ">Licores </ion-select-option>
+                    <ion-select-option value="Limpiador multiusos    ">Limpiador multiusos </ion-select-option>
+                    <ion-select-option value="Limpiador de baño    ">Limpiador de baño </ion-select-option>
+                    <ion-select-option value="Insecticida   ">Insecticida </ion-select-option>
+                    <ion-select-option value="Cuidado de zapato   ">Cuidado de zapato </ion-select-option>
+                    <ion-select-option value="Limpiadores de Cocina   ">Limpiadores de Cocina </ion-select-option>
+                    <ion-select-option value="Desinfectante   ">Desinfectante </ion-select-option>
+                    <ion-select-option value="Afeitado   ">Afeitado </ion-select-option>
+                    <ion-select-option value="Cosméticos  ">Cosméticos </ion-select-option>
+                    <ion-select-option value="Cuidado del cabello   ">Cuidado del cabello </ion-select-option>
+                    <ion-select-option value="Higiene   ">Higiene </ion-select-option>
+                    <ion-select-option value="Cuidado para manos    ">Cuidado para manos </ion-select-option>
+                    <ion-select-option value="Cuidado para pies   ">Cuidado para pies </ion-select-option>
+                    <ion-select-option value="Cuidado bucal   ">Cuidado bucal </ion-select-option>
 
-      <p>
-        Estos son algunos lugares cercanos a tu ubicacion <br />
-        Seleccione el negocio donde se encuentra el producto
-      </p>
-      <ion-item>
-        <ion-label>Negocio</ion-label>
-        <ion-select
-          [ngModelOptions]="{standalone: true}"
-          value="Seleccione"
-          multiple="false"
-          placeholder="Seleccione"
-          [(ngModel)]="idNegocio"
-        >
-          <ion-select-option
-            *ngFor="let negocio of negociosCercanos"
-            value="{{negocio['_id']}}"
-            >{{negocio['nombre']}}</ion-select-option
-          >
-        </ion-select>
-      </ion-item>
-      <p>
-        Ó <br />
-        <a (click)="agregarTienda()">
+                </ion-select>
+            </ion-item>
+            <ion-item>
+                <ion-label>Producto:</ion-label>
+                <ion-select [ngModelOptions]="{standalone: true}" [(ngModel)]="productos" multiple="false" value="producto">
+                    <ion-select-option value="Sal ">Sal </ion-select-option>
+                    <ion-select-option value="Sal con ajo ">Sal con ajo </ion-select-option>
+                    <ion-select-option value="Ajo en polvo ">Ajo en polvo </ion-select-option>
+                    <ion-select-option value="Pimienta ">Pimienta </ion-select-option>
+                    <ion-select-option value="Sazonador ">Sazonador </ion-select-option>
+                    <ion-select-option value="Ablandador ">Ablandador </ion-select-option>
+                    <ion-select-option value="Cebolla en polvo ">Cebolla en polvo </ion-select-option>
+                    <ion-select-option value="Mole ">Mole </ion-select-option>
+                    <ion-select-option value="Adobo ">Adobo </ion-select-option>
+                    <ion-select-option value="Achiote ">Achiote </ion-select-option>
+                    <ion-select-option value="Pipián ">Pipián </ion-select-option>
+                    <ion-select-option value="Cubos de caldo de pollo ">Cubos de caldo de pollo </ion-select-option>
+                    <ion-select-option value="Chile ">Chile </ion-select-option>
+                    <ion-select-option value="Papas ">Papas </ion-select-option>
+                    <ion-select-option value="Frituras ">Frituras </ion-select-option>
+                    <ion-select-option value="Arándanos deshidratados ">Arándanos deshidratados </ion-select-option>
+                    <ion-select-option value="Ciruela pasa deshidratada ">Ciruela pasa deshidratada </ion-select-option>
+                    <ion-select-option value="Plátano frito ">Plátano frito </ion-select-option>
+                    <ion-select-option value="Cacahuates ">Cacahuates </ion-select-option>
+                    <ion-select-option value="Habas ">Habas </ion-select-option>
+                    <ion-select-option value="Nueces ">Nueces </ion-select-option>
+                    <ion-select-option value="Almendras ">Almendras </ion-select-option>
+                    <ion-select-option value="Palomitas ">Palomitas </ion-select-option>
+                    <ion-select-option value="Dip ">Dip </ion-select-option>
+                    <ion-select-option value="Chicharrones ">Chicharrones </ion-select-option>
+                    <ion-select-option value="Mezcla de frutos deshidratados ">Mezcla de frutos deshidratados </ion-select-option>
+                    <ion-select-option value="Mezcla de semillas ">Mezcla de semillas </ion-select-option>
+                    <ion-select-option value="Pistaches ">Pistaches </ion-select-option>
+                    <ion-select-option value="Pepitas ">Pepitas </ion-select-option>
+                    <ion-select-option value="Café Molido ">Café Molido </ion-select-option>
+                    <ion-select-option value="Cápsulas de café ">Cápsulas de café </ion-select-option>
+                    <ion-select-option value="Café en grano ">Café en grano </ion-select-option>
+                    <ion-select-option value="Filtros para café o ">Filtros para café </ion-select-option>
+                    <ion-select-option value="Café Soluble  ">Café Soluble </ion-select-option>
+                    <ion-select-option value="Crema para café  ">Crema para café </ion-select-option>
+                    <ion-select-option value="Capuccino Instantaneo  ">Capuccino Instantaneo </ion-select-option>
+                    <ion-select-option value="Té de Hierbas  ">Té de Hierbas </ion-select-option>
+                    <ion-select-option value="Té de Frutas  ">Té de Frutas </ion-select-option>
+                    <ion-select-option value="Salsa Picante  ">Salsa Picante </ion-select-option>
+                    <ion-select-option value="Salsa casera  ">Salsa casera </ion-select-option>
+                    <ion-select-option value="Salsa para pasta  ">Salsa para pasta </ion-select-option>
+                    <ion-select-option value="Salsa de Soya  ">Salsa de Soya </ion-select-option>
+                    <ion-select-option value="Salsas para sazonar  ">Salsas para sazonar </ion-select-option>
+                    <ion-select-option value="Mayonesa  ">Mayonesa </ion-select-option>
+                    <ion-select-option value="Catsup  ">Catsup </ion-select-option>
+                    <ion-select-option value="Mostaza  ">Mostaza </ion-select-option>
+                    <ion-select-option value="Vinagre  ">Vinagre </ion-select-option>
+                    <ion-select-option value="Vinagretas  ">Vinagretas </ion-select-option>
+                    <ion-select-option value="Aderezos  ">Aderezos </ion-select-option>
+                    <ion-select-option value="Chocolate  ">Chocolate </ion-select-option>
+                    <ion-select-option value="Gomitas   ">Gomitas </ion-select-option>
+                    <ion-select-option value="Paletas  ">Paletas </ion-select-option>
+                    <ion-select-option value="Caramelos  ">Caramelos </ion-select-option>
+                    <ion-select-option value="Típicos  ">Típicos </ion-select-option>
+                    <ion-select-option value="Chicles   ">Chicles </ion-select-option>
+                    <ion-select-option value="Frijoles instantáneos   ">Frijoles instantáneos </ion-select-option>
+                    <ion-select-option value="Puré instantáneo  ">Puré instantáneo </ion-select-option>
+                    <ion-select-option value="Pasta instantánea  ">Pasta instantánea </ion-select-option>
+                    <ion-select-option value="Arroz instantáneo   ">Arroz instantáneo </ion-select-option>
+                    <ion-select-option value="Crema instantánea   ">Crema instantánea </ion-select-option>
+                    <ion-select-option value="Cereal Dulce   ">Cereal Dulce </ion-select-option>
+                    <ion-select-option value="Barras de Cereal   ">Barras de Cereal </ion-select-option>
+                    <ion-select-option value="Avena   ">Avena </ion-select-option>
+                    <ion-select-option value="Granola  ">Granola </ion-select-option>
+                    <ion-select-option value="Galletas Dulces   ">Galletas Dulces </ion-select-option>
+                    <ion-select-option value="Galletas Botaneras   ">Galletas Botaneras </ion-select-option>
+                    <ion-select-option value="Atún   ">Atún </ion-select-option>
+                    <ion-select-option value="Chiles enlatados   ">Chiles enlatados </ion-select-option>
+                    <ion-select-option value="Mariscos enlatados   ">Mariscos enlatados </ion-select-option>
+                    <ion-select-option value="Ate  ">Ate </ion-select-option>
+                    <ion-select-option value="Vegetales enlatados   ">Vegetales enlatados </ion-select-option>
+                    <ion-select-option value="Frutas en almíbar  ">Frutas en almíbar </ion-select-option>
+                    <ion-select-option value="Aceitunas   ">Aceitunas </ion-select-option>
+                    <ion-select-option value="Carne enlatada   ">Carne enlatada </ion-select-option>
+                    <ion-select-option value="Sopas y cremas   ">Sopas y cremas </ion-select-option>
+                    <ion-select-option value="Arroz   ">Arroz </ion-select-option>
+                    <ion-select-option value="Semillas  ">Semillas </ion-select-option>
+                    <ion-select-option value="Frijol  ">Frijol </ion-select-option>
+                    <ion-select-option value="Leguminosas   ">Leguminosas </ion-select-option>
+                    <ion-select-option value="Sopa de pasta">Sopa de pasta </ion-select-option>
+                    <ion-select-option value="Spaghetti ">Spaghetti </ion-select-option>
+                    <ion-select-option value="Fusilli ">Fusilli </ion-select-option>
+                    <ion-select-option value="Fetuccini ">Fetuccini </ion-select-option>
+                    <ion-select-option value="Penne ">Penne </ion-select-option>
+                    <ion-select-option value="Lasagna ">Lasagna </ion-select-option>
+                    <ion-select-option value="Canelones ">Canelones </ion-select-option>
+                    <ion-select-option value="Mermelada ">Mermelada </ion-select-option>
+                    <ion-select-option value="Miel ">Miel</ion-select-option>
+                    <ion-select-option value="Crema de cacahuate ">Crema de cacahuate </ion-select-option>
+                    <ion-select-option value="Crema de avellana ">Crema de avellana </ion-select-option>
+                    <ion-select-option value="Cajeta ">Cajeta </ion-select-option>
+                    <ion-select-option value="Harina para hot cakes ">Harina para hot cakes </ion-select-option>
+                    <ion-select-option value="Harina de trigo ">Harina de trigo </ion-select-option>
+                    <ion-select-option value="Harina de maíz ">Harina de maíz </ion-select-option>
+                    <ion-select-option value="Chocolate para repostería ">Chocolate para repostería </ion-select-option>
+                    <ion-select-option value="Saborizante artificial ">Saborizante artificial </ion-select-option>
+                    <ion-select-option value="Gelatina de leche en polvo ">Gelatina de leche en polvo </ion-select-option>
+                    <ion-select-option value="Gelatina de agua en polvo ">Gelatina de agua en polvo </ion-select-option>
+                    <ion-select-option value="Sustituto de azúcar ">Sustituto de azúcar </ion-select-option>
+                    <ion-select-option value="Azúcar ">Azúcar </ion-select-option>
+                    <ion-select-option value="Grenetina ">Grenetina </ion-select-option>
+                    <ion-select-option value="Flanes ">Flanes </ion-select-option>
+                    <ion-select-option value="Tostadas ">Tostadas </ion-select-option>
+                    <ion-select-option value="Pan de caja ">Pan de caja </ion-select-option>
+                    <ion-select-option value="Pan tostado ">Pan tostado </ion-select-option>
+                    <ion-select-option value="Tortillas de maíz ">Tortillas de maíz </ion-select-option>
+                    <ion-select-option value="Tortillas de harina ">Tortillas de harina </ion-select-option>
+                    <ion-select-option value="Pan dulce ">SPan dulce </ion-select-option>
+                    <ion-select-option value="Totopos ">Totopos </ion-select-option>
+                    <ion-select-option value="Bollos ">Bollos </ion-select-option>
+                    <ion-select-option value="Pan de hotdog ">Pan de hotdog </ion-select-option>
+                    <ion-select-option value="Crutones ">Crutones </ion-select-option>
+                    <ion-select-option value="Pan en polvo ">Pan en polvo a </ion-select-option>
+                    <ion-select-option value="Pan árabe ">Pan árabe </ion-select-option>
+                    <ion-select-option value="Chocolate en polvo ">Chocolate en polvo </ion-select-option>
+                    <ion-select-option value="Atole ">Atole </ion-select-option>
+                    <ion-select-option value="Jarabe para agua ">Jarabe para agua </ion-select-option>
+                    <ion-select-option value="Jugo en polvo ">Jugo en polvo </ion-select-option>
+                    <ion-select-option value="Aceite de oliva ">Aceite de oliva </ion-select-option>
+                    <ion-select-option value="Aceite de coco ">Aceite de coco </ion-select-option>
+                    <ion-select-option value="Aceite vegetal ">Aceite vegetal </ion-select-option>
+                    <ion-select-option value="Aceite de maíz ">Aceite de maíz </ion-select-option>
+                    <ion-select-option value="Leche Entera ">Leche Entera </ion-select-option>
+                    <ion-select-option value="Leche Light ">Leche Light </ion-select-option>
+                    <ion-select-option value="Leche Semidescremada ">Leche Semidescremada </ion-select-option>
+                    <ion-select-option value="Leche Descremada ">Leche Descremada </ion-select-option>
+                    <ion-select-option value="Leche Deslactosada ">Leche Deslactosada </ion-select-option>
+                    <ion-select-option value="Leche Saborizada ">Leche Saborizada </ion-select-option>
+                    <ion-select-option value="Leche de soya ">Leche de soya </ion-select-option>
+                    <ion-select-option value="Leche de coco ">Leche de coco </ion-select-option>
+                    <ion-select-option value="Leche de almendras ">Leche de almendras </ion-select-option>
+                    <ion-select-option value="Leche de arroz ">Leche de arroz </ion-select-option>
+                    <ion-select-option value="Queso Oaxaca ">Queso Oaxaca </ion-select-option>
+                    <ion-select-option value="Queso Manchego ">Queso Manchego </ion-select-option>
+                    <ion-select-option value="Queso Panela ">Queso Panela </ion-select-option>
+                    <ion-select-option value="Queso Crema ">Queso Crema </ion-select-option>
+                    <ion-select-option value="Queso gouda ">Queso gouda </ion-select-option>
+                    <ion-select-option value="Jocoque ">Jocoque </ion-select-option>
+                    <ion-select-option value="Queso Asadero ">Queso Asadero </ion-select-option>
+                    <ion-select-option value="Queso Chihuahua ">Queso Chihuahua </ion-select-option>
+                    <ion-select-option value="Queso mozzarella ">Queso mozzarella </ion-select-option>
+                    <ion-select-option value="Queso parmesano ">Queso parmesano </ion-select-option>
+                    <ion-select-option value="Queso Americano ">Queso Americano </ion-select-option>
+                    <ion-select-option value="Queso fresco ">Queso fresco </ion-select-option>
+                    <ion-select-option value="Queso de cabra ">Queso de cabra </ion-select-option>
+                    <ion-select-option value="Queso cottage ">Queso cottage </ion-select-option>
+                    <ion-select-option value="Yogurt bebible ">Yogurt bebible </ion-select-option>
+                    <ion-select-option value="Yogurt batido ">Yogurt batido </ion-select-option>
+                    <ion-select-option value="Yogurt griego ">Yogurt griego </ion-select-option>
+                    <ion-select-option value="Yogurt natural ">Yogurt natural </ion-select-option>
+                    <ion-select-option value="Yogurt light ">Yogurt light </ion-select-option>
+                    <ion-select-option value="Margarina ">Margarina </ion-select-option>
+                    <ion-select-option value="Mantequilla ">Mantequilla </ion-select-option>
+                    <ion-select-option value="Huevo blanco ">Huevo blanco </ion-select-option>
+                    <ion-select-option value="Huevo rojo ">Huevo rojo </ion-select-option>
+                    <ion-select-option value="Claras de huevo ">Claras de huevo </ion-select-option>
+                    <ion-select-option value="Crema ácida ">Crema ácida </ion-select-option>
+                    <ion-select-option value="Media crema ">Media crema </ion-select-option>
+                    <ion-select-option value="Crema dulce ">Crema dulce </ion-select-option>
+                    <ion-select-option value="Crema reducida en grasa ">Crema reducida en grasa </ion-select-option>
+                    <ion-select-option value="Manzana ">Manzana </ion-select-option>
+                    <ion-select-option value="Peras ">Peras </ion-select-option>
+                    <ion-select-option value="Naranja ">Naranja </ion-select-option>
+                    <ion-select-option value="Limón ">Limón </ion-select-option>
+                    <ion-select-option value="Lima ">Lima </ion-select-option>
+                    <ion-select-option value="Toronja ">Toronja </ion-select-option>
+                    <ion-select-option value="Uvas ">Uvas </ion-select-option>
+                    <ion-select-option value="Durazno ">Durazno </ion-select-option>
+                    <ion-select-option value="Ciruela ">Ciruela </ion-select-option>
+                    <ion-select-option value="Fresa ">Fresa </ion-select-option>
+                    <ion-select-option value="Frambuesa ">Frambuesa </ion-select-option>
+                    <ion-select-option value="Plátano ">Plátano </ion-select-option>
+                    <ion-select-option value="Papaya ">Papaya </ion-select-option>
+                    <ion-select-option value="Melón ">Melón </ion-select-option>
+                    <ion-select-option value="Sandía ">Sandía </ion-select-option>
+                    <ion-select-option value="Ajo ">Ajo </ion-select-option>
+                    <ion-select-option value="Pimiento ">Pimiento </ion-select-option>
+                    <ion-select-option value="Chiles ">Chiles </ion-select-option>
+                    <ion-select-option value="Jitomate ">Jitomate </ion-select-option>
+                    <ion-select-option value="Aguacate ">Aguacate </ion-select-option>
+                    <ion-select-option value="Champiñones ">Champiñones </ion-select-option>
+                    <ion-select-option value="Brócoli ">Brócoli </ion-select-option>
+                    <ion-select-option value="Coliflor ">Coliflor </ion-select-option>
+                    <ion-select-option value="Espárragos ">Espárragos </ion-select-option>
+                    <ion-select-option value="Cebollas ">Cebollas </ion-select-option>
+                    <ion-select-option value="Papas ">Papas </ion-select-option>
+                    <ion-select-option value="Pepino ">Pepino </ion-select-option>
+                    <ion-select-option value="Zanahoria ">Zanahoria </ion-select-option>
+                    <ion-select-option value="Jícama ">Jícama </ion-select-option>
+                    <ion-select-option value="Lechuga ">Lechuga </ion-select-option>
+                    <ion-select-option value="Espinacas ">Espinacas </ion-select-option>
+                    <ion-select-option value="Carne de Pollo ">Carne de Pollo </ion-select-option>
+                    <ion-select-option value="Carne de Pavo ">Carne de Pavo </ion-select-option>
+                    <ion-select-option value="Carne de res ">Carne de res </ion-select-option>
+                    <ion-select-option value="Carne de pescado ">Carne de pescado </ion-select-option>
+                    <ion-select-option value="Camarón ">Camarón </ion-select-option>
+                    <ion-select-option value="Pulpo ">Pulpo </ion-select-option>
+                    <ion-select-option value="Almejas ">Almejas </ion-select-option>
+                    <ion-select-option value="Carne de cerdo ">Carne de cerdo </ion-select-option>
+                    <ion-select-option value="Chicharrón ">Chicharrón </ion-select-option>
+                    <ion-select-option value="Manteca ">Manteca </ion-select-option>
+                    <ion-select-option value="Jamón ">Jamón </ion-select-option>
+                    <ion-select-option value="Chorizo ">Chorizo </ion-select-option>
+                    <ion-select-option value="Salchicha ">Salchicha </ion-select-option>
+                    <ion-select-option value="Pechuga de pavo ">Pechuga de pavo </ion-select-option>
+                    <ion-select-option value="Salami ">Salami </ion-select-option>
+                    <ion-select-option value="Tocino ">Tocino </ion-select-option>
+                    <ion-select-option value="Jamón serrano ">Jamón serrano </ion-select-option>
+                    <ion-select-option value="Paté ">Paté </ion-select-option>
+                    <ion-select-option value="Pepperoni ">Pepperoni </ion-select-option>
+                    <ion-select-option value="Longaniza y chistorra ">Longaniza y chistorra </ion-select-option>
+                    <ion-select-option value="Agua Natural ">Agua Natural </ion-select-option>
+                    <ion-select-option value="Agua Mineral ">Agua Mineral </ion-select-option>
+                    <ion-select-option value="Garrafón ">Garrafón </ion-select-option>
+                    <ion-select-option value="Agua saborizada ">Agua saborizada </ion-select-option>
+                    <ion-select-option value="Agua Quina ">Agua Quina </ion-select-option>
+                    <ion-select-option value="Jugo de fruta ">Jugo de fruta </ion-select-option>
+                    <ion-select-option value="Jugo de verduras ">Jugo de verduras </ion-select-option>
+                    <ion-select-option value="Néctar ">Néctar </ion-select-option>
+                    <ion-select-option value="Refresco sabor cola ">Refresco sabor cola </ion-select-option>
+                    <ion-select-option value="Refresco light ">Refresco light </ion-select-option>
+                    <ion-select-option value="Refresco ">Refresco </ion-select-option>
+                    <ion-select-option value="Hidratante ">Hidratante </ion-select-option>
+                    <ion-select-option value="Energizante ">Energizante </ion-select-option>
+                    <ion-select-option value="Cerveza clara  ">Cerveza clara </ion-select-option>
+                    <ion-select-option value="Cerveza oscura  ">Cerveza oscura </ion-select-option>
+                    <ion-select-option value="Cerveza ámbar  ">Cerveza ámbar </ion-select-option>
+                    <ion-select-option value="Cerveza artesanal  ">Cerveza artesanal </ion-select-option>
+                    <ion-select-option value="Tequila  ">Tequila </ion-select-option>
+                    <ion-select-option value="Whisky  ">Whisky </ion-select-option>
+                    <ion-select-option value="Licor  ">Licor </ion-select-option>
+                    <ion-select-option value="Ron  ">Ron </ion-select-option>
+                    <ion-select-option value="Mezcal  ">Mezcal </ion-select-option>
+                    <ion-select-option value="Vodka  ">Vodka </ion-select-option>
+                    <ion-select-option value="Brandy  ">Brandy </ion-select-option>
+                    <ion-select-option value="Ginebra ">Ginebra </ion-select-option>
+                    <ion-select-option value="Cognac  ">Cognac </ion-select-option>
+                    <ion-select-option value="Limpiador multiusos  ">Limpiador multiusos </ion-select-option>
+                    <ion-select-option value="Desinfectante  ">Desinfectante </ion-select-option>
+                    <ion-select-option value="Limpiador líquido  ">Limpiador líquido </ion-select-option>
+                    <ion-select-option value="Pastilla para WC  ">Pastilla para WC </ion-select-option>
+                    <ion-select-option value="Insecticida en aerosol  ">Insecticida en aerosol </ion-select-option>
+                    <ion-select-option value="Insecticida líquido  ">Insecticida líquido </ion-select-option>
+                    <ion-select-option value="Desodorante para calzado ">Desodorante para calzado </ion-select-option>
+                    <ion-select-option value="Esponja lustradora  ">Esponja lustradora </ion-select-option>
+                    <ion-select-option value="Espuma limpiadora  ">Espuma limpiadora </ion-select-option>
+                    <ion-select-option value="Grasa en crema para calzado  ">Grasa en crema para calzado </ion-select-option>
+                    <ion-select-option value="Limpiador líquido  ">Limpiador líquido </ion-select-option>
+                    <ion-select-option value="Desengrasante ">Desengrasante </ion-select-option>
+                    <ion-select-option value="Blanqueador multiusos  ">Blanqueador multiusos </ion-select-option>
+                    <ion-select-option value="Cloro  ">Cloro </ion-select-option>
+                    <ion-select-option value="Máquina para afeitar  ">Máquina para afeitar </ion-select-option>
+                    <ion-select-option value="Rastrillos  ">Rastrillos </ion-select-option>
+                    <ion-select-option value="Gel de afeitar  ">Gel de afeitar </ion-select-option>
+                    <ion-select-option value="Cartuchos para afeitar  ">Cartuchos para afeitar </ion-select-option>
+                    <ion-select-option value="Crema depiladora ">Crema depiladora </ion-select-option>
+                    <ion-select-option value="Tiras depilatorias ">Tiras depilatorias </ion-select-option>
+                    <ion-select-option value="Labiales  ">Labiales </ion-select-option>
+                    <ion-select-option value="Base para maquillaje ">Base para maquillaje </ion-select-option>
+                    <ion-select-option value="Esmalte  ">Esmalte </ion-select-option>
+                    <ion-select-option value="Delineador de ojos  ">Delineador de ojos </ion-select-option>
+                    <ion-select-option value="Corrector  ">Corrector </ion-select-option>
+                    <ion-select-option value="Máscara de pestañas  ">Máscara de pestañas </ion-select-option>
+                    <ion-select-option value="Desmaquillante ">Desmaquillante </ion-select-option>
+                    <ion-select-option value="Polvo compacto ">Polvo compacto </ion-select-option>
+                    <ion-select-option value="Brillo  ">Brillo </ion-select-option>
+                    <ion-select-option value="Delineador de labios  ">Delineador de labios </ion-select-option>
+                    <ion-select-option value="Shampoo  ">Shampoo </ion-select-option>
+                    <ion-select-option value="Acondicionador  ">Acondicionador </ion-select-option>
+                    <ion-select-option value="Crema para peinar ">Crema para peinar </ion-select-option>
+                    <ion-select-option value="Gel  ">Gel </ion-select-option>
+                    <ion-select-option value="Mousse  ">Mousse </ion-select-option>
+                    <ion-select-option value="Tinte femenino  ">Tinte femenino </ion-select-option>
+                    <ion-select-option value="Tinte masculino  ">Tinte masculino </ion-select-option>
+                    <ion-select-option value="Jabón corporal  ">Jabón corporal </ion-select-option>
+                    <ion-select-option value="Desodorante ">Desodorante </ion-select-option>
+                    <ion-select-option value="Crema corporal ">Crema corporal </ion-select-option>
+                    <ion-select-option value="Bloqueador  ">Bloqueador </ion-select-option>
+                    <ion-select-option value="Bronceador  ">Bronceador </ion-select-option>
+                    <ion-select-option value="Esponja ">Esponja </ion-select-option>
+                    <ion-select-option value="Pañuelos desechables  ">Pañuelos desechables </ion-select-option>
+                    <ion-select-option value="Crema para manos  ">Crema para manos </ion-select-option>
+                    <ion-select-option value="Jabón líquido  ">Jabón líquido </ion-select-option>
+
+                    <ion-select-option value="Talco  ">Talco </ion-select-option>
+                    <ion-select-option value="Crema para pies  ">Crema para pies </ion-select-option>
+                    <ion-select-option value="Cepillo dental  ">Cepillo dental </ion-select-option>
+                    <ion-select-option value="Pasta dental  ">Pasta dental </ion-select-option>
+                    <ion-select-option value="Enjuague bucal  ">Enjuague bucal </ion-select-option>
+                    <ion-select-option value="Hilo dental  ">Hilo dental </ion-select-option>
+
+
+                </ion-select>
+            </ion-item>
+
+            <p>
+                Estos son algunos lugares cercanos a tu ubicacion <br /> Seleccione el negocio donde se encuentra el producto
+            </p>
+            <ion-item>
+                <ion-label>Negocio</ion-label>
+                <ion-select [ngModelOptions]="{standalone: true}" value="Seleccione" multiple="false" placeholder="Seleccione" [(ngModel)]="idNegocio">
+                    <ion-select-option *ngFor="let negocio of negociosCercanos" value="{{negocio['_id']}}">{{negocio['nombre']}}</ion-select-option>
+                </ion-select>
+            </ion-item>
+            <p>
+                Ó <br />
+                <a (click)="agregarTienda()">
           Agregar un negocio que no esta en la lista</a
         >
       </p>
