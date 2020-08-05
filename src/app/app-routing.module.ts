@@ -11,13 +11,7 @@ const routes: Routes = [
     path: "login",
     component: LoginPage,
   },
-  {
-    path: "invitado",
-    loadChildren: () =>
-      import("./pages/invitado/invitado.module").then(
-        (m) => m.InvitadoPageModule
-      ),
-  },
+
   {
     path: "home",
     loadChildren: () =>
@@ -106,6 +100,31 @@ const routes: Routes = [
     loadChildren: () =>
       import("./pages/carrito/carrito.module").then((m) => m.CarritoPageModule),
   },
+  {
+    path: "publicidad",
+    loadChildren: () =>
+      import("./pages/publicidad/publicidad.module").then(
+        (m) => m.PublicidadPageModule
+      ),
+  },
+  {
+    path: "carrusel-departamentos",
+    loadChildren: () =>
+      import(
+        "./pages/carrusel-departamentos/carrusel-departamentos.module"
+      ).then((m) => m.CarruselDepartamentosPageModule),
+  },
+  {
+    path: "comparador",
+    loadChildren: () =>
+      import("./pages/comparador/comparador.module").then(
+        (m) => m.ComparadorPageModule
+      ),
+  },  {
+    path: 'comparador-tienda',
+    loadChildren: () => import('./pages/comparador-tienda/comparador-tienda.module').then( m => m.ComparadorTiendaPageModule)
+  },
+
 ];
 
 @NgModule({

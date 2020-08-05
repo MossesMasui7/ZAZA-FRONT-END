@@ -1,10 +1,11 @@
+import { NegocioService } from "./../../services/negocio.service";
+import { AgregarTiendaProductoPage } from "./../agregar-tienda-producto/agregar-tienda-producto.page";
 import { MyserviceService } from "src/app/services/myservice.service";
 import { Component, OnInit } from "@angular/core";
 import { AlertController, NavController } from "@ionic/angular";
 import { RouterLink, Router } from "@angular/router";
 import { Store } from "../../models/store";
 import { Category } from "../../models/categoria";
-import { NegocioService } from "../../services/negocio.service";
 
 @Component({
   selector: "app-registrar-negocio",
@@ -20,7 +21,8 @@ export class RegistrarNegocioPage implements OnInit {
     private router: Router,
     private service: NegocioService,
     public usuario: MyserviceService,
-    public navCtrl: NavController
+    public navCtrl: NavController,
+    public negocio: NegocioService
   ) {
     this.dataS = new Store();
   }
@@ -68,7 +70,7 @@ export class RegistrarNegocioPage implements OnInit {
       ],
       buttons: [
         {
-          text: "Cancel",
+          text: "Cancelar",
           role: "cancel",
           cssClass: "secondary",
           handler: () => {
@@ -76,10 +78,11 @@ export class RegistrarNegocioPage implements OnInit {
           },
         },
         {
-          text: "Ok",
+          text: "Aceptar",
           handler: () => {
-            console.log("Confirm Ok");
+            console.log("Aceptar");
             this.service.createItem(this.dataS).subscribe((response) => {
+              this.negocio.obtenerNegociosCercanos();
               this.navCtrl.pop();
             });
           },

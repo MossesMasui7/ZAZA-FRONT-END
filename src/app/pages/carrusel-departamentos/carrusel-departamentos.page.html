@@ -1,0 +1,19 @@
+<app-menu [titulo]="'Departamentos'"></app-menu>
+<ion-content>
+  <ion-card
+    *ngFor="let categoria of categorias"
+    button
+    (click)="select(categoria['nombre'])"
+    class="card"
+  >
+    <ion-card-content>
+      <img
+        src="http://18.191.197.204:3000/api/imagen/categoria/{{categoria['nombre']}}.jpg"
+        alt=""
+        width="100%"
+      />
+      <br />
+      <ion-label>{{categoria['nombre']}}</ion-label>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

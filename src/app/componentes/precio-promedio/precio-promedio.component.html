@@ -1,5 +1,8 @@
-<div  class="precio">
-  <label>Promedio. ${{this.promedio}}</label>
- 
-  <label class="precioBajo">Más bajo. ${{this.min}}</label>
+<div class="precio" *ngIf="alcance">
+  <label>Promedio. ${{ this.promedio }}</label>
+
+  <label class="precioBajo">Más bajo. ${{ this.min }}</label>
+</div>
+<div class="precio" *ngIf="!alcance">
+  <label>Producto No disponible</label>
 </div>

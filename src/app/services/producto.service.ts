@@ -1,15 +1,18 @@
+import { MyserviceService } from "src/app/services/myservice.service";
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 @Injectable({
   providedIn: "root",
 })
 export class ProductoService {
-  URL_API = "https://zaza-app.herokuapp.com/api/producto";
-  //URL_API = "http://192.168.1.79:3000/api/producto";
-  public precio = [];
+  //URL_API = "https://zaza-app.herokuapp.com/api/producto";
+  URL_API = "http://18.191.197.204:3000/api/producto";
+  public precio: any[];
   public tiendas = {};
   public productos: any[] = [];
-  constructor(private http: HttpClient) {}
+  public cdb: any = "";
+
+  constructor(private http: HttpClient, public usuario: MyserviceService) {}
 
   // aqui es donde manda a llamar al back
   postproducto(pro): Promise<any> {
@@ -51,6 +54,13 @@ export class ProductoService {
         texto,
         fecha,
       })
+      .toPromise();
+  }
+  buscarprecio(idNegocio) {
+    return this.http
+      .get(
+        `${this.URL_API}/comparar/${this.usuario.usuario["_id"]}/${idNegocio}`
+      )
       .toPromise();
   }
 }

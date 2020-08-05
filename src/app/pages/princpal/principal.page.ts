@@ -3,8 +3,13 @@ import { Router } from "@angular/router";
 import { ProductoService } from "src/app/services/producto.service";
 import { MyserviceService } from "src/app/services/myservice.service";
 import { Geolocation, Geoposition } from "@ionic-native/geolocation/ngx";
-import { IonSlides } from "@ionic/angular";
-
+import {
+  IonSlides,
+  MenuController,
+  Platform,
+  NavController,
+} from "@ionic/angular";
+import { AppComponent } from "src/app/app.component";
 @Component({
   selector: "app-principal",
   templateUrl: "./principal.page.html",
@@ -15,8 +20,20 @@ export class PrincipalPage implements OnInit {
     public router: Router,
     public geolocation: Geolocation,
     public producto: ProductoService,
-    public usuario: MyserviceService
-  ) {}
+    public usuario: MyserviceService,
+    public menuCtrl: MenuController,
+    public nombre: AppComponent,
+    public plataform: Platform,
+    public navCtrl: NavController
+  ) {
+    this.plataform.backButton.subscribeWithPriority(666666, () => {
+      if (location.pathname == "/home") {
+        navigator["app"].exitApp();
+      } else {
+        this.navCtrl.pop();
+      }
+    });
+  }
   slidesDidLoad(slides: IonSlides) {
     slides.startAutoplay();
   }
@@ -28,6 +45,10 @@ export class PrincipalPage implements OnInit {
   ];
 
   ngOnInit() {
+    this.nombre.nombre = this.usuario.usuario["nombre"];
+
+    this.menuCtrl.enable(true);
+    caches.delete;
     this.geolocation
       .getCurrentPosition()
       .then((data: Geoposition) => {

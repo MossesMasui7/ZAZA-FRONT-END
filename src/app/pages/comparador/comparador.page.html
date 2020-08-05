@@ -1,0 +1,31 @@
+<app-menu [titulo]="'Comparador'"></app-menu>
+
+<ion-content>
+  <ion-card class="card" *ngFor="let producto of productos">
+    <ion-card-header class="ion-text-right infProducto">
+      <ion-card-content class="cardImg">
+        <img
+          class="imgProducto"
+          src="http://18.191.197.204:3000/api/imagen/producto/{{producto[0]['img']}}"
+          alt=""
+        />
+      </ion-card-content>
+      <ion-label class="nombre">{{producto[0]['nombre']}}</ion-label>
+      <ion-card-subtitle
+        >Cantidad:{{producto[0]['contenido']}}</ion-card-subtitle
+      >
+      <ion-card-subtitle
+        >Precio:${{producto[0]['tiendas'][0]['precio']}}.00</ion-card-subtitle
+      >
+      <ion-card-subtitle
+        >Precio por
+        {{producto[0]['tipoContenido']}}:${{(producto[0]['tiendas'][0]['precio']/producto[0]['contenido']).toFixed(3)}}</ion-card-subtitle
+      >
+      <ion-card-subtitle>{{producto[0]['nombre']}}</ion-card-subtitle> <br />
+    </ion-card-header>
+  </ion-card>
+
+  <ion-button (click)="scanNow()" expand="block" fill="clear" shape="round">
+    Agregar Otro
+  </ion-button>
+</ion-content>

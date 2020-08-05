@@ -18,18 +18,24 @@ export class TiendasCercanasComponent implements OnInit {
     public toastController: ToastController,
     public cliente: MyserviceService
   ) {}
+  public vacio: boolean;
 
   ngOnInit() {
     this.producto.tiendas["tiendas"].forEach((element) => {
-      console.log(element);
-
       let tienda = {};
-      if (element["alcance"] != false) {
+      if (element["alcance"] == true) {
         tienda["nombre"] = element["negocio"]["nombre"];
         tienda["precio"] = element.precio;
+        tienda["distancia"] = element.distancia;
+        tienda["inventario"] = element.inventario;
         this.producto.precio.push(tienda);
       }
     });
+    if (this.producto.precio.length == 0) {
+      this.vacio = true;
+    } else {
+      this.vacio = false;
+    }
   }
   more() {
     this.cantidad++;

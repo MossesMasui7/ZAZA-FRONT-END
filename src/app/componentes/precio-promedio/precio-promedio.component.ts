@@ -12,11 +12,13 @@ export class PrecioPromedioComponent implements OnInit {
   public divicion: any;
   public min = 0;
   public contador: any = 0;
+  public alcance: boolean;
   constructor(public producto: ProductoService) {}
 
   ngOnInit() {
     this.producto.tiendas["tiendas"].forEach((element) => {
       if (element["alcance"] != false) {
+        this.alcance = true;
         this.suma += element.precio;
         this.precios.push(element.precio);
         this.contador++;

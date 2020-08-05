@@ -1,0 +1,14 @@
+<app-menu [titulo]="paramsSubCategoria"></app-menu>
+<ion-content>
+  <ion-card *ngFor="let producto of productos" button class="card">
+    <ion-card-content>
+      <img
+        src="http://18.191.197.204:3000/api/imagen/producto/{{producto['img']}}"
+        alt=""
+        width="100%"
+      />
+      <br />
+      <ion-label>{{producto['descripcion']}}</ion-label>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -11,7 +11,6 @@ import { NavController } from "@ionic/angular";
   styleUrls: ["./agregar-tienda-producto.page.scss"],
 })
 export class AgregarTiendaProductoPage implements OnInit {
-  negociosCercanos: any;
   idNegocio: String;
   precio: Number;
   inventario: Number;
@@ -30,7 +29,7 @@ export class AgregarTiendaProductoPage implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.obtenerNegociosCercanos();
+    this.negocios.obtenerNegociosCercanos();
   }
   agregarTienda() {
     this.router.navigate(["/registrar-negocio"]);
@@ -57,52 +56,5 @@ export class AgregarTiendaProductoPage implements OnInit {
       .catch((err) => {
         console.log(err);
       });
-  }
-  doRefresh(event) {
-    this.obtenerNegociosCercanos();
-
-    setTimeout(() => {
-      event.target.complete();
-    }, 2000);
-  }
-
-  rad(x) {
-    return (x * Math.PI) / 180;
-  }
-  getKilometros = function (lat2, lon2) {
-    var R = 6378.137; //Radio de la tierra en km
-    var dLat = this.rad(lat2 - this.usuario.la);
-    var dLong = this.rad(lon2 - this.usuario.lo);
-
-    var a =
-      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-      Math.cos(this.rad(this.usuario.la)) *
-        Math.cos(this.rad(lat2)) *
-        Math.sin(dLong / 2) *
-        Math.sin(dLong / 2);
-    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-    var d = R * c;
-
-    return d.toFixed(3); //Retorna tres decimales
-  };
-
-  obtenerNegociosCercanos() {
-    let tiendasCercanas: any[] = [];
-    this.negocios.obtenerNegocios().subscribe((data) => {
-      this.negociosCercanos = data;
-      this.negociosCercanos.forEach((element) => {
-        if (
-          parseFloat(
-            this.getKilometros(
-              element["cordenadas"]["longitude"],
-              element["cordenadas"]["latitude"]
-            )
-          ) < 0.201
-        ) {
-          tiendasCercanas.push(element);
-        }
-      });
-      this.negociosCercanos = tiendasCercanas;
-    });
   }
 }

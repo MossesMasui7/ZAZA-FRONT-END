@@ -1,4 +1,4 @@
-<div class="div">
+<div *ngIf="!this.vacio" class="div">
   <div class="sort">
     <br /><br />
     <div class="btn-ordenar">
@@ -34,12 +34,12 @@
   </div>
 
   <div
-    *ngFor="let tienda of this.producto.tiendas['tiendas']; let i = index"
+    *ngFor="let tienda of this.producto.precio; let i = index"
     class="tienda"
   >
-    <tr *ngIf="this.tienda['alcance'] != false">
+    <tr>
       <td class="der">
-        {{ tienda["negocio"]["nombre"] }} <br />
+        {{ tienda["nombre"] }} <br />
         a {{ tienda["distancia"] }}Kms <br />
         {{ tienda["inventario"] }} uni. disponibles
       </td>

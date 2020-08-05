@@ -6,8 +6,8 @@ import { LoadingController } from "@ionic/angular";
   providedIn: "root",
 })
 export class MyserviceService {
-  URL_API = "https://zaza-app.herokuapp.com/api/";
-  //URL_API = 'http://192.168.1.79:3000/api/';
+  //URL_API = "https://zaza-app.herokuapp.com/api/";
+  URL_API = "http://18.191.197.204:3000/api/";
   public la: any = 0;
   public lo: any = 0;
   public usuario: any;

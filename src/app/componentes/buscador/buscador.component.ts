@@ -25,7 +25,6 @@ export class BuscadorComponent implements OnInit {
   resultado: boolean = false;
   productos: any[] = [];
   search: any = new FormControl("");
-  codigo: any;
 
   // Constructor
 
@@ -40,7 +39,8 @@ export class BuscadorComponent implements OnInit {
   //Funciones que se ejecutan al iniciar el componente
 
   ngOnInit() {
-    this.search.valueChanges.pipe(debounceTime(500)).subscribe((texto) => {
+    this.search.valueChanges.pipe(debounceTime(700)).subscribe((texto) => {
+      this.producto.cdb = texto;
       if (texto) {
         this.vacio = true;
         this.obtenerProducto(texto);
@@ -57,11 +57,10 @@ export class BuscadorComponent implements OnInit {
     this.barcodeScanner
       .scan()
       .then((barcodeData) => {
+        this.producto.cdb = barcodeData.text;
+
         this.search = barcodeData.text;
         this.obtenerProducto(this.search);
-        if (this.resultado == true) {
-          this.router.navigate(["./alta-producto"]);
-        }
       })
       .catch((err) => {
         console.log("Error", err);
@@ -149,7 +148,7 @@ export class BuscadorComponent implements OnInit {
               "latitude"
             ]
           )
-        ) <= 15
+        ) < 15
       ) {
         this.productos.push(this.producto.tiendas["tiendas"][i]);
         this.productos[i]["distancia"] = this.getKilometros(
@@ -160,6 +159,8 @@ export class BuscadorComponent implements OnInit {
             "latitude"
           ]
         );
+        this.productos[i]["alcance"] = true;
+
         this.productos.sort(this.GetSortOrder("distancia"));
       } else {
         this.productos.push(this.producto.tiendas["tiendas"][i]);
@@ -182,49 +183,19 @@ export class BuscadorComponent implements OnInit {
 
   seleccionar(indice: any) {
     this.producto.tiendas = this.producto.productos[indice];
+
     this.SortDis();
-    this.producto.precio = [];
+    this.router.navigate(["./buscar"]);
     //console.log(this.producto.tiendas);
-    this.alerta();
+    this.producto.precio = [];
+    this.search = null;
+    this.producto.productos = [];
   }
 
   // funcion que redirecciona a añadir producto si no existe
 
   addProducto() {
     this.router.navigate(["alta-producto"]);
-  }
-
-  //Funcion de alerta
-
-  alerta() {
-    const swalWithBootstrapButtons = Swal.mixin({
-      customClass: {
-        confirmButton: "btn btn-success",
-        cancelButton: "btn btn-danger",
-      },
-      buttonsStyling: false,
-    });
-    swalWithBootstrapButtons
-      .fire({
-        title: "Seleccione la opcion",
-        text: "Desea Comparar el producto ó ver perfil de producto",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Comparar",
-        cancelButtonText: "Ver perfil",
-        reverseButtons: true,
-      })
-      .then((result) => {
-        if (result.value) {
-          this.router.navigate(["buscar"]);
-        } else if (
-          /* Read more about handling dismissals below */
-          result.dismiss === Swal.DismissReason.cancel
-        ) {
-          this.router.navigate(["perfil-producto"]);
-        }
-      });
   }
 
   //Funcion que obtiene los productos de la base de datos
@@ -245,12 +216,16 @@ export class BuscadorComponent implements OnInit {
         .obtener(texto.toLowerCase())
         .then((prod) => {
           if (prod["resp"].length > 1) {
-            this.producto.productos = prod["resp"];
-
+            prod["resp"].forEach((element) => {
+              if (element["tiendas"].length > 0) {
+                this.producto.productos.push(element);
+              }
+            });
             this.resultado = false;
             // console.log(this.producto.productos);
           } else if (prod["resp"].length == 0) {
             this.resultado = true;
+            this.router.navigate(["./alta-producto"]);
           } else {
             this.producto.tiendas = prod["resp"]["0"];
             this.resultado = false;
@@ -258,7 +233,6 @@ export class BuscadorComponent implements OnInit {
 
             this.SortDis();
             this.producto.precio = [];
-            // console.log(this.producto.tiendas);
           }
         })
         .catch((err) => {

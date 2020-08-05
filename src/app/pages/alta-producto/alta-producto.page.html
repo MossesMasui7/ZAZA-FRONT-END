@@ -1,10 +1,15 @@
 <ion-app>
-  <app-menu [titulo]="'Actualizar Perfil'"></app-menu>
+  <app-menu [titulo]="'Alta Producto'"></app-menu>
 
   <ion-content (swipe)="swipe()">
     <ion-grid>
       <ion-row class="img-div">
-        <img (click)="imgSelect()" src="{{this.img}}" class="img-add" alt="" />
+        <img
+          (click)="selectImage()"
+          src="{{this.img}}"
+          class="img-add"
+          alt=""
+        />
       </ion-row>
       <ion-row>
         <ion-col col-12>
@@ -13,17 +18,17 @@
           >
           <ion-item>
             <ion-input
-              type="text"
+              type="number"
               [ngClass]="{disponiblee: this.disponible == true, ocupado: this.disponible == false}"
               placeholder=""
-              [formControl]="cdb"
+              [(formControl)]="cdb"
             ></ion-input>
-            <ion-button class="botonScan" (click)="escanear()" fill="clear">
-              <img
-                src="../../../assets//iconos/price-scan-scanner-bar-barcode-code_108573.ico"
-                alt=""
-              />
-            </ion-button>
+            <ion-icon
+              slot="end"
+              name="barcode"
+              class="icono"
+              (click)="escanear()"
+            ></ion-icon>
           </ion-item>
         </ion-col>
       </ion-row>
@@ -81,6 +86,71 @@
           ><br />
         </ion-col>
       </ion-row>
+      <ion-row>
+        <ion-col col-12>
+          <ion-label class="comentarios">
+            Contenido Neto: ej 150g/1kg/10Uni)</ion-label
+          >
+          <ion-item>
+            <ion-input
+              type="number"
+              [(ngModel)]="contenido"
+              placeholder=""
+            ></ion-input>
+
+            <ion-select
+              value="Kilogramo"
+              [(ngModel)]="tipoContenido"
+              multiple="false"
+            >
+              <ion-select-option value="Kilogramo"
+                >Kilogramo(s)</ion-select-option
+              >
+              <ion-select-option value="Gramo">Gramo(s)</ion-select-option>
+              <ion-select-option value="Unidad">Unidad(s)</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <br />
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-12>
+          <ion-label class="comentarios">
+            A que categoria pertenece este producto ej: Abarrotes
+            Galletas</ion-label
+          >
+
+          <ion-item>
+            <ion-label>Categoria</ion-label>
+            <ion-select
+              (ionChange)="onChange($event)"
+              multiple="false"
+              placeholder="Select Categoria"
+            >
+              <ion-select-option
+                *ngFor="let categoria of categorias"
+                value="{{categoria['nombre']}}"
+                >{{categoria['nombre']}}</ion-select-option
+              >
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label>Subcategoria</ion-label>
+            <ion-select
+              [(ngModel)]="categoriaProducto"
+              multiple="false"
+              placeholder="Select Subcategoria"
+            >
+              <ion-select-option
+                *ngFor="let subcategoria of subcategorias"
+                value="{{subcategoria}}"
+                >{{subcategoria}}</ion-select-option
+              >
+            </ion-select>
+          </ion-item>
+          <br />
+        </ion-col>
+      </ion-row>
 
       <ion-button
         class="boton"
@@ -88,10 +158,6 @@
         color="success"
         (click)="subir()"
         >Guardar</ion-button
-      >
-
-      <ion-button class="boton2" color="danger" href="/home"
-        >Descartar</ion-button
       >
     </ion-grid>
   </ion-content>

@@ -1,11 +1,12 @@
+import { CategoriaProductoService } from "./../../services/categoria-producto.service";
+import { BuscadorComponent } from "./../../componentes/buscador/buscador.component";
 import { Component, OnInit, NgZone } from "@angular/core";
 import { ProductoService } from "../../services/producto.service";
 import { AlertController, NavController } from "@ionic/angular";
 import { Camera, CameraOptions } from "@ionic-native/camera/ngx";
-import { debounceTime } from "rxjs/operators";
 import { FormControl } from "@angular/forms";
 import { Router } from "@angular/router";
-import { element } from "protractor";
+import { ActionSheetController } from "@ionic/angular";
 import { BarcodeScanner } from "@ionic-native/barcode-scanner/ngx";
 @Component({
   selector: "app-alta-producto",
@@ -25,50 +26,98 @@ export class AltaProductoPage implements OnInit {
   marca: string;
   alias: string;
   nombre: string;
+  contenido: number = 1;
+  tipoContenido: string;
+  categoriaProducto: string;
 
-  public img: String = "../../../assets/iconos/userico";
+  public img: any = "noimage";
   coinciden: boolean = false;
   disponible: boolean = false;
+  categorias: any[] = [];
+  subcategorias: any[] = [];
 
   constructor(
     private productoService: ProductoService,
     private camera: Camera,
     private alertController: AlertController,
     private router: Router,
-    private zone: NgZone,
     private barcodeScanner: BarcodeScanner,
-    public navCtrl: NavController
+    public navCtrl: NavController,
+    public actionSheetController: ActionSheetController,
+    public buscador: BuscadorComponent,
+    public categoria: CategoriaProductoService
   ) {}
 
   ngOnInit() {
+    this.cdb.setValue(this.productoService.cdb);
+    this.checkCDB(this.productoService.cdb);
     this.cdb.valueChanges.subscribe((palabra) => {
-      this.productoService
-        .obtenerCDB(palabra)
-        .then((data) => {
-          this.disponible = data["disponible"];
-        })
-        .catch((err) => {
-          console.error(err);
-        });
+      this.checkCDB(palabra);
     });
+
+    this.categoria
+      .obtenerCategoria()
+      .then((data) => {
+        this.categorias = data["cont"];
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   escanear() {
     this.barcodeScanner
       .scan()
       .then((barcodeData) => {
-        this.cdb = barcodeData.text;
+        this.cdb.setValue(barcodeData.text);
+        this.checkCDB(this.cdb.value);
       })
       .catch((err) => {
         console.log("Error", err);
       });
   }
 
-  imgSelect() {
+  async selectImage() {
+    const actionSheet = await this.actionSheetController.create({
+      header: "Select Image source",
+      buttons: [
+        {
+          text: "Load from Library",
+          handler: () => {
+            this.imgSelect(this.camera.PictureSourceType.PHOTOLIBRARY);
+          },
+        },
+        {
+          text: "Use Camera",
+          handler: () => {
+            this.imgSelect(this.camera.PictureSourceType.CAMERA);
+          },
+        },
+        {
+          text: "Cancel",
+          role: "cancel",
+        },
+      ],
+    });
+    await actionSheet.present();
+  }
+
+  checkCDB(cdb) {
+    this.productoService
+      .obtenerCDB(cdb)
+      .then((data) => {
+        this.disponible = data["disponible"];
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
+
+  imgSelect(sourceType) {
     const options: CameraOptions = {
       quality: 50,
       destinationType: this.camera.DestinationType.DATA_URL,
-      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+      sourceType: sourceType,
       saveToPhotoAlbum: false,
       allowEdit: true,
       targetWidth: 300,
@@ -88,12 +137,27 @@ export class AltaProductoPage implements OnInit {
   }
 
   subir() {
-    let pro = {
-      cdb: this.cdb.value,
-      descripcion: `${this.nombre.toLowerCase()} ${this.marca.toLowerCase()} ${this.descripcion.toLowerCase()} (${this.alias.toLowerCase()}) `,
-      nombre: this.nombre.toLowerCase(),
-      img: this.img,
-    };
+    let pro;
+    if (this.alias) {
+      pro = {
+        cdb: this.cdb.value,
+        descripcion: `${this.nombre.toLowerCase()} ${this.marca.toLowerCase()} ${this.descripcion.toLowerCase()} (${this.alias.toLowerCase()}) `,
+        contenido: this.contenido,
+        tipoContenido: this.tipoContenido,
+        categoria: this.categoriaProducto,
+        img: this.img,
+      };
+    } else {
+      pro = {
+        cdb: this.cdb.value,
+        descripcion: `${this.nombre.toLowerCase()} ${this.marca.toLowerCase()} ${this.descripcion.toLowerCase()}`,
+        contenido: this.contenido,
+        tipoContenido: this.tipoContenido,
+        categoria: this.categoriaProducto,
+        img: this.img,
+      };
+    }
+
     if (
       this.cdb.value == null ||
       this.descripcion == null ||
@@ -105,7 +169,10 @@ export class AltaProductoPage implements OnInit {
       this.productoService
         .postproducto(pro)
         .then((data) => {
-          this.presentAlert("Producto agregado con Exito", "Alerta");
+          this.presentAlert(
+            "Producto registrado correctamente",
+            "Transaccion correctamente"
+          );
           this.productoService.tiendas = data["pDB"];
 
           this.router.navigate([`/agregar-tienda-producto`]);
@@ -126,5 +193,15 @@ export class AltaProductoPage implements OnInit {
   }
   swipe() {
     this.navCtrl.pop();
+  }
+  onChange($event) {
+    this.categoria
+      .obtenerSubCategoria($event.target.value)
+      .then((data) => {
+        this.subcategorias = data["cont"]["subCategoria"];
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 }

@@ -1,0 +1,42 @@
+<app-menu titulo="Comparador"></app-menu>
+<ion-content>
+  <table border>
+    <tr>
+      <th>Producto/Tienda</th>
+      <th>
+        <ion-item>
+          <ion-label>Negocio</ion-label>
+          <ion-select
+            value="1"
+            (ionChange)="onChange($event)"
+            multiple="false"
+            placeholder="Select Pizza"
+          >
+            <ion-select-option
+              *ngFor="let negocio of negocio"
+              value="{{negocio['_id']}}"
+              >{{negocio['nombre']}}</ion-select-option
+            >
+          </ion-select>
+        </ion-item>
+      </th>
+      <th>
+        <ion-item>
+          <ion-label>Negocio</ion-label>
+          <ion-select value="1" multiple="false" placeholder="Select Pizza">
+            <ion-select-option
+              *ngFor="let negocio of negocio"
+              value="{{negocio['_id']}}"
+              >{{negocio['nombre']}}</ion-select-option
+            >
+          </ion-select>
+        </ion-item>
+      </th>
+    </tr>
+    <tr *ngFor="let producto of  productosPrecio">
+      <td>{{producto['Producto']}}</td>
+      <td>{{producto['Precio']}}</td>
+      <td>C</td>
+    </tr>
+  </table>
+</ion-content>

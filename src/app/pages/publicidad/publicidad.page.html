@@ -1,0 +1,36 @@
+<app-menu [titulo]="'Alta Publicidad'"></app-menu>
+
+<ion-content>
+  <ion-item>
+    <ion-label>Seleccione Imagen 1</ion-label>
+    <ion-button (click)="imgUno()" expand="block" shape="round">
+      Examinar
+    </ion-button>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Seleccione Imagen 2</ion-label>
+    <ion-button (click)="imgDos()" expand="block" shape="round">
+      Examinar
+    </ion-button>
+  </ion-item>
+  <ion-item>
+    <ion-label>Seleccione Imagen 3</ion-label>
+    <ion-button (click)="imgTres()" expand="block" shape="round">
+      Examinar
+    </ion-button>
+  </ion-item>
+  <ion-item>
+    <ion-label>Seleccione Negocio</ion-label>
+    <ion-select [(ngModel)]="negocioId" multiple="false" placeholder="Select">
+      <ion-select-option
+        *ngFor="let negocio of ArrayNegocio;"
+        value="{{negocio['_id']}}"
+        >{{negocio['nombre']}}</ion-select-option
+      >
+    </ion-select>
+  </ion-item>
+  <ion-button (click)="publicar()" expand="block" shape="round">
+    Publicar
+  </ion-button>
+</ion-content>

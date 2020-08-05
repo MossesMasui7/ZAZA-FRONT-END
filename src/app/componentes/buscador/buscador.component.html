@@ -1,10 +1,9 @@
 <div class="buscador">
   <ion-input
     class="input"
-    [formControl]="search"
+    [(formControl)]="search"
     type="text"
-    placeholder="Buscar por codigo de barras ò nombre"
-    value="{{ codigo }}"
+    placeholder="Buscar por codigo de barras o nombre"
   ></ion-input
   ><ion-button class="boton" (click)="escanear()" fill="clear">
     <img
@@ -30,28 +29,30 @@
     *ngFor="let producto of this.producto.productos; index as i"
     (click)="seleccionar(i)"
   >
-    <ion-card-header>
-      <p class="clasificacion">
-        <label>★</label>
-        <label>★</label>
-        <label>★</label>
-        <label>★</label>
-        <label>★</label>
-      </p>
-      <ion-card-subtitle
-        ><img
-          class="img"
-          src="https://zaza-app.herokuapp.com/api/imagen/producto/{{
-            producto['img']
-          }}"
-          alt=""
-      /></ion-card-subtitle>
-      <ion-card-title class="titulo">{{
-        producto["descripcion"] | puntosSuspensivos: "25"
-      }}</ion-card-title>
-      <ion-card-subtitle
-        >Desde: ${{ producto["tiendas"][0]["precio"] }}.00</ion-card-subtitle
-      >
-    </ion-card-header>
+    <div>
+      <ion-card-header>
+        <p class="clasificacion">
+          <label>★</label>
+          <label>★</label>
+          <label>★</label>
+          <label>★</label>
+          <label>★</label>
+        </p>
+        <ion-card-subtitle
+          ><img
+            class="img"
+            src="https://zaza-app.herokuapp.com/api/imagen/producto/{{
+              producto['img']
+            }}"
+            alt=""
+        /></ion-card-subtitle>
+        <ion-card-title class="titulo">{{
+          producto["descripcion"] | puntosSuspensivos: "25"
+        }}</ion-card-title>
+        <ion-card-subtitle
+          >Desde: ${{ producto["tiendas"][0]["precio"] }}.00</ion-card-subtitle
+        >
+      </ion-card-header>
+    </div>
   </ion-card>
 </div>

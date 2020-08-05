@@ -1,0 +1,92 @@
+.muestra {
+  height: 35%;
+}
+
+.seleccionar {
+  position: relative;
+  width: 95%;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.compararOtro {
+  position: relative;
+  width: 95%;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#precio {
+  width: 50px;
+  position: relative;
+  transform: translate(-50%, -50%);
+  left: 15%;
+  top: 60%;
+}
+
+.nombre {
+  position: center;
+  top: 7%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.descripcion {
+  position: relative;
+  top: 16%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.rating {
+  position: relative;
+  top: 26%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.contenido {
+  position: relative;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 46%;
+}
+
+.precio {
+  position: relative;
+  transform: translate(-50%, -50%);
+  left: 10%;
+  top: 46%;
+}
+
+.precioGramo {
+  position: relative;
+  transform: translate(-50%, -50%);
+  right: 3%;
+  top: 44%;
+}
+
+.gramos {
+  position: relative;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 60%;
+}
+
+.gramosPrecio {
+  position: relative;
+  transform: translate(-50%, -50%);
+  right: 20%;
+  top: 60%;
+}
+
+.imgProducto {
+  width: 60px;
+  height: 60px;
+  border: 1px solid white;
+  position: relative;
+  top: 10px;
+  left: 10px;
+}

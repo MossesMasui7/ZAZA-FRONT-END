@@ -1,13 +1,13 @@
 <app-menu [titulo]="'Agregar Negocio'"></app-menu>
 
 <ion-content class="content">
-  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+  <ion-refresher slot="fixed">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
   <div class="content">
     <div class="infProducto">
       <img
-        src="https://zaza-app.herokuapp.com/api/imagen/producto/{{this.producto.tiendas['img']}}"
+        src="http://18.191.197.204:3000/api/imagen/producto/{{this.producto.tiendas['img']}}"
         alt=""
       />
       <h1>{{this.producto.tiendas['descripcion']}}</h1>
@@ -19,171 +19,14 @@
         type="number"
         [(ngModel)]="precio"
         placeholder="Precio del Producto"
-      ></ion-input>
+        >$</ion-input
+      >
       <ion-input
         [ngModelOptions]="{standalone: true}"
         type="number"
         placeholder="Cuantos tiene en existencia"
         [(ngModel)]="inventario"
       ></ion-input>
-      <ion-input
-        [ngModelOptions]="{standalone: true}"
-        type="text"
-        placeholder="Elementos por paquetes "
-        [(ngModel)]="elementos"
-      ></ion-input>
-
-      <ion-item>
-        <ion-label>Pzas</ion-label>
-        <ion-select
-          [ngModelOptions]="{standalone: true}"
-          value="contenido"
-          multiple="false"
-          [(ngModel)]="contenido"
-        >
-          <ion-select-option value="Pzas">Pzas</ion-select-option>
-          <ion-select-option value="Paquetes">Paquete</ion-select-option>
-        </ion-select>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>Departamento:</ion-label>
-        <ion-select
-          [ngModelOptions]="{standalone: true}"
-          [(ngModel)]="departamento"
-          multiple="false"
-          value="departamento"
-        >
-          <ion-select-option value="Abarrotes">Abarrotes</ion-select-option>
-          <ion-select-option value="Lacteos">Lacteos</ion-select-option>
-          <ion-select-option value="Frutas y Verduras"
-            >Frutas y Verduras</ion-select-option
-          >
-          <ion-select-option value="Carnes y Pescados"
-            >Carnes y Pescados</ion-select-option
-          >
-          <ion-select-option value="Salchichoneria"
-            >Salchichoneria</ion-select-option
-          >
-          <ion-select-option value="Panederia">Panederia</ion-select-option>
-          <ion-select-option value="Jugos y Bebidas"
-            >Jugos y Bebidas</ion-select-option
-          >
-          <ion-select-option value="Vinos y Licores"
-            >Vinos y Licores</ion-select-option
-          >
-          <ion-select-option value="Limpieza y Mascotas "
-            >Limpieza y Mascotas
-          </ion-select-option>
-          <ion-select-option value="Farmacias"> Farmacias </ion-select-option>
-          <ion-select-option value="Higiene y Belleza">
-            Higiene y Belleza
-          </ion-select-option>
-        </ion-select>
-      </ion-item>
-
-      <ion-item>
-        <!--recuerda puedes ponerlo adentro de un select y de ese que se le desgloce su seccion y de su seccion se le desgloce el producto -->
-        <ion-label>Seccion:</ion-label>
-        <ion-select
-          [ngModelOptions]="{standalone: true}"
-          [(ngModel)]="seccion"
-          multiple="false"
-          value="seccion"
-        >
-          <ion-select-option value="Especias y sazonadores "
-            >Especias y sazonadores
-          </ion-select-option>
-          <ion-select-option value="Botana y Fruta Seca "
-            >Botana y Fruta Seca
-          </ion-select-option>
-          <ion-select-option value="Café, Té y Sustitutos "
-            >Café, Té y Sustitutos
-          </ion-select-option>
-          <ion-select-option value="Salsas, Aderezos y Vinagre "
-            >Salsas, Aderezos y Vinagre
-          </ion-select-option>
-          <ion-select-option value="Dulces y Chocolates "
-            >Dulces y Chocolates
-          </ion-select-option>
-          <ion-select-option value="Alimentos Instantáneos "
-            >Alimentos Instantáneos
-          </ion-select-option>
-          <ion-select-option value="Cereales y Barras "
-            >Cereales y Barras
-          </ion-select-option>
-          <ion-select-option value="Galletas ">Galletas </ion-select-option>
-          <ion-select-option value="Enlatados y Conservas "
-            >Enlatados y Conservas
-          </ion-select-option>
-          <ion-select-option value="Arroz, Frijol y Semillas ">
-            Arroz, Frijol y Semillas
-          </ion-select-option>
-          <ion-select-option value="Pasta "> Pasta </ion-select-option>
-          <ion-select-option value="Mermeladas y miel  "
-            >Mermeladas y miel
-          </ion-select-option>
-          <ion-select-option value="Harina y repostería  ">
-            Harina y repostería
-          </ion-select-option>
-          <ion-select-option value="Azúcar y postres  ">
-            Azúcar y postres
-          </ion-select-option>
-          <ion-select-option value="Pan y Tortillas  ">
-            Pan y Tortillas
-          </ion-select-option>
-          <ion-select-option value="Saborizantes y jarabes  ">
-            Saborizantes y jarabes
-          </ion-select-option>
-          <ion-select-option value="Aceite de cocina ">
-            Aceite de cocina
-          </ion-select-option>
-          <ion-select-option value="Leche  "> Leche </ion-select-option>
-          <ion-select-option value="Quesos  "> Quesos </ion-select-option>
-          <ion-select-option value="Yogurt  "> Yogurt </ion-select-option>
-          <ion-select-option value="Mantequilla y margarina   ">
-            Mantequilla y margarina
-          </ion-select-option>
-          <ion-select-option value="Huevo   "> Huevo </ion-select-option>
-          <ion-select-option value="Crema   "> Crema </ion-select-option>
-          <ion-select-option value="Frutas   "> Frutas </ion-select-option>
-        </ion-select>
-      </ion-item>
-      <ion-item>
-        <ion-label>Producto:</ion-label>
-        <ion-select
-          [ngModelOptions]="{standalone: true}"
-          [(ngModel)]="productos"
-          multiple="false"
-          value="producto"
-        >
-          <ion-select-option value="Abarrotes">Abarrotes</ion-select-option>
-          <ion-select-option value="Lacteos">Lacteos</ion-select-option>
-          <ion-select-option value="Frutas y Verduras"
-            >Frutas y Verduras</ion-select-option
-          >
-          <ion-select-option value="Carnes y Pescados"
-            >Carnes y Pescados</ion-select-option
-          >
-          <ion-select-option value="Salchichoneria"
-            >Salchichoneria</ion-select-option
-          >
-          <ion-select-option value="Panederia">Panederia</ion-select-option>
-          <ion-select-option value="Jugos y Bebidas"
-            >Jugos y Bebidas</ion-select-option
-          >
-          <ion-select-option value="Vinos y Licores"
-            >Vinos y Licores</ion-select-option
-          >
-          <ion-select-option value="Limpieza y Mascotas "
-            >Limpieza y Mascotas
-          </ion-select-option>
-          <ion-select-option value="Farmacias"> Farmacias </ion-select-option>
-          <ion-select-option value="Higiene y Belleza">
-            Higiene y Belleza
-          </ion-select-option>
-        </ion-select>
-      </ion-item>
 
       <p>
         Estos son algunos lugares cercanos a tu ubicacion <br />
@@ -199,7 +42,7 @@
           [(ngModel)]="idNegocio"
         >
           <ion-select-option
-            *ngFor="let negocio of negociosCercanos"
+            *ngFor="let negocio of negocios.negociosCercanos"
             value="{{negocio['_id']}}"
             >{{negocio['nombre']}}</ion-select-option
           >

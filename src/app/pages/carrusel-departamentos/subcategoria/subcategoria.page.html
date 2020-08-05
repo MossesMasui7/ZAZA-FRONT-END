@@ -1,0 +1,19 @@
+<app-menu [titulo]="paramsCategoria"></app-menu>
+<ion-content>
+  <ion-card
+    *ngFor="let categoria of categorias"
+    button
+    (click)="select(categoria)"
+    class="card"
+  >
+    <ion-card-content>
+      <img
+        src="https://i.pinimg.com/736x/5a/4c/2e/5a4c2e52ddf5d62c3e927d42a4cce53a.jpg"
+        alt=""
+        width="100%"
+      />
+      <br />
+      <ion-label>{{categoria}}</ion-label>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

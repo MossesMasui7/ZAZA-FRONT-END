@@ -5,8 +5,8 @@ import { MyserviceService } from "./myservice.service";
   providedIn: "root",
 })
 export class RegistroService {
-  URL = "https://zaza-app.herokuapp.com/api/usuario/";
-  //URL = "http://192.168.1.79:3000/api/usuario/"
+  //URL = "https://zaza-app.herokuapp.com/api/usuario/";
+  URL = "http://18.191.197.204:3000/api/usuario/";
   constructor(private http: HttpClient, private cliente: MyserviceService) {}
 
   registrar(
