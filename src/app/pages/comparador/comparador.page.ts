@@ -1,13 +1,16 @@
 import { Component, OnInit } from '@angular/core';
+
 import { NegocioService } from "../../services/negocio.service";
 import { RegistroService } from "../../services/usuario.service";
 import { MyserviceService } from "../../services/myservice.service";
+
 @Component({
   selector: 'app-comparador',
   templateUrl: './comparador.page.html',
   styleUrls: ['./comparador.page.scss'],
 })
 export class ComparadorPage implements OnInit {
+
   negociosCercanos: any;
   mostrarCarrito = true;
   mostrarVacio = false;
@@ -32,4 +35,5 @@ export class ComparadorPage implements OnInit {
       this.usuario.usuario = data["cont"];
     });
   }
+
 }

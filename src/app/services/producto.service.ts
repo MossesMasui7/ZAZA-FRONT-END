@@ -5,9 +5,13 @@ import { MyserviceService } from './myservice.service';
   providedIn: "root",
 })
 export class ProductoService {
+
   //URL_API = "https://zaza-app.herokuapp.com/api/producto";
+
+  URL_API = "http://localhost:3000/api/producto";
+
   //URL_API = "http://192.168.1.79:3000/api/producto";
-    URL_API = "http://localhost:3000/api";
+//     URL_API = "http://localhost:3000/api";
 
   public precio = [];
   public tiendas = {};
@@ -48,7 +52,7 @@ export class ProductoService {
     fecha: Date
   ) {
     return this.http
-      .put(`${this.URL_API}/producto/agregarComentario/${id}`, {
+      .put(`${this.URL_API}agregarComentario/${id}`, {
         _idUsuario,
         username,
         texto,
@@ -56,10 +60,13 @@ export class ProductoService {
       })
       .toPromise();
   }
+
   obtenerComentarios(id: any){
     return this.http.get(`${this.URL_API}/producto/obtenerComentarios/${id}`).toPromise();
   }
   buscarprecio(idNegocio){
     return this.http.get(`${this.URL_API}/producto/comparar/${this.usuario.usuario['_id']}/${idNegocio}`).toPromise()
   }
+
+
 }

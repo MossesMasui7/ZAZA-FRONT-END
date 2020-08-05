@@ -5,8 +5,10 @@ import { MyserviceService } from "./myservice.service";
   providedIn: "root",
 })
 export class RegistroService {
+
   [x: string]: any;
   // URL = "https://zaza-app.herokuapp.com/api/usuario/";
+
   //URL = "http://192.168.1.79:3000/api/usuario/"
   URL = "http://localhost:3000/api/usuario/";
   
