@@ -10,7 +10,9 @@
           alt=""
         />
       </ion-card-content>
-      <ion-label class="nombre">{{producto[0]['nombre']}}</ion-label>
+      <ion-label class="nombre"
+        >{{producto[0]['descripcion'] |puntosSuspensivos:"25"}}</ion-label
+      >
       <ion-card-subtitle
         >Cantidad:{{producto[0]['contenido']}}{{producto[0]['tipoContenido']}}</ion-card-subtitle
       >

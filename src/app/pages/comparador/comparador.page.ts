@@ -27,7 +27,40 @@ export class ComparadorPage implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.scanNow();
+    //this.scanNow();
+    this.producto
+      .obtener("7791293032153")
+      .then((data) => {
+        this.productos.push(data["resp"]);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    this.producto
+      .obtener("7509546008202")
+      .then((data) => {
+        this.productos.push(data["resp"]);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    console.log(this.productos);
+
+    // let min: number = 0.0;
+    // for (let index = 0; index < 1; index++) {
+    //   console.log("hdg");
+
+    //   if (
+    //     this.productos[index]["tiendas"][0]["precio"] /
+    //       this.productos[index]["contenido"] <
+    //     min
+    //   ) {
+    //     min =
+    //       this.productos[index]["tiendas"][0]["precio"] /
+    //       this.productos[index]["contenido"];
+    //     console.log(min);
+    //   }
+    // }
   }
 
   scanNow() {
