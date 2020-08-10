@@ -5,8 +5,8 @@ import { Injectable } from "@angular/core";
   providedIn: "root",
 })
 export class CategoriaProductoService {
-  //public url: string = "https://zaza-app.herokuapp.com/api/categoriaProducto/";
-  public url: string = "http://18.191.197.204:3000/api/categoriaProducto/";
+  public url: string = "https://zaza-app.herokuapp.com/api/categoriaProducto/";
+  //public url: string = "http://18.191.197.204:3000/api/categoriaProducto/";
 
   constructor(public http: HttpClient) {}
 

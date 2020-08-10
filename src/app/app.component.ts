@@ -1,4 +1,5 @@
 import { Component, Input } from "@angular/core";
+import { ScreenOrientation } from "@ionic-native/screen-orientation/ngx";
 
 import {
   Platform,
@@ -26,7 +27,8 @@ export class AppComponent {
     public usuario2: RegistroService,
     public usuario: MyserviceService,
     public menuCtrl: MenuController,
-    public navCtrl: NavController
+    public navCtrl: NavController,
+    private screenOrientation: ScreenOrientation
   ) {
     this.initializeApp();
   }
@@ -86,6 +88,8 @@ export class AppComponent {
   login: boolean = true;
 
   ngOnInit() {
+    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+
     if (this.router.url == "/login") {
       this.login = false;
     } else {

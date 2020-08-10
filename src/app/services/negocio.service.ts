@@ -9,12 +9,12 @@ import { Store } from "../models/store";
   providedIn: "root",
 })
 export class NegocioService {
-  // URL = "https://zaza-app.herokuapp.com/api/obtenerCategorias";
-  // URL2 = "https://zaza-app.herokuapp.com/api/obtenerNegocios";
-  // URL3 = "https://zaza-app.herokuapp.com/api/registrarNegocio";
-  URL = "http://18.191.197.204:3000/api/obtenerCategorias";
-  URL2 = "http://18.191.197.204:3000/api/obtenerNegocios";
-  URL3 = "http://18.191.197.204:3000/api/registrarNegocio";
+  URL = "https://zaza-app.herokuapp.com/api/obtenerCategorias";
+  URL2 = "https://zaza-app.herokuapp.com/api/obtenerNegocios";
+  URL3 = "https://zaza-app.herokuapp.com/api/registrarNegocio";
+  // URL = "http://18.191.197.204:3000/api/obtenerCategorias";
+  // URL2 = "http://18.191.197.204:3000/api/obtenerNegocios";
+  // URL3 = "http://18.191.197.204:3000/api/registrarNegocio";
   public negociosCercanos: any;
 
   constructor(public http: HttpClient, public usuario: MyserviceService) {}

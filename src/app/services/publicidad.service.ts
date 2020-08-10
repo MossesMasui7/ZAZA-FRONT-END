@@ -5,8 +5,8 @@ import { Injectable } from "@angular/core";
   providedIn: "root",
 })
 export class PublicidadService {
-  //public url: String = "https://zaza-app.herokuapp.com/api/";
-  public url: String = "http://18.191.197.204:3000/api/";
+  public url: String = "https://zaza-app.herokuapp.com/api/";
+  //public url: String = "http://18.191.197.204:3000/api/";
   constructor(public http: HttpClient) {}
 
   registrar(idNegocio: any, datos: any) {

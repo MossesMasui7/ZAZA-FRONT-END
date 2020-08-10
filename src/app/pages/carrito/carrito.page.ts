@@ -2,7 +2,8 @@ import { Router } from "@angular/router";
 import { Component, OnInit } from "@angular/core";
 import { RegistroService } from "../../services/usuario.service";
 import { MyserviceService } from "../../services/myservice.service";
-import { ThrowStmt } from "@angular/compiler";
+import { ScreenOrientation } from "@ionic-native/screen-orientation/ngx";
+
 @Component({
   selector: "app-carrito",
   templateUrl: "./carrito.page.html",
@@ -16,10 +17,13 @@ export class CarritoPage implements OnInit {
   constructor(
     private usuarioService: RegistroService,
     private usuario: MyserviceService,
-    public router: Router
+    public router: Router,
+    public screenOrientation: ScreenOrientation
   ) {}
 
   ngOnInit() {
+    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+
     if (this.usuario.usuario["carrito"].length > 0) {
       this.mostrarCarrito = true;
       this.mostrarVacio = false;

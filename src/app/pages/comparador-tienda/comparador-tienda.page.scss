@@ -1,1 +1,86 @@
-
+table {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+}
+.header {
+  position: relative;
+  height: 15%;
+  width: 100%;
+  background-color: rgb(168, 68, 38);
+}
+.titulo {
+  position: relative;
+  height: 100%;
+  width: 33.33%;
+  background: none;
+  display: inline-block;
+  text-align: center;
+}
+.select1 {
+  position: relative;
+  height: 100%;
+  width: 33.33%;
+  background: none;
+  display: inline-block;
+  text-align: center;
+}
+.select2 {
+  position: relative;
+  height: 100%;
+  width: 33.33%;
+  background: none;
+  display: inline-block;
+  text-align: center;
+}
+.body {
+  position: relative;
+  height: auto;
+  width: 66.66%;
+  background: none;
+  display: inline-block;
+}
+p {
+  position: relative;
+  width: 50%;
+  display: inline-block;
+  text-align: center;
+}
+.body1 {
+  position: absolute;
+  right: 0px;
+  top: 15%;
+  height: auto;
+  width: 33.3%;
+  display: inline-block;
+  background: none;
+}
+.segunda {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+  text-align: center;
+  background: #ffffff;
+}
+.totalDiv {
+  position: relative;
+  width: 100%;
+  height: 15%;
+  display: inline-block;
+  background-color: rgb(141, 241, 127);
+}
+.totalLabel {
+  position: relative;
+  display: inline-block;
+  height: 100%;
+  width: 33.33%;
+  text-align: center;
+}
+.totalNumber {
+  position: relative;
+  display: inline-block;
+  height: 100%;
+  width: 33.33%;
+  text-align: center;
+}

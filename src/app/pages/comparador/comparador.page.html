@@ -6,13 +6,13 @@
       <ion-card-content class="cardImg">
         <img
           class="imgProducto"
-          src="http://18.191.197.204:3000/api/imagen/producto/{{producto[0]['img']}}"
+          src="https://zaza-app.herokuapp.com/api/imagen/producto/{{producto[0]['img']}}"
           alt=""
         />
       </ion-card-content>
       <ion-label class="nombre">{{producto[0]['nombre']}}</ion-label>
       <ion-card-subtitle
-        >Cantidad:{{producto[0]['contenido']}}</ion-card-subtitle
+        >Cantidad:{{producto[0]['contenido']}}{{producto[0]['tipoContenido']}}</ion-card-subtitle
       >
       <ion-card-subtitle
         >Precio:${{producto[0]['tiendas'][0]['precio']}}.00</ion-card-subtitle

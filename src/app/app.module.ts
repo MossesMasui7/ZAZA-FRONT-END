@@ -17,6 +17,7 @@ import { RecaptchaModule } from "ng-recaptcha";
 import { BarcodeScanner } from "@ionic-native/barcode-scanner/ngx";
 import { Camera, CameraOptions } from "@ionic-native/camera/ngx";
 import { Geolocation } from "@ionic-native/geolocation/ngx";
+import { ScreenOrientation } from "@ionic-native/screen-orientation/ngx";
 
 //Paginas y componenetes
 import { RegistroComponent } from "./pages/registro/registro.component";
@@ -74,6 +75,7 @@ export class CustomHammerConfig extends HammerGestureConfig {
     Camera,
     BarcodeScanner,
     Geolocation,
+    ScreenOrientation,
 
     NegocioService,
   ],

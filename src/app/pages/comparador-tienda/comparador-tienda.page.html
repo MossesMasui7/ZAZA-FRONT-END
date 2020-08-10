@@ -1,42 +1,58 @@
 <app-menu titulo="Comparador"></app-menu>
 <ion-content>
-  <table border>
-    <tr>
-      <th>Producto/Tienda</th>
-      <th>
-        <ion-item>
-          <ion-label>Negocio</ion-label>
-          <ion-select
-            value="1"
-            (ionChange)="onChange($event)"
-            multiple="false"
-            placeholder="Select Pizza"
-          >
-            <ion-select-option
-              *ngFor="let negocio of negocio"
-              value="{{negocio['_id']}}"
-              >{{negocio['nombre']}}</ion-select-option
-            >
-          </ion-select>
-        </ion-item>
-      </th>
-      <th>
-        <ion-item>
-          <ion-label>Negocio</ion-label>
-          <ion-select value="1" multiple="false" placeholder="Select Pizza">
-            <ion-select-option
-              *ngFor="let negocio of negocio"
-              value="{{negocio['_id']}}"
-              >{{negocio['nombre']}}</ion-select-option
-            >
-          </ion-select>
-        </ion-item>
-      </th>
-    </tr>
-    <tr *ngFor="let producto of  productosPrecio">
-      <td>{{producto['Producto']}}</td>
-      <td>{{producto['Precio']}}</td>
-      <td>C</td>
-    </tr>
-  </table>
+  <div class="header">
+    <div class="titulo">Producto/Precio</div>
+    <div class="select1">
+      <ion-select
+        value="{{this.negocio[0]['_id']}}"
+        (ionChange)="onChange($event)"
+        multiple="false"
+        placeholder="Select Negocio"
+      >
+        <ion-select-option
+          *ngFor="let negocio of negocio"
+          value="{{negocio['_id']}}"
+          >{{negocio['nombre']}}</ion-select-option
+        >
+      </ion-select>
+    </div>
+    <div class="select2">
+      <ion-select
+        value="1"
+        (ionChange)="onChange1($event)"
+        multiple="false"
+        placeholder="Select Negocio"
+      >
+        <ion-select-option
+          *ngFor="let negocio of negocio"
+          value="{{negocio['_id']}}"
+          >{{negocio['nombre']}}</ion-select-option
+        >
+      </ion-select>
+    </div>
+  </div>
+  <div class="body" *ngFor="let producto of productosPrecio; index as i">
+    <p>
+      {{producto['Producto'] | puntosSuspensivos: "25"}}
+    </p>
+    <p (click)="primera(producto['Precio'],i)" id="pr{{i}}">
+      {{producto['Precio']}}
+    </p>
+  </div>
+
+  <div class="body1">
+    <p
+      (click)="segunda(producto['Precio'],i)"
+      class="segunda"
+      *ngFor="let producto of productosPrecio1; index as i"
+      id="p{{i}}"
+    >
+      {{producto['Precio']}}
+    </p>
+  </div>
+  <div class="totalDiv">
+    <p class="totalLabel">Total</p>
+    <p class="totalNumber">{{total1}}</p>
+    <p class="totalNumber">{{total2}}</p>
+  </div>
 </ion-content>

@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { NegocioService } from "../../services/negocio.service";
 import { RegistroService } from "../../services/usuario.service";
 import { MyserviceService } from "../../services/myservice.service";
+import { ScreenOrientation } from "@ionic-native/screen-orientation/ngx";
 
 import { ProductoService } from "../../services/producto.service";
 @Component({
@@ -11,8 +12,12 @@ import { ProductoService } from "../../services/producto.service";
 })
 export class ComparadorTiendaPage implements OnInit {
   productosPrecio: any[] = [];
+  productosPrecio1: any[] = [];
   negocio: any[] = [];
+  total1: number = 0;
+  total2: number = 0;
   constructor(
+    private screenOrientation: ScreenOrientation,
     public negocios: NegocioService,
     private usuarioService: RegistroService,
     private usuario: MyserviceService,
@@ -20,10 +25,72 @@ export class ComparadorTiendaPage implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
+
     this.negociosCarrito();
+    this.select(this.negocio[0]["_id"]);
+  }
+  ionViewDidLeave() {
+    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+  }
+  segunda(precio, i) {
+    if (
+      document.getElementById("p" + i).style.background == "" &&
+      precio != "--"
+    ) {
+      document.getElementById("p" + i).style.background = "#8df17f";
+
+      this.total2 = this.total2 + precio;
+    } else {
+      document.getElementById("p" + i).style.background = "";
+      this.total2 = this.total2 - precio;
+    }
+  }
+
+  primera(precio, i) {
+    if (
+      document.getElementById("pr" + i).style.background == "" &&
+      precio != "--"
+    ) {
+      document.getElementById("pr" + i).style.background = "#8df17f";
+      this.total1 = this.total1 + precio;
+    } else {
+      document.getElementById("pr" + i).style.background = "";
+      this.total1 = this.total1 - precio;
+    }
+  }
+
+  select(id) {
+    let producto = [];
+    producto = [];
+    this.productoService
+      .buscarprecio(id)
+      .then((data) => {
+        data["resp"].forEach((db) => {
+          this.usuario.usuario["carrito"].forEach((carrito) => {
+            if (db["Producto"] == carrito["producto"]["_id"]) {
+              producto.push({
+                Producto: carrito["producto"]["descripcion"],
+                Precio: db["Precio"],
+              });
+            }
+          });
+        });
+
+        this.productosPrecio = producto;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    console.log(this.productosPrecio);
+    producto = [];
   }
 
   onChange($event) {
+    this.select($event.target.value);
+  }
+
+  onChange1($event) {
     let producto = [];
     producto = [];
     this.productoService
@@ -36,15 +103,11 @@ export class ComparadorTiendaPage implements OnInit {
                 Producto: carrito["producto"]["descripcion"],
                 Precio: db["Precio"],
               });
-            } else {
-              producto.push({
-                Producto: carrito["producto"]["descripcion"],
-                Precio: "--",
-              });
             }
           });
         });
-        this.productosPrecio = producto;
+
+        this.productosPrecio1 = producto;
       })
       .catch((err) => {
         console.log(err);

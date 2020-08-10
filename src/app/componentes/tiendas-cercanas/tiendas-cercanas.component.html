@@ -33,27 +33,26 @@
     </div>
   </div>
 
-  <div
-    *ngFor="let tienda of this.producto.precio; let i = index"
-    class="tienda"
-  >
-    <tr>
-      <td class="der">
-        {{ tienda["nombre"] }} <br />
-        a {{ tienda["distancia"] }}Kms <br />
-        {{ tienda["inventario"] }} uni. disponibles
-      </td>
-      <td class="izq">${{ tienda.precio }}.00</td>
+  <div *ngFor="let tienda of this.producto.tiendas['tiendas']; let i = index">
+    <div *ngIf="tienda['alcance']" class="tienda">
+      <tr>
+        <td class="der">
+          {{ tienda["negocio"]["nombre"] }} <br />
+          a {{ tienda["distancia"] }}Kms <br />
+          {{ tienda["inventario"] }} uni. disponibles
+        </td>
+        <td class="izq">${{ tienda.precio }}.00</td>
 
-      <!-- <img *ngIf="tienda['oferta']"  class="oferta" src="../../../assets/iconos/bitmap.png" alt=""> -->
-    </tr>
-    <tr class="selecTr">
-      <td class="selecTd">
-        <ion-button (click)="seleccionar(i)" class="selecBtn" expand="block">
-          Seleccionar
-        </ion-button>
-      </td>
-    </tr>
-    <br />
+        <!-- <img *ngIf="tienda['oferta']"  class="oferta" src="../../../assets/iconos/bitmap.png" alt=""> -->
+      </tr>
+      <tr class="selecTr">
+        <td class="selecTd">
+          <ion-button (click)="seleccionar(i)" class="selecBtn" expand="block">
+            Seleccionar
+          </ion-button>
+        </td>
+      </tr>
+      <br />
+    </div>
   </div>
 </div>

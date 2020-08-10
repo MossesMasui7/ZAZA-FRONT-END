@@ -51,22 +51,32 @@ export class TiendasCercanasComponent implements OnInit {
   }
   pre() {}
   seleccionar(i: Number) {
-    this.usuario
-      .carrito(
-        this.cantidad,
-        this.producto.tiendas["tiendas"][i]["precio"],
-        this.producto.tiendas["tiendas"][i]["negocio"]["_id"],
-        this.producto.tiendas["_id"]
-      )
-      .then((data) => {
-        this.usuario
-          .actualizarUsuario()
-          .then((data) => (this.cliente.usuario = data["resp"]));
-        this.presentToast();
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    let disponible: Boolean = true;
+    this.cliente.usuario["carrito"].forEach((element) => {
+      if (element["producto"]["_id"] == this.producto.tiendas["_id"]) {
+        disponible = false;
+      }
+    });
+    if (disponible) {
+      this.usuario
+        .carrito(
+          this.cantidad,
+          this.producto.tiendas["tiendas"][i]["precio"],
+          this.producto.tiendas["tiendas"][i]["negocio"]["_id"],
+          this.producto.tiendas["_id"]
+        )
+        .then((data) => {
+          this.usuario
+            .actualizarUsuario()
+            .then((data) => (this.cliente.usuario = data["resp"]));
+          this.presentToast("Se agrego el artuculo a su carrito");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      this.presentToast("Este producto ya esta en su carrito");
+    }
   }
   onChange($event) {
     switch ($event.detail.value) {
@@ -79,9 +89,9 @@ export class TiendasCercanasComponent implements OnInit {
     }
   }
 
-  async presentToast() {
+  async presentToast(text) {
     const toast = await this.toastController.create({
-      message: "Se agrego su producto al carrito de compras",
+      message: text,
       duration: 2000,
     });
     toast.present();

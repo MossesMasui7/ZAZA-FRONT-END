@@ -5,8 +5,8 @@ import { HttpClient } from "@angular/common/http";
   providedIn: "root",
 })
 export class ProductoService {
-  //URL_API = "https://zaza-app.herokuapp.com/api/producto";
-  URL_API = "http://18.191.197.204:3000/api/producto";
+  URL_API = "https://zaza-app.herokuapp.com/api/producto";
+  //URL_API = "http://18.191.197.204:3000/api/producto";
   public precio: any[];
   public tiendas = {};
   public productos: any[] = [];

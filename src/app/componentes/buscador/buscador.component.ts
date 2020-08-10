@@ -113,7 +113,7 @@ export class BuscadorComponent implements OnInit {
               "latitude"
             ]
           )
-        ) <= 15
+        ) <= 200
       ) {
         this.productos.push(this.producto.tiendas["tiendas"][i]);
         this.productos[i]["distancia"] = this.getKilometros(
@@ -132,6 +132,7 @@ export class BuscadorComponent implements OnInit {
     }
     this.producto.tiendas["tiendas"] = this.productos;
     this.productos = [];
+    console.log(this.producto.tiendas["tiendas"]);
   }
 
   //Funcion para odenar productos por distancia
@@ -148,7 +149,7 @@ export class BuscadorComponent implements OnInit {
               "latitude"
             ]
           )
-        ) < 15
+        ) < 200
       ) {
         this.productos.push(this.producto.tiendas["tiendas"][i]);
         this.productos[i]["distancia"] = this.getKilometros(
@@ -177,6 +178,7 @@ export class BuscadorComponent implements OnInit {
     }
     this.producto.tiendas["tiendas"] = this.productos;
     this.productos = [];
+    console.log(this.producto.tiendas["tiendas"]);
   }
 
   //Funcion para extraer el producto que seleccionaste
